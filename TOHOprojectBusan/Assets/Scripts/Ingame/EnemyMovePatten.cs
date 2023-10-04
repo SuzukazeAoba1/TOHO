@@ -1,19 +1,32 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class EnemyMovePatten : MonoBehaviour
 {
-    void Start()
+
+    private void Update()
     {
-        StartCoroutine(Moving());
+        if(transform.position.y < -10)
+        {
+            transform.DOKill();
+            Destroy(gameObject);
+        }
     }
 
-
-    IEnumerator Moving()
+    /// <summary>
+    /// 적이 스폰 된 직후 움직이게 하는 함수, 추후 int 번호를 받아 고를 수 있게 제작할 예정
+    /// </summary>
+    /// <param name="lbl"></param>
+    public void Play()
     {
-        GetComponent<Transform>().Translate(Vector3.down * 100 * Time.deltaTime);
-        yield return new WaitForSeconds(.5f);
-        GetComponent<Transform>().Translate(Vector3.up * 100 * Time.deltaTime);
+        Patten01();
     }
+
+    private void Patten01()
+    {
+        transform.DOMoveY(-20, 7);
+    }
+
 }
