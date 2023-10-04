@@ -5,9 +5,9 @@ using UnityEngine;
 public class PlayerMove : MonoBehaviour
 {
     public float speed = 4.5f;
+    private Vector3 position = Vector3.zero;
     private float H;
     private float V;
-    private Vector3 position = Vector3.zero;
     // Start is called before the first frame update
     void Start()
     {
@@ -22,7 +22,6 @@ public class PlayerMove : MonoBehaviour
         position.x = H;
         position.y = V;
         position.z = 0f;
-
     }
     private void FixedUpdate()
     {
