@@ -6,6 +6,11 @@ public class Player : MonoBehaviour
 {
     public int HP;
     public float speed = 4.5f;
+    public float cooltime = 0.15f;
+    public float bulletspeed = 200f;
+    private float shoottimer = 0f;
+    public GameObject Bullet;
+    public Transform ShootPoint;
     private Vector3 position = Vector3.zero;
     private float H;
     private float V;
@@ -23,9 +28,22 @@ public class Player : MonoBehaviour
         position.x = H;
         position.y = V;
         position.z = 0f;
+
+        shoottimer -= Time.deltaTime;
+        if(shoottimer <= 0f)
+        {
+            Shoot();
+            shoottimer = cooltime;
+        }
     }
     private void FixedUpdate()
     {
         transform.Translate(position * speed * Time.fixedDeltaTime);
+    }
+
+    private void Shoot()
+    {
+        GameObject newBullet = Instantiate(Bullet, ShootPoint.position, Quaternion.Euler(0, 0, 90));
+        newBullet.GetComponent<Rigidbody2D>().AddForce(new Vector2(0, bulletspeed));
     }
 }
