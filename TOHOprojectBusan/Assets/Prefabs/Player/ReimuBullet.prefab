@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2365468588883699759}
   - component: {fileID: 8293584161488337839}
   - component: {fileID: 1394394570463131530}
-  - component: {fileID: -1781952889582276468}
+  - component: {fileID: 984815647893580768}
   m_Layer: 0
   m_Name: ReimuBullet
   m_TagString: Untagged
@@ -122,7 +122,7 @@ CircleCollider2D:
   m_Offset: {x: 0.11968583, y: -0.0076170103}
   serializedVersion: 2
   m_Radius: 0.08977296
---- !u!114 &-1781952889582276468
+--- !u!114 &984815647893580768
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -135,5 +135,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ATK: 5
-  Speed: 3
+  Speed: 5
   destroy_Time: 3
