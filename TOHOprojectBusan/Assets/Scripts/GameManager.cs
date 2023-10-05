@@ -5,8 +5,11 @@ using DG.Tweening;
 
 public class GameManager : MonoBehaviour
 {
-    public GameObject[] Enemy;
+    public float camerasize;
+    public Vector2 movingzone;
+    public Vector2 deathzone;
 
+    public GameObject[] Enemy;
     public float spawnX;
     public float spawnY;
 
