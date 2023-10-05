@@ -14,6 +14,8 @@ public class Player : MonoBehaviour
     private Vector3 position = Vector3.zero;
     private float H;
     private float V;
+    private float xRange = 9.8f;
+    private float yRange = 13.8f;
     // Start is called before the first frame update
     void Start()
     {
@@ -30,7 +32,7 @@ public class Player : MonoBehaviour
         position.z = 0f;
 
         shoottimer -= Time.deltaTime;
-        if(shoottimer <= 0f)
+        if (shoottimer <= 0f)
         {
             Shoot();
             shoottimer = cooltime;
@@ -38,7 +40,26 @@ public class Player : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        transform.Translate(position * speed * Time.fixedDeltaTime);
+        if(transform.position.x < -xRange)
+        {
+            transform.position = new Vector3(-xRange, transform.position.y, 0);
+        }
+        else if (transform.position.x > xRange)
+        {
+            transform.position = new Vector3(xRange, transform.position.y, 0);
+        }
+        else if (transform.position.y < -yRange)
+        {
+            transform.position = new Vector3(transform.position.x, -yRange, 0);
+        }
+        else if (transform.position.y > yRange)
+        {
+            transform.position = new Vector3(transform.position.x, yRange, 0);
+        }
+        else
+        {
+            transform.Translate(position * speed * Time.fixedDeltaTime);
+        }
     }
 
     private void Shoot()
@@ -46,4 +67,6 @@ public class Player : MonoBehaviour
         GameObject newBullet = Instantiate(Bullet, ShootPoint.position, Quaternion.Euler(0, 0, 90));
         newBullet.GetComponent<Rigidbody2D>().AddForce(new Vector2(0, bulletspeed));
     }
+
+
 }

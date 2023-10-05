@@ -22,7 +22,7 @@ public class Enemy : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Bullet"))
+        if (HP <= 0)
         {
             transform.DOKill();
             Destroy(gameObject);
