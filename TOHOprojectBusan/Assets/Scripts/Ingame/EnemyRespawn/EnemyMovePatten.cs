@@ -5,7 +5,6 @@ using DG.Tweening;
 
 public class EnemyMovePatten : MonoBehaviour
 {
-
     private void Update()
     {
         if(transform.position.y < -10)
@@ -25,7 +24,7 @@ public class EnemyMovePatten : MonoBehaviour
     }
 
     private void Patten01()
-    {
+    { 
         transform.DOMoveY(-20, 7);
     }
 

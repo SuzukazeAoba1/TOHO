@@ -4,11 +4,6 @@ using UnityEngine;
 
 public class MainGame : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
     // Update is called once per frame
     void Update()
@@ -24,6 +19,8 @@ public class MainGame : MonoBehaviour
     /// <param name="lbl"></param>
     public void GamePlay()
     {
+        gameObject.AddComponent<EnemyRespawner>().Play();
+
         //스탯 초기화, 게임 플레이어 생성
         //맵 루프 스위치 활성화
         //몬스터 생성 패턴 스위치 활성화

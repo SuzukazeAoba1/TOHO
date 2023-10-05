@@ -9,25 +9,34 @@ using UnityEngine;
 /// <param name="lbl"></param>
 public class EnemyRespawner : MonoBehaviour
 {
-    public GameObject[] Enemy;
-
-    public float spawnX;
-    public float spawnY;
-
     private float spawnerPosX;
     private float spawnerPosY;
 
-    void Start()
+
+    public void Play()
     {
-        spawnerPosY = spawnY;
+        TestPlay();
+    }
+
+
+    public void FileLoad()
+    {
+
+    }
+
+
+    public void TestPlay()
+    {
+        spawnerPosY = (gameObject.GetComponent<GameManager>().spawnY);
         StartCoroutine(Respawn());
     }
 
     IEnumerator Respawn()
     {
         GameObject buf;
-        spawnerPosX = Random.Range(-spawnX, spawnX);
-        buf = Instantiate(Enemy[0], new Vector3(spawnerPosX, spawnerPosY, 0), Quaternion.identity);
+        float testX = (gameObject.GetComponent<GameManager>().spawnX);
+        spawnerPosX = Random.Range(-testX, testX);
+        buf = Instantiate(gameObject.GetComponent<GameManager>().Enemy[0], new Vector3(spawnerPosX, spawnerPosY, 0), Quaternion.identity);
         buf.AddComponent<EnemyMovePatten>().Play();
         yield return new WaitForSeconds(1.0f);
         StartCoroutine(Respawn());
