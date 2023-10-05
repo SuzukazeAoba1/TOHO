@@ -309,13 +309,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d192e59a12edf644aac1ef3942dd024, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  camerasize: 8.5
-  movingzone: {x: 22, y: 30}
-  deathzone: {x: 40, y: 53}
-  Enemy:
-  - {fileID: 3882188159281121841, guid: 6a156d4424d6a904b80dff5f5e8298a1, type: 3}
-  spawnX: 5
-  spawnY: 10
 --- !u!4 &166974194
 Transform:
   m_ObjectHideFlags: 0
@@ -342,6 +335,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d87b8b4bd1cbf09449ab63d999c9397e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Enemy:
+  - {fileID: 3882188159281121841, guid: 6a156d4424d6a904b80dff5f5e8298a1, type: 3}
+  testline: 1
+  testloc: 1
 --- !u!114 &166974196
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -354,6 +351,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7302d60ec8fe194cbcaba650ad20e5e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  camerasize: 8.5
+  movingzone: {x: 22, y: 30}
+  deathzone: {x: 40, y: 53}
 --- !u!1 &346649089
 GameObject:
   m_ObjectHideFlags: 0

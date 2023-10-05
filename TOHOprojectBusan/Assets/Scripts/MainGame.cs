@@ -4,6 +4,18 @@ using UnityEngine;
 
 public class MainGame : MonoBehaviour
 {
+    private EnemySpawnCotroller spawner;
+
+    public float camerasize;
+    public Vector2 movingzone;
+    public Vector2 deathzone;
+
+    void Start()
+    {
+        spawner = GetComponent<EnemySpawnCotroller>();
+        spawner.Init(movingzone);
+        spawner.Play();
+    }
 
     // Update is called once per frame
     void Update()
@@ -19,7 +31,7 @@ public class MainGame : MonoBehaviour
     /// <param name="lbl"></param>
     public void GamePlay()
     {
-        gameObject.GetComponent<EnemySpawnCotroller>().Play();
+        
 
         //스탯 초기화, 게임 플레이어 생성
         //맵 루프 스위치 활성화

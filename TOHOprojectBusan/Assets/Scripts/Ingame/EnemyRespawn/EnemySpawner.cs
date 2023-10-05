@@ -9,46 +9,56 @@ using UnityEngine;
 /// <param name="lbl"></param>
 public class EnemySpawner : MonoBehaviour
 {
-    private GameManager gameManager; //test
+    private EnemySpawnCotroller controller;
+    private EnemyMovePatten movePatten;
     private Vector2 spawnpos;
+
+    private float offset = 0.5f;
     private float zoneX = 0;
     private float zoneY = 0;
 
+    public void SetController(EnemySpawnCotroller con)
+    {
+        controller = con;
+    }
+
+    public void SetPatten(EnemyMovePatten move)
+    {
+        movePatten = move;
+    }
+
     public void SetZonePos(Vector2 movingzone)
     {
-        gameManager = gameObject.GetComponent<GameManager>();
-
         zoneX = movingzone.x / 2;
         zoneY = movingzone.y / 2;
     }
 
-    public void Spawn(int enemyid, int line, float loc)
+    public void Spawn(int enemyid, int moveid, int spawnpointid)
     {
-        //spawn line(1,2,3) loc (0~1)
-
-        if (line == 1) //왼쪽
+        //spawn line(1~30)
+        if (spawnpointid > 0 && spawnpointid < 31)
         {
-            
-            spawnpos.x = -(zoneX + 0.5f);
-            spawnpos.y = (zoneY * loc * 2) - (zoneY);
+            if (spawnpointid <= 10) //상단
+            {
+                spawnpos.x = (zoneX * (spawnpointid / 10.0f) * 2) - (zoneX);
+                spawnpos.y = (zoneY) + offset;
+            }
+            else if (spawnpointid <= 20) //왼쪽
+            {
+                spawnpos.x = -(zoneX) - offset;
+                spawnpos.y = -((zoneY * ((spawnpointid - 10) / 10.0f) * 2) - (zoneY));
+            }
+            else if (spawnpointid <= 30) //오른쪽
+            {
 
-        }
-        else if (line == 2) //상단
-        {
-            
-            spawnpos.x = (zoneX * loc * 2) - (zoneX);
-            spawnpos.y = (zoneY + 0.5f);
-        }
-        else if (line == 3) //오른쪽
-        {
-            
-            spawnpos.x = (zoneX + 0.5f);
-            spawnpos.y = -((zoneY * loc * 2) - (zoneY));
-        }
+                spawnpos.x = (zoneX) + offset;
+                spawnpos.y = -((zoneY * ((spawnpointid - 20) / 10.0f) * 2) - (zoneY));
+            }
 
-        GameObject buf = Instantiate(gameManager.Enemy[enemyid], new Vector3(spawnpos.x, spawnpos.y, 0), Quaternion.identity);
-        buf.AddComponent<EnemyMovePatten>().Play();
-
+            GameObject buf;
+            buf = Instantiate(controller.Enemy[enemyid], new Vector3(spawnpos.x, spawnpos.y, 0), Quaternion.identity);
+            movePatten.Moving(buf,moveid);
+        }
     }
 
 

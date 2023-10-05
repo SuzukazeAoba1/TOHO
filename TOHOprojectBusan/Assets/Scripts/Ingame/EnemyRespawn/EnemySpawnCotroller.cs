@@ -9,28 +9,26 @@ using UnityEngine;
 /// <param name="lbl"></param>
 public class EnemySpawnCotroller : MonoBehaviour
 {
-    private GameManager gameManager;
-    private EnemySpawner enemySpawner;
-    private float spawnerPosX;
-    private float spawnerPosY;
+    public GameObject[] Enemy;
+    private EnemySpawner spawner;
+    private EnemyMovePatten movePatten;
 
-    public void Start()
+    public int testspawnpoint;
+
+    public void Init(Vector2 movingzone)
     {
-        enemySpawner = gameObject.AddComponent<EnemySpawner>();
-        gameManager = gameObject.GetComponent<GameManager>();
-        enemySpawner.SetZonePos(gameManager.movingzone);
-    }
+        spawner = gameObject.AddComponent<EnemySpawner>();
+        movePatten = gameObject.AddComponent<EnemyMovePatten>();
 
-    public void FileLoad()
-    {
-
+        spawner.SetController(this);
+        spawner.SetPatten(movePatten);
+        spawner.SetZonePos(movingzone);
     }
 
     public void Play()
     {
         TestPlay();
     }
-
 
     public void TestPlay()
     {
@@ -39,7 +37,8 @@ public class EnemySpawnCotroller : MonoBehaviour
 
     IEnumerator Respawn()
     {
-        enemySpawner.Spawn(0, 3, 0.5f);
+        yield return new WaitForSeconds(0.1f);
+        spawner.Spawn(0, 1, testspawnpoint);
         yield return new WaitForSeconds(1.0f);
         StartCoroutine(Respawn());
     }
