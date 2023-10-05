@@ -4,77 +4,100 @@ using UnityEngine;
 
 public class Doll : MonoBehaviour
 {
-    private GameObject target;
+    public Transform target;
+    public float range = 17f;
+    private SpriteRenderer mySR;
+    public string enemyTag = "Enemy";
+    public float cooltime = 0.15f;
+    private float shoottimer = 0f;
+    
     public GameObject bullet;
     public float bulletspeed = 200f;
-    private float shoottimer = 0f;
     public Transform ShootPoint;
-    public float cooltime = 0.15f;
-
-    void Update()
+    private float angle;
+    private Quaternion rotation;
+    private void Start()
     {
-        FindClosestEnemy();
-        shoottimer -= Time.deltaTime;
-
-        if (target != null && shoottimer <= 0f)
-        {
-            ShooTraget();
-            shoottimer = cooltime;
-        }
-        else if (shoottimer <= 0)
-        {
-            JustShoot();
-        }
+        mySR = GetComponent<SpriteRenderer>();
+        InvokeRepeating("UpdateTraget", 0f, cooltime);
     }
 
-    void FindClosestEnemy()
+    void UpdateTraget()
     {
-        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+        GameObject[] enemies = GameObject.FindGameObjectsWithTag(enemyTag);
+        float shortesDistance = Mathf.Infinity;
+        GameObject neareatEnemy = null;
 
-        if (enemies.Length == 0)
+        foreach(GameObject enemy in enemies)
         {
-            // 만약 적이 없다면 target은 null로 설정
-            target = null;
-            return;
-        }
-
-        GameObject closestEnemy = null;
-        float closestDistance = Mathf.Infinity;
-        Vector3 currentPosition = transform.position;
-
-        foreach (GameObject enemy in enemies)
-        {
-            Vector3 directionToEnemy = enemy.transform.position - currentPosition;
-            float distanceToEnemy = directionToEnemy.sqrMagnitude;
-
-            if (distanceToEnemy < closestDistance)
+            float distanceToEnemy = Vector3.Distance(transform.position, enemy.transform.position);
+            if(distanceToEnemy < shortesDistance)
             {
-                closestDistance = distanceToEnemy;
-                closestEnemy = enemy;
+                shortesDistance = distanceToEnemy;
+                neareatEnemy = enemy;
             }
         }
 
-        // target에 가장 가까운 적을 할당
-        target = closestEnemy;
+        if(neareatEnemy != null && shortesDistance <= range)
+        {
+            target = neareatEnemy.transform;
+        }
+        else
+        {
+            target = null;
+        }
     }
 
+    private void Update()
+    {
+        shoottimer -= Time.deltaTime;
+        
+        if (target)
+        {
+            if(target.position.x <= transform.position.x)
+            {
+                gameObject.GetComponent<SpriteRenderer>().flipX = true;
+            }
+            else if (target.position.x > transform.position.x)
+            {
+                gameObject.GetComponent<SpriteRenderer>().flipX = false;
+            }
+            if (shoottimer <= 0)
+            {
+                ShooTraget();
+                shoottimer = cooltime;
+            }
+            
+        }
+        else if (target == null)
+        {
+            if (shoottimer <= 0)
+            {
+                JustShoot();
+                shoottimer = cooltime;
+            }
+        }
+
+        
+    }
     private void ShooTraget()
     {
-        if (target != null)
-        {
-            // target 위치와 현재 위치 사이의 방향 벡터를 구합니다.
-            Vector2 direction = (target.transform.position - transform.position).normalized;
 
-            // 방향 벡터에 bulletspeed를 곱해 총알에 적용합니다.
-            // 여기서 X축 방향으로 움직이기 위해 direction.x를 사용합니다.
-            GameObject newDollBullet = Instantiate(bullet, transform.position, Quaternion.Euler(0, 0, 90));
-            newDollBullet.GetComponent<Rigidbody2D>().AddForce(new Vector2(direction.x * bulletspeed, direction.y * bulletspeed));
-        }
+        Debug.Log("옆으로 쏴지냐?");
+
+        // target 위치와 현재 위치 사이의 방향 벡터를 구합니다.
+        Vector2 direction = (target.position - ShootPoint.position).normalized;
+        // 여기서 X축 방향으로 움직이기 위해 direction.x를 사용합니다.
+        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+        GameObject newDollBullet = Instantiate(bullet, ShootPoint.position, Quaternion.AngleAxis(angle, Vector3.forward));
+        newDollBullet.transform.Rotate(0, 0, 90);
+        newDollBullet.GetComponent<Rigidbody2D>().AddForce(direction * bulletspeed);
     }
 
     private void JustShoot()
     {
-        GameObject newDollBullet = Instantiate(bullet, transform.position, Quaternion.Euler(0, 0, 90));
-        newDollBullet.GetComponent<Rigidbody2D>().AddForce(new Vector2(0, bulletspeed));
+        GameObject JnewDollBullet = Instantiate(bullet, ShootPoint.position, Quaternion.Euler(0, 0, 90));
+        JnewDollBullet.transform.Rotate(0, 0, 90);
+        JnewDollBullet.GetComponent<Rigidbody2D>().AddForce(new Vector2(0, bulletspeed));
     }
 }
