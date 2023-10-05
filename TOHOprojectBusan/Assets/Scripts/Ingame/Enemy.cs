@@ -5,7 +5,7 @@ using DG.Tweening;
 
 public class Enemy : MonoBehaviour
 {
-    public int HP;
+    public float HP;
     public double speed;
 
     // Start is called before the first frame update

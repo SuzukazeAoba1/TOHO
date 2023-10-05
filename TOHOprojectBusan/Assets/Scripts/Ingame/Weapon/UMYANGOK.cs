@@ -4,12 +4,32 @@ using UnityEngine;
 
 public class UMYANGOK : MonoBehaviour
 {
-    public float damage;
     public int per;
+    public int ATK;
+    public float Speed;
+    public float destroy_Time;
+    public GameObject DText;
+    private float candamage = 0f;
 
-    public void Onit(float damage, int per)
+    private void Update()
     {
-        this.damage = damage;
-        this.per = per;
+        candamage -= Time.deltaTime;
+    }
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("Enemy"))
+        {
+            other.GetComponent<Enemy>().HP -= ATK;
+            GameObject Damage = Instantiate(DText, transform.position, Quaternion.identity);
+            Damage.GetComponent<TextMesh>().text = ATK.ToString();
+            Destroy(Damage, 0.7f);
+        }
+        else if (other.CompareTag("Barrage"))
+        {
+                other.GetComponent<Barrage>().HP -= ATK;
+                GameObject Damage = Instantiate(DText, transform.position, Quaternion.identity);
+                Damage.GetComponent<TextMesh>().text = ATK.ToString();
+                Destroy(Damage, 0.7f);
+        }
     }
 }
