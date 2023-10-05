@@ -23,7 +23,7 @@ public class GameManager : MonoBehaviour
     private void Init()
     {
         // 게임 리소스 로딩에 관한 스크립트
-        gameObject.AddComponent<MainGame>().GamePlay();
+        gameObject.GetComponent<MainGame>().GamePlay();
     }
 
     private void Title()

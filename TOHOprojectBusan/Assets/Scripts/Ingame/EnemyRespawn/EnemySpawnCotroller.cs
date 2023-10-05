@@ -7,11 +7,24 @@ using UnityEngine;
 /// 지금은 0번의 적만 소환하지만 추후 번호에 따라 선택 가능하게 변경 예정
 /// </summary>
 /// <param name="lbl"></param>
-public class EnemyRespawner : MonoBehaviour
+public class EnemySpawnCotroller : MonoBehaviour
 {
+    private GameManager gameManager;
+    private EnemySpawner enemySpawner;
     private float spawnerPosX;
     private float spawnerPosY;
 
+    public void Start()
+    {
+        enemySpawner = gameObject.AddComponent<EnemySpawner>();
+        gameManager = gameObject.GetComponent<GameManager>();
+        enemySpawner.SetZonePos(gameManager.movingzone);
+    }
+
+    public void FileLoad()
+    {
+
+    }
 
     public void Play()
     {
@@ -19,25 +32,14 @@ public class EnemyRespawner : MonoBehaviour
     }
 
 
-    public void FileLoad()
-    {
-
-    }
-
-
     public void TestPlay()
     {
-        spawnerPosY = (gameObject.GetComponent<GameManager>().spawnY);
         StartCoroutine(Respawn());
     }
 
     IEnumerator Respawn()
     {
-        GameObject buf;
-        float testX = (gameObject.GetComponent<GameManager>().spawnX);
-        spawnerPosX = Random.Range(-testX, testX);
-        buf = Instantiate(gameObject.GetComponent<GameManager>().Enemy[0], new Vector3(spawnerPosX, spawnerPosY, 0), Quaternion.identity);
-        buf.AddComponent<EnemyMovePatten>().Play();
+        enemySpawner.Spawn(0, 3, 0.5f);
         yield return new WaitForSeconds(1.0f);
         StartCoroutine(Respawn());
     }

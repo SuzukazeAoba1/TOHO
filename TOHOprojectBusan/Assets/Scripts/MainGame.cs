@@ -19,7 +19,7 @@ public class MainGame : MonoBehaviour
     /// <param name="lbl"></param>
     public void GamePlay()
     {
-        gameObject.AddComponent<EnemyRespawner>().Play();
+        gameObject.GetComponent<EnemySpawnCotroller>().Play();
 
         //스탯 초기화, 게임 플레이어 생성
         //맵 루프 스위치 활성화
