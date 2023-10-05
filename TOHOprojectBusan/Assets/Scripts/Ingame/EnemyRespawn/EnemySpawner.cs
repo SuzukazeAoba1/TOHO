@@ -33,31 +33,34 @@ public class EnemySpawner : MonoBehaviour
         zoneY = movingzone.y / 2;
     }
 
-    public void Spawn(int enemyid, int moveid, int spawnpointid)
+    public void Spawn(int enemyid, int spawnpointid, int moveid)
     {
         //spawn line(1~30)
-        if (spawnpointid > 0 && spawnpointid < 31)
+        if (spawnpointid > 0 && spawnpointid < 301)
         {
-            if (spawnpointid <= 10) //상단
+            if (spawnpointid <= 100) //상단
             {
-                spawnpos.x = (zoneX * (spawnpointid / 10.0f) * 2) - (zoneX);
+                spawnpos.x = (zoneX * ((spawnpointid - 0.5f) / 100.0f ) * 2) - (zoneX);
                 spawnpos.y = (zoneY) + offset;
             }
-            else if (spawnpointid <= 20) //왼쪽
+            else if (spawnpointid <= 200) //왼쪽
             {
+                spawnpointid = (spawnpointid - 100);
+
                 spawnpos.x = -(zoneX) - offset;
-                spawnpos.y = -((zoneY * ((spawnpointid - 10) / 10.0f) * 2) - (zoneY));
+                spawnpos.y = -((zoneY * ((spawnpointid - 0.5f) / 100.0f) * 2) - (zoneY));
             }
-            else if (spawnpointid <= 30) //오른쪽
+            else if (spawnpointid <= 300) //오른쪽
             {
+                spawnpointid = (spawnpointid - 200);
 
                 spawnpos.x = (zoneX) + offset;
-                spawnpos.y = -((zoneY * ((spawnpointid - 20) / 10.0f) * 2) - (zoneY));
+                spawnpos.y = -((zoneY * ((spawnpointid - 0.5f) / 100.0f) * 2) - (zoneY));
             }
 
             GameObject buf;
             buf = Instantiate(controller.Enemy[enemyid], new Vector3(spawnpos.x, spawnpos.y, 0), Quaternion.identity);
-            movePatten.Moving(buf,moveid);
+            movePatten.Moving(buf, moveid);
         }
     }
 
