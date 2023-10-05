@@ -13,9 +13,15 @@ public class EnemySpawnCotroller : MonoBehaviour
     private EnemySpawner spawner;
     private EnemyMovePatten movePatten;
 
-
     public int enemyid; //1
-    public int spawnpointid; // 1~300
+
+    [Range(1, 3)]
+    public int spawnline; // 1~3
+
+    [Range(1, 100)]
+    public int spawnpos; // 1~100
+
+    [Range(1, 3)]
     public int movepattenid; // 1~3
 
     public void Init(Vector2 movingzone)
@@ -30,7 +36,10 @@ public class EnemySpawnCotroller : MonoBehaviour
 
     public void Play()
     {
-        TestPlay();
+        if (Enemy[0] != null)
+        {
+            TestPlay();
+        }
     }
 
     public void TestPlay()
@@ -41,7 +50,7 @@ public class EnemySpawnCotroller : MonoBehaviour
     IEnumerator Respawn()
     {
         yield return new WaitForSeconds(0.1f);
-        spawner.Spawn(enemyid - 1, spawnpointid, movepattenid);
+        spawner.Spawn(enemyid - 1, ((spawnline - 1)*100) + spawnpos, movepattenid);
         yield return new WaitForSeconds(1.0f);
         StartCoroutine(Respawn());
     }
