@@ -5,7 +5,11 @@ using DG.Tweening;
 
 public class GameManager : MonoBehaviour
 {
-    // Start is called before the first frame update
+    public GameObject[] Enemy;
+
+    public float spawnX;
+    public float spawnY;
+
     void Start()
     {
         DOTween.Init(true, true, LogBehaviour.Verbose);
@@ -16,6 +20,7 @@ public class GameManager : MonoBehaviour
     private void Init()
     {
         // 게임 리소스 로딩에 관한 스크립트
+        gameObject.AddComponent<MainGame>().GamePlay();
     }
 
     private void Title()
