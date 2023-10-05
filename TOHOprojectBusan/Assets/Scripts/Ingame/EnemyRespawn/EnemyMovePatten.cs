@@ -5,27 +5,26 @@ using DG.Tweening;
 
 public class EnemyMovePatten : MonoBehaviour
 {
-    private void Update()
+    Transform moveTarget;
+
+    public void Moving(GameObject target, int pattennum)
     {
-        if(transform.position.y < -10)
+        moveTarget = target.transform;
+
+        switch(pattennum)
         {
-            transform.DOKill();
-            Destroy(gameObject);
+            case 1:
+                moveTarget.DOMoveY(moveTarget.position.y - 50, 5);
+                break;
+            case 2:
+                moveTarget.DOMoveX(moveTarget.position.x + 50, 5);
+                break;
+            case 3:
+                moveTarget.DOMoveX(moveTarget.position.x - 50, 5);
+                break;
+            default:
+                break;
+                
         }
     }
-
-    /// <summary>
-    /// 적이 스폰 된 직후 움직이게 하는 함수, 추후 int 번호를 받아 고를 수 있게 제작할 예정
-    /// </summary>
-    /// <param name="lbl"></param>
-    public void Play()
-    {
-        Patten01();
-    }
-
-    private void Patten01()
-    { 
-        transform.DOMoveY(-20, 7);
-    }
-
 }

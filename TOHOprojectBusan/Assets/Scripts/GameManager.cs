@@ -5,14 +5,6 @@ using DG.Tweening;
 
 public class GameManager : MonoBehaviour
 {
-    public float camerasize;
-    public Vector2 movingzone;
-    public Vector2 deathzone;
-
-    public GameObject[] Enemy;
-    public float spawnX;
-    public float spawnY;
-
     void Start()
     {
         DOTween.Init(true, true, LogBehaviour.Verbose);
@@ -23,7 +15,6 @@ public class GameManager : MonoBehaviour
     private void Init()
     {
         // 게임 리소스 로딩에 관한 스크립트
-        gameObject.GetComponent<MainGame>().GamePlay();
     }
 
     private void Title()

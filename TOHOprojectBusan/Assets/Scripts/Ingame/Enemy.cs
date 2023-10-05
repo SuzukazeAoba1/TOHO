@@ -17,9 +17,10 @@ public class Enemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        HP -= 0.01f;
         if (HP <= 0)
         {
-            transform.DOKill(); //test
+            transform.DOKill();
             Destroy(gameObject);
         }
     }
