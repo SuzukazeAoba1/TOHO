@@ -4,15 +4,24 @@ using UnityEngine;
 
 public class EnemySpawnPatten : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public void Spawn(int line, float loc)
     {
-        
+        // spawn line(1,2,3) loc (0~1)
+        if(line == 1)
+        {
+            //왼쪽
+        }
+        else if(line == 2)
+        {
+            //상단
+        }
+        else if(line == 3)
+        {
+            //오른쪽
+        }
+
+
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+
 }
