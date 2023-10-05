@@ -15,21 +15,34 @@ public class UMYANGOK : MonoBehaviour
     {
         candamage -= Time.deltaTime;
     }
+
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Enemy"))
+        if (other.gameObject.CompareTag("Enemy"))
         {
-            other.GetComponent<Enemy>().HP -= ATK;
+            other.gameObject.GetComponent<Enemy>().HP -= ATK;
             GameObject Damage = Instantiate(DText, transform.position, Quaternion.identity);
             Damage.GetComponent<TextMesh>().text = ATK.ToString();
             Destroy(Damage, 0.7f);
         }
-        else if (other.CompareTag("Barrage"))
+        else if (other.gameObject.CompareTag("Barrage"))
         {
-                other.GetComponent<Barrage>().HP -= ATK;
+            if (ATK > other.gameObject.GetComponent<Barrage>().HP)
+            {
+                GameObject Damage = Instantiate(DText, transform.position, Quaternion.identity);
+                Damage.GetComponent<TextMesh>().text = ATK.ToString();
+                ATK -= other.gameObject.GetComponent<Barrage>().HP;
+                //GetComponent<Rigidbody2D>().AddForce(new Vector2(0, 2000f));
+                Destroy(other.gameObject);
+                Destroy(Damage, 0.7f);
+            }
+            else
+            {
+                other.gameObject.GetComponent<Barrage>().HP -= ATK;
                 GameObject Damage = Instantiate(DText, transform.position, Quaternion.identity);
                 Damage.GetComponent<TextMesh>().text = ATK.ToString();
                 Destroy(Damage, 0.7f);
+            }
         }
     }
 }

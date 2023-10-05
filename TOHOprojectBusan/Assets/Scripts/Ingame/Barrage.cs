@@ -17,15 +17,11 @@ public class Barrage : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
-    }
-
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
         if (HP <= 0)
         {
             transform.DOKill();
             Destroy(gameObject);
         }
     }
+
 }

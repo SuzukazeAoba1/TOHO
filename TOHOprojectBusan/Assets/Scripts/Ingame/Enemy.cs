@@ -17,15 +17,15 @@ public class Enemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (HP <= 0)
+        {
+            transform.DOKill(); //test
+            Destroy(gameObject);
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (HP <= 0)
-        {
-            transform.DOKill();
-            Destroy(gameObject);
-        }
+        
     }
 }
