@@ -11,6 +11,9 @@ GameObject:
   - component: {fileID: 6344621389086130749}
   - component: {fileID: 5524817002654211890}
   - component: {fileID: 456086093577523093}
+  - component: {fileID: 145958719989990455}
+  - component: {fileID: 7624008188955799221}
+  - component: {fileID: 128103183512955413}
   m_Layer: 6
   m_Name: UNYANGYOK
   m_TagString: Bullet
@@ -27,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 3591608408199787502}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.5644774, y: 1.5644774, z: 1.5644774}
+  m_LocalScale: {x: 1.35, y: 1.35, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -99,3 +102,53 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.29999998
+--- !u!50 &145958719989990455
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3591608408199787502}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 3
+--- !u!114 &7624008188955799221
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3591608408199787502}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 83668d9bb0a5ae94a8fa92875f1d48db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ATK: 7
+  Cooltime: 0
+  destroy_Time: 0
+  DText: {fileID: 8084929658759913246, guid: f0994d24f73fc5947aa11aa3090df006, type: 3}
+--- !u!114 &128103183512955413
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3591608408199787502}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 512731094e51fa1469f3c86ffe5cb4a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 20

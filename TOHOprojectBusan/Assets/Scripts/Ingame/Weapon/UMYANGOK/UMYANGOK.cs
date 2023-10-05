@@ -4,44 +4,55 @@ using UnityEngine;
 
 public class UMYANGOK : MonoBehaviour
 {
-    public int per;
     public int ATK;
-    public float Speed;
+    public float Cooltime;
     public float destroy_Time;
     public GameObject DText;
-    private float candamage = 0f;
+    private float bulletspeed;
+    private float candamage = 0;
 
-    private void Update()
+    // Start is called before the first frame update
+    void Start()
+    {
+        Player playerscript = FindObjectOfType<Player>();
+
+        if (playerscript != null)
+        {
+            bulletspeed = playerscript.bulletspeed;
+        }
+        else
+        {
+            bulletspeed = 0f;
+        }
+        TextMesh Damage_text = DText.GetComponent<TextMesh>();
+    }
+
+    // Update is called once per frame
+    void Update()
     {
         candamage -= Time.deltaTime;
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.CompareTag("Enemy"))
+        if (candamage <= 0f)
         {
-            other.gameObject.GetComponent<Enemy>().HP -= ATK;
-            GameObject Damage = Instantiate(DText, transform.position, Quaternion.identity);
-            Damage.GetComponent<TextMesh>().text = ATK.ToString();
-            Destroy(Damage, 0.7f);
-        }
-        else if (other.gameObject.CompareTag("Barrage"))
-        {
-            if (ATK > other.gameObject.GetComponent<Barrage>().HP)
+            candamage = Cooltime;
+            if (other.gameObject.CompareTag("Enemy"))
             {
+                other.gameObject.GetComponent<Enemy>().HP -= ATK;
                 GameObject Damage = Instantiate(DText, transform.position, Quaternion.identity);
                 Damage.GetComponent<TextMesh>().text = ATK.ToString();
-                ATK -= other.gameObject.GetComponent<Barrage>().HP;
-                //GetComponent<Rigidbody2D>().AddForce(new Vector2(0, 2000f));
-                Destroy(other.gameObject);
                 Destroy(Damage, 0.7f);
             }
-            else
+            else if (other.gameObject.CompareTag("Barrage"))
             {
+
                 other.gameObject.GetComponent<Barrage>().HP -= ATK;
                 GameObject Damage = Instantiate(DText, transform.position, Quaternion.identity);
                 Damage.GetComponent<TextMesh>().text = ATK.ToString();
                 Destroy(Damage, 0.7f);
+
             }
         }
     }
