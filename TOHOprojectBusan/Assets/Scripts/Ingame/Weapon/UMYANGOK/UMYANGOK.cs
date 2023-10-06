@@ -41,17 +41,11 @@ public class UMYANGOK : MonoBehaviour
             if (other.gameObject.CompareTag("Enemy"))
             {
                 other.gameObject.GetComponent<Enemy>().HP -= ATK;
-                GameObject Damage = Instantiate(DText, transform.position, Quaternion.identity);
-                Damage.GetComponent<TextMesh>().text = ATK.ToString();
-                Destroy(Damage, 0.7f);
             }
             else if (other.gameObject.CompareTag("Barrage"))
             {
 
                 other.gameObject.GetComponent<Barrage>().HP -= ATK;
-                GameObject Damage = Instantiate(DText, transform.position, Quaternion.identity);
-                Damage.GetComponent<TextMesh>().text = ATK.ToString();
-                Destroy(Damage, 0.7f);
 
             }
         }

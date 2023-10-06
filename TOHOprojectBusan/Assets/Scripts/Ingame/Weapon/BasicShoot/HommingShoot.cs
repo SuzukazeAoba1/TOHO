@@ -2,23 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Doll : MonoBehaviour
+public class HommingShoot : MonoBehaviour
 {
     public Transform target;
     public float range = 17f;
-    private SpriteRenderer mySR;
     public string enemyTag = "Enemy";
     public float cooltime = 0.15f;
     private float shoottimer = 0f;
-    
+
     public GameObject bullet;
     public float bulletspeed = 200f;
-    public Transform ShootPoint;
     private float angle;
     private Quaternion rotation;
     private void Start()
     {
-        mySR = GetComponent<SpriteRenderer>();
         InvokeRepeating("UpdateTraget", 0f, 0.02f);
     }
 
@@ -28,17 +25,17 @@ public class Doll : MonoBehaviour
         float shortesDistance = Mathf.Infinity;
         GameObject neareatEnemy = null;
 
-        foreach(GameObject enemy in enemies)
+        foreach (GameObject enemy in enemies)
         {
             float distanceToEnemy = Vector3.Distance(transform.position, enemy.transform.position);
-            if(distanceToEnemy < shortesDistance)
+            if (distanceToEnemy < shortesDistance)
             {
                 shortesDistance = distanceToEnemy;
                 neareatEnemy = enemy;
             }
         }
 
-        if(neareatEnemy != null && shortesDistance <= range)
+        if (neareatEnemy != null && shortesDistance <= range)
         {
             target = neareatEnemy.transform;
         }
@@ -51,23 +48,15 @@ public class Doll : MonoBehaviour
     private void Update()
     {
         shoottimer -= Time.deltaTime;
-        
+
         if (target)
         {
-            if(target.position.x <= transform.position.x)
-            {
-                gameObject.GetComponent<SpriteRenderer>().flipX = true;
-            }
-            else if (target.position.x > transform.position.x)
-            {
-                gameObject.GetComponent<SpriteRenderer>().flipX = false;
-            }
             if (shoottimer <= 0)
             {
                 ShooTraget();
                 shoottimer = cooltime;
             }
-            
+
         }
         else if (target == null)
         {
@@ -78,7 +67,8 @@ public class Doll : MonoBehaviour
             }
         }
 
-        
+
+
     }
     private void ShooTraget()
     {
@@ -87,20 +77,20 @@ public class Doll : MonoBehaviour
         Vector2 direction = (target.position - transform.position).normalized;
         // 여기서 X축 방향으로 움직이기 위해 direction.x를 사용합니다.
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-        GameObject newDollBullet = GameManager.instance.BulletPool.Get(2);
+        GameObject newDollBullet = GameManager.instance.BulletPool.Get(1);
         //GameObject newDollBullet = Instantiate(bullet, transform.position, Quaternion.AngleAxis(angle, Vector3.forward));
         newDollBullet.transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
-        newDollBullet.transform.position = ShootPoint.transform.position;
+        newDollBullet.transform.position = transform.position;
         newDollBullet.transform.Rotate(0, 0, 90);
         newDollBullet.GetComponent<Rigidbody2D>().AddForce(direction * bulletspeed);
     }
 
     private void JustShoot()
     {
-        GameObject JnewDollBullet = GameManager.instance.BulletPool.Get(2);
-        JnewDollBullet.transform.position = ShootPoint.transform.position;
+        GameObject JnewDollBullet = GameManager.instance.BulletPool.Get(1);
+        JnewDollBullet.transform.position = transform.position;
         //GameObject JnewDollBullet = Instantiate(bullet, transform.position, Quaternion.Euler(0, 0, 90));
-        JnewDollBullet.transform.rotation = Quaternion.Euler(0, 0, 180);
+        JnewDollBullet.transform.Rotate(0, 0, 90);
         JnewDollBullet.GetComponent<Rigidbody2D>().AddForce(new Vector2(0, bulletspeed));
     }
 }

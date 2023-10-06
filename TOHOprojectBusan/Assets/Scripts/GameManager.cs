@@ -5,9 +5,26 @@ using DG.Tweening;
 
 public class GameManager : MonoBehaviour
 {
+    public static GameManager instance;
+    
+    public PoolManager BulletPool;
+    public PoolManager BarragePool;
+    public PoolManager EnemyPool;
+    public PoolManager GitaPool;
     void Start()
     {
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            Debug.LogWarning("이 씬에 게임 매니저가 두 개 존재합니다!");
+            Destroy(gameObject);
+        }
+
         DOTween.Init(true, true, LogBehaviour.Verbose);
+
         Init();
         Title();
     }

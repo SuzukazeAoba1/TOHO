@@ -8,6 +8,7 @@ TagManager:
   - Bullet
   - Barrage
   - Border
+  - Experiance
   layers:
   - Default
   - TransparentFX
