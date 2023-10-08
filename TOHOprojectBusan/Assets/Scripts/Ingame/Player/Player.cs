@@ -140,9 +140,8 @@ public class Player : MonoBehaviour
         {
                 Damage();
                 Destroy(other.gameObject);
-                //other.gameObject.SetActive(false);
                 Debug.Log("대미지 입음");
-            healthGui.HealhtPull();
+            
                 damageTimer = invincibility_time;
 
         }
@@ -159,15 +158,23 @@ public class Player : MonoBehaviour
         if (health > 1)
         {
             health--;
+            healthGui.HealhtPull();
         }
         else if (health == 1)
         {
             Die();
         }
     }
-        void Die()
+    void Die()
     {
         isdead = true;
+    }
+
+    public void Heal(int count)
+    {
+        health += count;
+        healthGui.HealthPush(count);
+
     }
 
 }

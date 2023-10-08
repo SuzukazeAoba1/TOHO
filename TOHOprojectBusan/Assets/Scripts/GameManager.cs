@@ -21,7 +21,7 @@ public class GameManager : MonoBehaviour
     public int maxHealth = 5;
     public int level;
     public int exp;
-    public int[] nextExp = { 1, 2, 2, 2, 2, 2, 2, 2, 3, 3, 3, 3, 4 };
+    public int[] nextExp = { 1, 2, 2, 2, 2, 2, 2, 2, 3, 3, 3, 3, 4 ,4,4,4,4,4,4,4,4,4,4,4,4,4};
     public bool isDead = false;
     void Start()
     {
@@ -62,6 +62,7 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         gameTime += Time.deltaTime;
+
         if (health <= 0)
         {
             Die();
@@ -76,11 +77,11 @@ public class GameManager : MonoBehaviour
     public void GetExp(int nExp)
     {
         exp += nExp;
-
-        if(exp >= nextExp[level-1])
+        //테이블에 없는 경험치부턴 무제한으로 늘어나게 함
+        if(exp >= nextExp[Mathf.Min(level, nextExp.Length-1)])
         {
             
-            exp -= nextExp[level - 1];
+            exp -= nextExp[Mathf.Min(level, nextExp.Length - 1)];
             level++;
             upgradeUI.Show();
         }

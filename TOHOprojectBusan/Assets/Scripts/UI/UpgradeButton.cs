@@ -82,6 +82,7 @@ public class UpgradeButton : MonoBehaviour
                 level++;
                 break;
             case WeaponData.ItemType.Heal:
+                player.GetComponent<Player>().Heal(data.levels[level]);
                 break;
         }
 
