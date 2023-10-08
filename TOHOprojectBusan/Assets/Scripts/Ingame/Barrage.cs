@@ -19,6 +19,8 @@ public class Barrage : MonoBehaviour
     {
         if (HP <= 0)
         {
+            GameObject exp = GameManager.instance.GitaPool.Get(1);
+            exp.transform.position = transform.position;
             transform.DOKill();
             Destroy(gameObject);
         }

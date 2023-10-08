@@ -123,3 +123,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   destroy_Time: 0.7
+  moveSpeed: 0.1

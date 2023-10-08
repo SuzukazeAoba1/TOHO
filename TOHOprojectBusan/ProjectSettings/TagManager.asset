@@ -17,9 +17,9 @@ TagManager:
   - Water
   - UI
   - Bullet1
-  - Bullet2
-  - 
-  - 
+  - Player
+  - Enemy
+  - Item
   - 
   - 
   - 

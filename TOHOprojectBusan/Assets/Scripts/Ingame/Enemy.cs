@@ -20,9 +20,15 @@ public class Enemy : MonoBehaviour
         HP -= 0.01f;
         if (HP <= 0)
         {
+            GameObject exp = GameManager.instance.GitaPool.Get(1);
+            exp.transform.position = transform.position;
             transform.DOKill();
             Destroy(gameObject);
+            
+
         }
+
+        
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

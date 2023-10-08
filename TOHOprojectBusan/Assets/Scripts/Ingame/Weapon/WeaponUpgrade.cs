@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class WeaponUpgrade : MonoBehaviour
 {
-
+    public int weaponId = 0;
     public GameObject[] levels;
-    public int currentlevel = 0;
+    public int currentlevel = 1;
+    private int level = 0;
     public int Maxlevel = 4;
     public KeyCode keyCode = KeyCode.Q;
     // Start is called before the first frame update
@@ -17,24 +18,28 @@ public class WeaponUpgrade : MonoBehaviour
         {
             levels[i] = transform.GetChild(i).gameObject;
         }
-        ActivateSelectedLevel(currentlevel);
+        ActivateSelectedLevel(level);
+    }
+
+    public void Levelup()
+    {
+        if (level < Maxlevel - 1)
+        {
+            level++;
+            currentlevel++;
+            ActivateSelectedLevel(level);
+        }
+        else
+        {
+            Debug.Log("더 업그레이드 못행");
+        }
     }
 
     // Update is called once per frame
-    void Update()
+    void LateUpdate()
     {
-        if (Input.GetKeyDown(keyCode))
-        {
-            if (currentlevel < Maxlevel-1)
-            {
-                currentlevel++;
-                ActivateSelectedLevel(currentlevel);
-            }
-            else
-            {
-                Debug.Log("더 업그레이드 못행");
-            }
-        }
+
+            
     }
 
     private void DeactivateChildren()
@@ -48,7 +53,7 @@ public class WeaponUpgrade : MonoBehaviour
         }
     }
 
-    void ActivateSelectedLevel(int level)
+    public void ActivateSelectedLevel(int level)
     {
         for (int i = 0; i <levels.Length; i++)
         {

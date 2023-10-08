@@ -14,6 +14,7 @@ public class Bullet : MonoBehaviour
     public GameObject DText;
     private float bulletspeed;
     private GameObject damageText;
+    private Vector3 offset = new Vector3(0, 1f, 0);
 
     private void Awake()
     {
@@ -75,7 +76,7 @@ public class Bullet : MonoBehaviour
             
             other.gameObject.GetComponent<Enemy>().HP -= attackpoint;
             damageText = GameManager.instance.GitaPool.Get(0);
-            damageText.transform.position = transform.position;
+            damageText.transform.position = transform.position+ offset;
             damageText.GetComponent<TextMesh>().text = attackpoint.ToString();
             gameObject.SetActive(false);
 
@@ -85,7 +86,7 @@ public class Bullet : MonoBehaviour
             if (attackpoint > other.gameObject.GetComponent<Barrage>().HP)
             {
                 damageText = GameManager.instance.GitaPool.Get(0);
-                damageText.transform.position = transform.position;
+                damageText.transform.position = transform.position + offset;
                 damageText.GetComponent<TextMesh>().text = attackpoint.ToString();
                 attackpoint -= other.gameObject.GetComponent<Barrage>().HP;
                 Destroy(other.gameObject);
@@ -96,7 +97,7 @@ public class Bullet : MonoBehaviour
             {
                 other.gameObject.GetComponent<Barrage>().HP -= attackpoint;
                 damageText = GameManager.instance.GitaPool.Get(0);
-                damageText.transform.position = transform.position;
+                damageText.transform.position = transform.position + offset;
                 damageText.GetComponent<TextMesh>().text = attackpoint.ToString();
                 gameObject.SetActive(false);
 

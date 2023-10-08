@@ -34,7 +34,7 @@ public class WeaponSpawn : MonoBehaviour
         }
     }
 
-    private void Summon(int id)
+    public void Summon(int id)
     {
         if (canSummon.Contains(id))
         {

@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    public int HP;
+    public int maxHealth = 5;
+    private int health = 5;
     public float speed = 4.5f;
     public float bulletspeed = 200f;
     private Vector3 position = Vector3.zero;
@@ -13,12 +14,22 @@ public class Player : MonoBehaviour
     private float xRange = 9.8f;
     private float yRange = 13.8f;
 
-    public float Helath = 5f;
     public float invincibility_time = 1.3f;
-    private float damageTimer = 0f;
+    private float damageTimer = 1f;
     private bool isdead = false;
 
+    private GameObject damageText;
+    private int attackpoint = 1;
+    private Vector3 offset = new Vector3(0, 1f, 0);
+    public HealthGUI healthGui;
+
     // Start is called before the first frame update
+
+    void Awake()
+    {
+        health = maxHealth;
+        healthGui.HealthSet(health);
+    }
     void Start()
     {
         
@@ -27,6 +38,7 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
         if (!isdead)
         {
             H = Input.GetAxis("Horizontal");
@@ -35,15 +47,13 @@ public class Player : MonoBehaviour
             position.y = V;
             position.z = 0f;
 
-            if (Helath <= 0)
-            {
-                Dead();
-            }
         }
     }
     private void FixedUpdate()
     {
-        if(!isdead)
+        damageTimer -= Time.fixedDeltaTime;
+
+        if (!isdead)
         {
 
 
@@ -70,41 +80,24 @@ public class Player : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.CompareTag("Enemy"))
-        {
-            if(damageTimer == 0)
-            {
-                Helath -= 1;
-                damageTimer = invincibility_time;
-                damageTimer -= Time.deltaTime;
-            }
 
-        }
-        else if (collision.gameObject.CompareTag("Barrage"))
-        {
-            Destroy(collision.gameObject);
-            if (damageTimer == 0)
-            {
-                Helath -= 1;
-                damageTimer = invincibility_time;
-                damageTimer -= Time.deltaTime;
-            }
-        }
-    }
-
-    private void OnTriggerEnter(Collider other)
+    /*private void OnTriggerEnter(Collider other)
     {
-        if(other.CompareTag("Barrage"))
+        if (other.CompareTag("Barrage"))
         {
             Destroy(other.gameObject);
             if (damageTimer == 0)
             {
-                Helath -= 1;
+                Damage();
                 damageTimer = invincibility_time;
                 damageTimer -= Time.deltaTime;
             }
+        }
+
+        if (other.CompareTag("Experiance"))
+        {
+            other.gameObject.SetActive(false);
+            GameManager.instance.GetExp(other.GetComponent<ExpObject>().EXP);
         }
     }
 
@@ -115,5 +108,66 @@ public class Player : MonoBehaviour
         Destroy(gameObject, 0);
     }
 
+    void Damage()
+    {
+        
+        if(health > 1)
+        {
+            health--;
+        }
+        else if(health == 1)
+        {
+
+        }
+            
+    }*/
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        /*if (other.gameObject.CompareTag("Enemy"))
+        {
+
+            if (damageTimer == 0)
+            {
+                Damage();
+                healthGui.HealthPush(health);
+                damageTimer = invincibility_time;
+            }
+
+        }*/
+        
+        if (other.gameObject.CompareTag("Barrage"))
+        {
+                Damage();
+                Destroy(other.gameObject);
+                //other.gameObject.SetActive(false);
+                Debug.Log("대미지 입음");
+            healthGui.HealhtPull();
+                damageTimer = invincibility_time;
+
+        }
+
+        if (other.gameObject.CompareTag("Experiance"))
+        {
+            other.gameObject.SetActive(false);
+            GameManager.instance.GetExp(1);
+        }
+    }
+    void Damage()
+    {
+
+        if (health > 1)
+        {
+            health--;
+        }
+        else if (health == 1)
+        {
+            Die();
+        }
+    }
+        void Die()
+    {
+        isdead = true;
+    }
 
 }
