@@ -5,34 +5,28 @@ using DG.Tweening;
 
 public class Enemy : MonoBehaviour
 {
+    Sequence mySequence;
     public float HP;
     public double speed;
 
-    // Start is called before the first frame update
-    void Start()
+    public void SetSequence(Sequence seq)
     {
-        
+        mySequence = seq;
     }
 
-    // Update is called once per frame
-    void Update()
+    public void Damage(int atk)
     {
-        HP -= 0.01f;
+        HP -= atk;
+
         if (HP <= 0)
         {
-            GameObject exp = GameManager.instance.GitaPool.Get(1);
-            exp.transform.position = transform.position;
-            transform.DOKill();
-            Destroy(gameObject);
-            
-
+            Death();
         }
-
-        
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    public void Death()
     {
-        
+        mySequence.Kill(true);
+        Destroy(gameObject);
     }
 }

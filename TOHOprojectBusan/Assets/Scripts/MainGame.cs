@@ -1,10 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class MainGame : MonoBehaviour
 {
-    private EnemySpawnCotroller spawner;
+    private EnemySpawnController spawncontroller;
 
     public float camerasize;
     public Vector2 movingzone;
@@ -12,9 +13,14 @@ public class MainGame : MonoBehaviour
 
     void Start()
     {
-        spawner = GetComponent<EnemySpawnCotroller>();
-        spawner.Init(movingzone);
-        spawner.Play();
+        DOTween.Init(true, true, LogBehaviour.Verbose);
+        DOTween.SetTweensCapacity(5000, 500); //인게임에서 움직이는 객체 생성 최대 500개
+        DOTween.defaultAutoKill = false;
+        DOTween.defaultAutoPlay = AutoPlay.None;
+
+        spawncontroller = GetComponent<EnemySpawnController>();
+        spawncontroller.Init(movingzone);
+        //spawncontroller.Play();
     }
 
     // Update is called once per frame
@@ -31,7 +37,7 @@ public class MainGame : MonoBehaviour
     /// <param name="lbl"></param>
     public void GamePlay()
     {
-        
+
 
         //스탯 초기화, 게임 플레이어 생성
         //맵 루프 스위치 활성화
@@ -44,7 +50,7 @@ public class MainGame : MonoBehaviour
     /// <param name="lbl"></param>
     public void GameOver()
     {
- 
+
     }
 
     /// <summary>
@@ -53,7 +59,7 @@ public class MainGame : MonoBehaviour
     /// <param name="lbl"></param>
     public void GameClear()
     {
-        
+
     }
 
 
