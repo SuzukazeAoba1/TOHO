@@ -6,15 +6,15 @@ using UnityEngine.UI;
 public class Bullet : MonoBehaviour
 {
     
-    public int ATK;
-    private int attackpoint = 5;
+    public float ATK;
+    private float attackpoint = 5;
     public float Speed;
     public float destroy_Time = 4;
     private float time_To_Destroy;
     public GameObject DText;
     private float bulletspeed;
     private GameObject damageText;
-    private Vector3 offset = new Vector3(0, 1f, 0);
+    private Vector3 offset = new Vector3(0, 2f, 0);
 
     private void Awake()
     {
@@ -76,7 +76,8 @@ public class Bullet : MonoBehaviour
             
             other.gameObject.GetComponent<Enemy>().HP -= attackpoint;
             damageText = GameManager.instance.GitaPool.Get(0);
-            damageText.transform.position = transform.position+ offset;
+            damageText.transform.position = transform.position + offset;
+            damageText.transform.localScale = new Vector3(other.transform.localScale.x / 5, other.transform.localScale.x / 5, other.transform.localScale.x / 5);
             damageText.GetComponent<TextMesh>().text = attackpoint.ToString();
             gameObject.SetActive(false);
 
@@ -87,6 +88,7 @@ public class Bullet : MonoBehaviour
             {
                 damageText = GameManager.instance.GitaPool.Get(0);
                 damageText.transform.position = transform.position + offset;
+                damageText.transform.localScale = new Vector3(other.transform.localScale.x / 5, other.transform.localScale.x / 5, other.transform.localScale.x / 5);
                 damageText.GetComponent<TextMesh>().text = attackpoint.ToString();
                 attackpoint -= other.gameObject.GetComponent<Barrage>().HP;
                 Destroy(other.gameObject);
@@ -98,6 +100,7 @@ public class Bullet : MonoBehaviour
                 other.gameObject.GetComponent<Barrage>().HP -= attackpoint;
                 damageText = GameManager.instance.GitaPool.Get(0);
                 damageText.transform.position = transform.position + offset;
+                damageText.transform.localScale = new Vector3(other.transform.localScale.x / 2, other.transform.localScale.x / 2, other.transform.localScale.x / 2);
                 damageText.GetComponent<TextMesh>().text = attackpoint.ToString();
                 gameObject.SetActive(false);
 

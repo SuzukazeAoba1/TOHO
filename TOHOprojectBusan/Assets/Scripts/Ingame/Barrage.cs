@@ -5,7 +5,7 @@ using DG.Tweening;
 
 public class Barrage : MonoBehaviour
 {
-    public int HP;
+    public float HP;
     public float Speed;
 
     // Start is called before the first frame update

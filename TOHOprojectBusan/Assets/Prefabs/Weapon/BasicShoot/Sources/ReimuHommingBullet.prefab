@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 3062636714428182988}
   - component: {fileID: 1417500901348586669}
   - component: {fileID: 305949395434301039}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: ReimuHommingBullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}

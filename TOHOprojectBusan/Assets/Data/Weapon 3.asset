@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4bfe60395ce9e844a900ae1e1f7d01ec, type: 3}
+  m_Name: Weapon 3
+  m_EditorClassIdentifier: 
+  itemType: 0
+  weaponID: 3
+  itemName: "\uC694\uC6B0\uBB34\uC758 \uBC18\uD63C"
+  itemDesc:
+  - "\uAC80\uAE30\uB97C \uBC29\uCD9C\uD569\uB2C8\uB2E4."
+  - "\uAC80\uAE30\uB97C \uBC29\uCD9C\uD569\uB2C8\uB2E4."
+  - "\uAC80\uAE30\uB97C \uBC29\uCD9C\uD569\uB2C8\uB2E4."
+  - "\uAC80\uAE30\uB97C \uBC29\uCD9C\uD569\uB2C8\uB2E4."
+  - "\uAC80\uAE30\uB97C \uBC29\uCD9C\uD569\uB2C8\uB2E4."
+  - "\uAC80\uAE30\uB97C \uBC29\uCD9C\uD569\uB2C8\uB2E4."
+  itemEx:
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  itemIcon: {fileID: 21300000, guid: de05ca75d51a0ae42863d0deed011b4e, type: 3}
+  levels: 000000000100000002000000030000000400000005000000
+  Weaponobject: {fileID: 357531721074217222, guid: ff1866db513a29e4ba78a9acb3eca210, type: 3}
