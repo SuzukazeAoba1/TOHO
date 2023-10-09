@@ -25,7 +25,7 @@ public class CSVReader
 
             lines = Regex.Split(source, LINE_SPLIT_RE);
 
-            Debug.Log("Load " + file + ".csv");
+            Debug.Log(file + ".csv Load");
         }
         else
         {

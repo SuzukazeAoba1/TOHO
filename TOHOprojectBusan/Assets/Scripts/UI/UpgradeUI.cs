@@ -25,7 +25,6 @@ public class UpgradeUI : MonoBehaviour
 
     private void Start()
     {
-        Debug.Log(items[1].name);
 
     }
     
