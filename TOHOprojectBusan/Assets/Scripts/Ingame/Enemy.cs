@@ -14,7 +14,7 @@ public class Enemy : MonoBehaviour
         mySequence = seq;
     }
 
-    public void Damage(int atk)
+    public void Damage(float atk)
     {
         HP -= atk;
 
