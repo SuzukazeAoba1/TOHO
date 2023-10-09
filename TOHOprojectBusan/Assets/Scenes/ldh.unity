@@ -6230,7 +6230,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnpos: 0
-  spawninterval: 0.1
+  spawninterval: 0.5
   spawnfilp: 0
   TestEnemy:
   - {fileID: 3882188159281121841, guid: 6a156d4424d6a904b80dff5f5e8298a1, type: 3}

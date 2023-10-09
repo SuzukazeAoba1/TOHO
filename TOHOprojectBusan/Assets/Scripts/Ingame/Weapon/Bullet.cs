@@ -73,8 +73,7 @@ public class Bullet : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Enemy"))
         {
-            
-            other.gameObject.GetComponent<Enemy>().HP -= attackpoint;
+            other.gameObject.GetComponent<Enemy>().Damage(attackpoint);
             damageText = GameManager.instance.GitaPool.Get(0);
             damageText.transform.position = transform.position+ offset;
             damageText.GetComponent<TextMesh>().text = attackpoint.ToString();

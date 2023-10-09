@@ -11,7 +11,7 @@ public class TestEnemySpawnController : MonoBehaviour
     [Range(0, 100)]
     public int spawnpos = 0;
     [Range(0.1f, 5.0f)]
-    public float spawninterval = 0.1f;
+    public float spawninterval = 0.5f;
     public bool spawnfilp = false;
 
     public GameObject[] TestEnemy;
