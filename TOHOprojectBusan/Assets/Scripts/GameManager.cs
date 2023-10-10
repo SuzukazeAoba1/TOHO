@@ -6,6 +6,11 @@ using DG.Tweening;
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
+    private EnemySpawnController spawncontroller;
+
+    public float camerasize;
+    public Vector2 movingzone;
+    public Vector2 deathzone;
     [Header("# Game Object")]
     public float gameTime = 0;
     public float maxGameTime = 6 * 60;
@@ -29,6 +34,14 @@ public class GameManager : MonoBehaviour
         if (instance == null)
         {
             instance = this;
+
+            DOTween.Init(true, true, LogBehaviour.Verbose);
+            DOTween.SetTweensCapacity(5000, 500); //인게임에서 움직이는 객체 생성 최대 500개
+            DOTween.defaultAutoKill = false;
+            DOTween.defaultAutoPlay = AutoPlay.None;
+
+            spawncontroller = GetComponent<EnemySpawnController>();
+            spawncontroller.Init(movingzone);
         }
         else
         {

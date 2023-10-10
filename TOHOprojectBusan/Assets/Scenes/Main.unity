@@ -624,7 +624,6 @@ GameObject:
   m_Component:
   - component: {fileID: 266479211}
   - component: {fileID: 266479210}
-  - component: {fileID: 266479209}
   - component: {fileID: 266479208}
   - component: {fileID: 266479207}
   - component: {fileID: 266479206}
@@ -682,21 +681,6 @@ MonoBehaviour:
   nextSpawnTime: 0
   pause: 0
   reset: 0
---- !u!114 &266479209
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 266479205}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f7302d60ec8fe194cbcaba650ad20e5e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  camerasize: 8.5
-  movingzone: {x: 22, y: 30}
-  deathzone: {x: 40, y: 53}
 --- !u!114 &266479210
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -709,6 +693,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d192e59a12edf644aac1ef3942dd024, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  camerasize: 0
+  movingzone: {x: 0, y: 0}
+  deathzone: {x: 0, y: 0}
   gameTime: 0
   maxGameTime: 360
   BulletPool: {fileID: 1695142473}
@@ -4675,7 +4662,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &962037966
 MonoBehaviour:
   m_ObjectHideFlags: 0
