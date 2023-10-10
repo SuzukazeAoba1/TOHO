@@ -11,6 +11,7 @@ public class MasterSparkShoot : MonoBehaviour
     public float duration = 3.5f;
 
     Vector3 originalPos;
+    Vector3 playerlPos;
 
     void Start()
     {
@@ -29,73 +30,21 @@ public class MasterSparkShoot : MonoBehaviour
 
     void Update()
     {
+        
         // 이 부분을 수정하여 서서히 흔들리는 효과를 추가
         main_camera.localPosition = Vector3.Lerp(main_camera.localPosition, originalPos, Time.deltaTime * decreaseFactor);
     }
 
-    void DisablePlayerScript()
+    private void FixedUpdate()
     {
-        // 현재 개체의 부모 찾기
-        Transform parentTransform = transform.parent;
-
-        // 부모 개체의 부모 찾기
-        if (parentTransform != null)
-        {
-            Transform grandParentTransform = parentTransform.parent;
-
-            // 부모 개체의 부모의 부모 찾기
-            if (grandParentTransform != null)
-            {
-                Transform greatGrandParentTransform = grandParentTransform.parent;
-                if (grandParentTransform != null)
-                {
-                    Transform greatgreatGrandParentTransform = grandParentTransform.parent;
-
-                    // "Player" 스크립트가 존재하는지 확인 후 비활성화
-                    Player playerScript = greatGrandParentTransform.GetComponent<Player>();
-                    if (playerScript != null)
-                    {
-                        playerScript.enabled = false;
-                    }
-                }
-            }
-        }
+        playerlPos = main_camera.GetComponent<Camera>().camera_position();
     }
 
-    void EnablePlayerScript()
-    {
-        // 현재 개체의 부모 찾기
-        Transform parentTransform = transform.parent;
-
-        // 부모 개체의 부모 찾기
-        if (parentTransform != null)
-        {
-            Transform grandParentTransform = parentTransform.parent;
-
-            // 부모 개체의 부모의 부모 찾기
-            if (grandParentTransform != null)
-            {
-                Transform greatGrandParentTransform = grandParentTransform.parent;
-                if (grandParentTransform != null)
-                {
-                    Transform greatgreatGrandParentTransform = grandParentTransform.parent;
-
-                    // "Player" 스크립트가 존재하는지 확인 후 비활성화
-                    Player playerScript = greatGrandParentTransform.GetComponent<Player>();
-                    if (playerScript != null)
-                    {
-                        playerScript.enabled = true;
-                    }
-                }
-            }
-        }
-    }
 
     public void Shoot()
     {
         StartCoroutine(ShakeCamera());
         Invoke("StopShoot", duration);
-        DisablePlayerScript();
         for (int i = 0; i < transform.childCount; i++)
         {
             spark[i].gameObject.SetActive(true);
@@ -104,7 +53,6 @@ public class MasterSparkShoot : MonoBehaviour
 
     public void StopShoot()
     {
-        EnablePlayerScript();
         for (int i = 0; i < transform.childCount; i++)
         {
             spark[i].gameObject.SetActive(false);
@@ -113,13 +61,13 @@ public class MasterSparkShoot : MonoBehaviour
 
     IEnumerator ShakeCamera()
     {
-        originalPos = main_camera.localPosition;
+        originalPos = main_camera.GetComponent<Camera>().camera_position();
 
         float elapsed = 0f;
 
         while (elapsed < duration)
         {
-            main_camera.localPosition = originalPos + Random.insideUnitSphere * shakeAmount;
+            main_camera.localPosition = playerlPos + Random.insideUnitSphere * shakeAmount;
 
             elapsed += Time.deltaTime;
 
