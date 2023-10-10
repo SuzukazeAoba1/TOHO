@@ -16,7 +16,7 @@ TagManager:
   - 
   - Water
   - UI
-  - Bullet1
+  - Bullet
   - Player
   - Enemy
   - Item
@@ -48,6 +48,24 @@ TagManager:
     locked: 0
   - name: Foreground
     uniqueID: 2588578843
+    locked: 0
+  - name: Player
+    uniqueID: 664758865
+    locked: 0
+  - name: Weapon
+    uniqueID: 3735700587
+    locked: 0
+  - name: Enemy
+    uniqueID: 389093305
+    locked: 0
+  - name: Barrage
+    uniqueID: 1045356109
+    locked: 0
+  - name: effect
+    uniqueID: 422797321
+    locked: 0
+  - name: Bullet
+    uniqueID: 657579535
     locked: 0
   - name: Default
     uniqueID: 0

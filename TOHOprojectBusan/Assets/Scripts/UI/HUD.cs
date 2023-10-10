@@ -28,6 +28,8 @@ public class HUD : MonoBehaviour
                 myslider.value = curExp / maxExp;
                 break;
             case InfoType.Level:
+                float level = GameManager.instance.level;
+                text.text = "LV." + level;
                 break;
             case InfoType.Kill:
                 break;
