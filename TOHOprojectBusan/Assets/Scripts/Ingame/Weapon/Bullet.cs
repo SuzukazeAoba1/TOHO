@@ -18,7 +18,7 @@ public class Bullet : MonoBehaviour
     private float bulletspeed;
     private GameObject damageText;
     private GameObject effect;
-    private Vector3 offset = new Vector3(0, 2f, 0);
+    public float offset = 0.7f;
 
     private void Awake()
     {
@@ -48,7 +48,7 @@ public class Bullet : MonoBehaviour
 
     void OnEnable()
     {
-
+        attackpoint = ATK;
         StartCoroutine(DeactivateAfterTime((float)time_To_Destroy));
     }
 
@@ -78,43 +78,33 @@ public class Bullet : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Enemy"))
         {
-            other.gameObject.GetComponent<Enemy>().Damage(attackpoint);
+            
+
+            Vector3 ePosition = other.ClosestPoint(transform.position);
+            ePosition.y += offset;
             effect = GameManager.instance.EffectPool.Get(eID);
             effect.transform.position = other.ClosestPoint(transform.position);
             damageText = GameManager.instance.GitaPool.Get(0);
-            damageText.transform.position = other.ClosestPoint(transform.position);
-            //damageText.transform.localScale = new Vector3(other.transform.localScale.x / 5, other.transform.localScale.x / 5, other.transform.localScale.x / 5);
+            damageText.transform.position = ePosition;
+            other.gameObject.GetComponent<Enemy>().Damage(attackpoint);
+            //damageText.transform.localScale = new Vector3(other.transform.localScale.x / 4f, other.transform.localScale.y / 4f, other.transform.localScale.z / 4f);
             damageText.GetComponent<TextMeshPro>().text = attackpoint.ToString();
             gameObject.SetActive(false);
 
         }
         else if (other.gameObject.CompareTag("Barrage"))
         {
-            if (attackpoint > other.gameObject.GetComponent<Barrage>().HP)
-            {
-                effect = GameManager.instance.EffectPool.Get(eID);
-                effect.transform.position = other.ClosestPoint(transform.position);
-                damageText = GameManager.instance.GitaPool.Get(0);
-                damageText.transform.position = other.ClosestPoint(transform.position);
-                damageText.transform.localScale = new Vector3(other.transform.localScale.x / 5, other.transform.localScale.x / 5, other.transform.localScale.x / 5);
-                damageText.GetComponent<TextMeshPro>().text = attackpoint.ToString();
-                attackpoint -= other.gameObject.GetComponent<Barrage>().HP;
-                Destroy(other.gameObject);
-                gameObject.SetActive(false);
-
-            }
-            else
-            {
-                effect = GameManager.instance.EffectPool.Get(eID);
-                effect.transform.position = other.ClosestPoint(transform.position);
-                other.gameObject.GetComponent<Barrage>().HP -= attackpoint;
-                damageText = GameManager.instance.GitaPool.Get(0);
-                damageText.transform.position = other.ClosestPoint(transform.position);
-                damageText.transform.localScale = new Vector3(other.transform.localScale.x / 4, other.transform.localScale.x / 4, other.transform.localScale.x / 4);
-                damageText.GetComponent<TextMeshPro>().text = attackpoint.ToString();
-                gameObject.SetActive(false);
-
-            }
+            float pierced = other.gameObject.GetComponent<Barrage>().Pierce(attackpoint);
+            effect = GameManager.instance.EffectPool.Get(eID);
+            Vector3 ePosition = other.ClosestPoint(transform.position);
+            ePosition.y += offset;
+            effect.transform.position = other.ClosestPoint(transform.position);
+            damageText = GameManager.instance.GitaPool.Get(0);
+            damageText.transform.position = ePosition;
+            //damageText.transform.localScale = new Vector3(other.transform.localScale.x / 6f, other.transform.localScale.y / 6f, other.transform.localScale.z / 6f);
+            damageText.GetComponent<TextMeshPro>().text = attackpoint.ToString();
+            other.gameObject.GetComponent<Barrage>().Damage(attackpoint);
+            attackpoint = pierced;
         }
     }
 

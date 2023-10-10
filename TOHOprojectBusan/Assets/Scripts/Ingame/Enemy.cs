@@ -14,7 +14,8 @@ public class Enemy : MonoBehaviour
         mySequence = seq;
     }
 
-    public void Damage(float atk)
+
+    public float Damage(float atk)
     {
         HP -= atk;
 
@@ -22,10 +23,15 @@ public class Enemy : MonoBehaviour
         {
             Death();
         }
+
+        if (HP > atk) return 0;
+        else return atk - HP;
     }
 
     public void Death()
     {
+        GameObject exp = GameManager.instance.GitaPool.Get(1);
+        exp.transform.position = transform.position;
         mySequence.Kill(true);
         Destroy(gameObject);
     }

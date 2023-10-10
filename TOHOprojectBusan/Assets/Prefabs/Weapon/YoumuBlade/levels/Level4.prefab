@@ -208,8 +208,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   atk: 15
+  effectID: 5
   effect_time: 0.2
   ready_time: 0.09
+  offset: 0.7
 --- !u!50 &8324891125248931401
 Rigidbody2D:
   serializedVersion: 4
@@ -457,8 +459,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   atk: 15
+  effectID: 5
   effect_time: 0.2
   ready_time: 0.09
+  offset: 0.7
 --- !u!50 &7765707728290848707
 Rigidbody2D:
   serializedVersion: 4
@@ -656,8 +660,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   atk: 15
+  effectID: 5
   effect_time: 0.2
   ready_time: 0.09
+  offset: 0.7
 --- !u!50 &6204870002838122412
 Rigidbody2D:
   serializedVersion: 4
@@ -757,7 +763,7 @@ SpriteRenderer:
   m_Sprite: {fileID: -869061504644024734, guid: 7394b4dc84592464bb22e9fd5a83a1fe, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
-  m_FlipY: 0
+  m_FlipY: 1
   m_DrawMode: 0
   m_Size: {x: 0.97, y: 2.54}
   m_AdaptiveModeThreshold: 0.5
@@ -855,8 +861,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   atk: 15
+  effectID: 5
   effect_time: 0.2
   ready_time: 0.09
+  offset: 0.7
 --- !u!50 &3798664770198323095
 Rigidbody2D:
   serializedVersion: 4

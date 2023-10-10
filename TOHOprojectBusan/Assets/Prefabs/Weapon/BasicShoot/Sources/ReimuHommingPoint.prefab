@@ -99,7 +99,7 @@ MonoBehaviour:
   target: {fileID: 0}
   range: 17
   enemyTag: Enemy
-  cooltime: 0.15
+  cooltime: 0.12
   bullet: {fileID: 6685786526645106776, guid: a64210f6d1f5beb4ea16ee634b4d7649, type: 3}
   bulletspeed: 200
 --- !u!114 &2209180047225472155

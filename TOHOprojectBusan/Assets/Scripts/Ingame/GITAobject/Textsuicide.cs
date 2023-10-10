@@ -8,13 +8,20 @@ public class Textsuicide : MonoBehaviour
 
     public float destroy_Time = 0.7f;
     public float shrinkSpeed = 0.4f;
-    public float moveSpeed = 1.2f;
+    public float moveSpeed = 0.7f;
     public float minSize = 0.1f;
+    private Vector3 setscale;
     TextMeshPro text;
     Color alpha;
+
+    private void Awake()
+    {
+        setscale = transform.localScale;
+    }
     private void OnEnable()
     {
-        //Invoke("DeactivateSelf", destroy_Time);
+        transform.localScale = setscale;
+        Invoke("DeactivateSelf", destroy_Time);
         //alpha = text.color;
     }
 

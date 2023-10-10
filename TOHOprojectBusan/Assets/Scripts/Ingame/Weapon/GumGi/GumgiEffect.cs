@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class GumgiEffect : MonoBehaviour
 {
@@ -14,7 +15,7 @@ public class GumgiEffect : MonoBehaviour
     private Animator myAnim;
     private GameObject damageText;
     private GameObject effect;
-    private Vector3 offset = new Vector3(0, 1f, 0);
+    public float offset = 0.7f;
     // Start is called before the first frame update
 
     private void Awake()
@@ -44,22 +45,26 @@ public class GumgiEffect : MonoBehaviour
         if (other.gameObject.CompareTag("Enemy"))
         {
             effect = GameManager.instance.EffectPool.Get(eID);
+            Vector3 ePosition = other.ClosestPoint(transform.position);
+            ePosition.y += offset;
             effect.transform.position = other.ClosestPoint(transform.position);
-            other.gameObject.GetComponent<Enemy>().HP -= attackpoint;
+            other.gameObject.GetComponent<Enemy>().Damage(attackpoint);
             damageText = GameManager.instance.GitaPool.Get(0);
             damageText.transform.position = other.ClosestPoint(transform.position);
-            damageText.transform.localScale = new Vector3(other.transform.localScale.x / 2, other.transform.localScale.x / 2, other.transform.localScale.x / 2);
-            damageText.GetComponent<TextMesh>().text = attackpoint.ToString();
+            //damageText.transform.localScale = new Vector3(other.transform.localScale.x / 4f, other.transform.localScale.y / 4f, other.transform.localScale.z / 4f);
+            damageText.GetComponent<TextMeshPro>().text = attackpoint.ToString();
         }
         else if (other.gameObject.CompareTag("Barrage"))
         {
             effect = GameManager.instance.EffectPool.Get(eID);
+            Vector3 ePosition = other.ClosestPoint(transform.position);
+            ePosition.y += offset;
             effect.transform.position = other.ClosestPoint(transform.position);
-            other.gameObject.GetComponent<Barrage>().HP -= attackpoint;
+            other.gameObject.GetComponent<Barrage>().Damage(attackpoint);
             damageText = GameManager.instance.GitaPool.Get(0);
-            damageText.transform.position = other.ClosestPoint(transform.position);
-            damageText.transform.localScale = new Vector3(other.transform.localScale.x / 5, other.transform.localScale.x / 5, other.transform.localScale.x / 5);
-            damageText.GetComponent<TextMesh>().text = attackpoint.ToString();
+            damageText.transform.position = ePosition;
+            //damageText.transform.localScale = new Vector3(other.transform.localScale.x / 6f, other.transform.localScale.y / 6f, other.transform.localScale.z / 6f);
+            damageText.GetComponent<TextMeshPro>().text = attackpoint.ToString();
 
         }
         

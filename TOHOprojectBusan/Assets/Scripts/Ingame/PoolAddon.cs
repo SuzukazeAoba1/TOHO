@@ -7,6 +7,7 @@ public class PoolAddon : MonoBehaviour
     public float interval = 20f; // 비활성화 간격 (초)
     public int previouSpawn = 20;
     private PoolManager myPool;
+
     private void Start()
     {
         myPool = GetComponent<PoolManager>();
