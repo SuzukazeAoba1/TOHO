@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class Bullet : MonoBehaviour
 {
@@ -83,7 +84,7 @@ public class Bullet : MonoBehaviour
             damageText = GameManager.instance.GitaPool.Get(0);
             damageText.transform.position = other.ClosestPoint(transform.position);
             //damageText.transform.localScale = new Vector3(other.transform.localScale.x / 5, other.transform.localScale.x / 5, other.transform.localScale.x / 5);
-            damageText.GetComponent<TextMesh>().text = attackpoint.ToString();
+            damageText.GetComponent<TextMeshPro>().text = attackpoint.ToString();
             gameObject.SetActive(false);
 
         }
