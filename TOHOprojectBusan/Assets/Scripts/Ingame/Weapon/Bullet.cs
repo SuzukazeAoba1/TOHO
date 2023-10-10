@@ -41,7 +41,7 @@ public class Bullet : MonoBehaviour
 
         attackpoint = ATK;
         time_To_Destroy= destroy_Time;
-        TextMesh Damage_text = DText.GetComponent<TextMesh>();
+        //TextMesh Damage_text = DText.GetComponent<TextMesh>();
     }
 
 

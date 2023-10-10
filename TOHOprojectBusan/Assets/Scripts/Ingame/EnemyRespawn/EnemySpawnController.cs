@@ -40,7 +40,7 @@ public class EnemySpawnController : MonoBehaviour
 
         MoveController.SetContainer(MoveContainer);
         MoveController.SetZonePos(movingzone);
-        BarrageController.SetContainer(BarrageContainer);
+        //BarrageController.SetContainer(BarrageContainer);
 
         sqawnpattendata.Clear();
         movesequencedata.Clear();
