@@ -10,13 +10,18 @@ public class EnemySpawnController : MonoBehaviour
 {
     public EnemySpawnContainer SpawnContainer;
     public EnemyContainer EnemyContainer;
-    public EnemyMoveContainer MoveContainer;
+
     public EnemyMoveController MoveController;
-    public EnemyBarrageContainer BarrageContainer;
+    public EnemyMoveContainer MoveContainer;
+
     public EnemyBarrageController BarrageController;
+    public EnemyBarrageContainer BarrageContainer;
+    public EnemyBarragePatten BarragePatten;
 
     List<Dictionary<string, object>> sqawnpattendata;
     List<Dictionary<string, object>> movesequencedata;
+    List<Dictionary<string, object>> barragesquencedata;
+    List<Dictionary<string, object>> barragepattendata;
 
     private EnemySpawner spawner;
 
@@ -30,8 +35,12 @@ public class EnemySpawnController : MonoBehaviour
 
     public void Init(Vector2 movingzone)
     {
-        movesequencedata = new List<Dictionary<string, object>>();
+        
         sqawnpattendata = new List<Dictionary<string, object>>();
+        movesequencedata = new List<Dictionary<string, object>>();
+        barragesquencedata = new List<Dictionary<string, object>>();
+        barragepattendata = new List<Dictionary<string, object>>();
+
 
         spawner = gameObject.GetComponent<EnemySpawner>();
         spawner.SetContainer(EnemyContainer);
@@ -44,12 +53,18 @@ public class EnemySpawnController : MonoBehaviour
 
         sqawnpattendata.Clear();
         movesequencedata.Clear();
+        barragesquencedata.Clear();
+        barragepattendata.Clear();
 
-        movesequencedata = CSVReader.Read("move_sequence_data");
         sqawnpattendata = CSVReader.Read("spawn_patten_data");
+        movesequencedata = CSVReader.Read("move_sequence_data");
+        barragesquencedata = CSVReader.Read("barrage_sequence_data");
+        barragepattendata = CSVReader.Read("barrage_patten_data");
 
         MoveContainer.SetFileData(movesequencedata);
         SpawnContainer.SetFileData(sqawnpattendata);
+        BarrageContainer.SetFileData(barragesquencedata);
+        BarragePatten.SetFileData(barragepattendata);
 
         pause = true;
         reset = false;
@@ -73,16 +88,18 @@ public class EnemySpawnController : MonoBehaviour
 
         if (!pause)
         {
-            spawnTimer += Time.deltaTime * 10.0f;
-
-            spawnbuf = SpawnContainer.SpawnContainer[spawnCounter]; //정보를 가져옴
-            nextSpawnTime = spawnbuf.m_spawntime;
-
-            if (spawnTimer >= nextSpawnTime && spawnCounter < SpawnContainer.SpawnContainer.Count) //
+            if (spawnCounter < SpawnContainer.SpawnContainer.Count)
             {
-                spawner.Spawn(spawnbuf.m_spawnposid, spawnbuf.m_enemyid, spawnbuf.m_movesequenceid, spawnbuf.m_spawnfilp); 
-                spawnCounter += 1;
-                //BarrageController.Shoot(transform, false);
+                spawnTimer += Time.deltaTime * 10.0f;
+                spawnbuf = SpawnContainer.SpawnContainer[spawnCounter]; //현재의 오브젝트 정보를 가져옴
+                nextSpawnTime = spawnbuf.m_spawntime;                   //현재 오브젝트가 스폰 되어야 할 시간
+
+                if (nextSpawnTime < spawnTimer)
+                {
+                    spawner.Spawn(spawnbuf.m_spawnposid, spawnbuf.m_enemyid, spawnbuf.m_movesequenceid, spawnbuf.m_spawnfilp);
+                    spawnCounter += 1;
+                    //BarrageController.Shoot(transform, false);
+                }
             }
         }
     }
