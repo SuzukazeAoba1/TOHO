@@ -17,6 +17,7 @@ public class Barrage : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
         if (HP <= 0)
         {
             GameObject exp = GameManager.instance.GitaPool.Get(1);
