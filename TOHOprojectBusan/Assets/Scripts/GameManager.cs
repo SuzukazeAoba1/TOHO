@@ -19,6 +19,7 @@ public class GameManager : MonoBehaviour
     public PoolManager BarragePool;
     public PoolManager EnemyPool;
     public PoolManager GitaPool;
+    public PoolManager EffectPool;
     public WeaponSpawn weaponSpawn;
     public UpgradeUI upgradeUI;
     [Header("# PlayerStats")]
