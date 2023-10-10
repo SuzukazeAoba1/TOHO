@@ -19,7 +19,6 @@ public class Player : MonoBehaviour
     private bool isdead = false;
 
     private GameObject damageText;
-    private int attackpoint = 1;
     private Vector3 offset = new Vector3(0, 1f, 0);
     public HealthGUI healthGui;
 
