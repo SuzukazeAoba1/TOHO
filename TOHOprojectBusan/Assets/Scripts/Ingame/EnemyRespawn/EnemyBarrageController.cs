@@ -15,7 +15,7 @@ public class EnemyBarrageController : MonoBehaviour
         switch (0)
         {
             case 0:
-                GameObject buf = Instantiate(barrageController.container[0], new Vector3(0, 30, 0), Quaternion.identity);
+                //GameObject buf = Instantiate(barrageController.container[0], new Vector3(0, 30, 0), Quaternion.identity);
                 break;
             default:
         }
