@@ -128,7 +128,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 0}
   range: 14
-  enemyTag: Barrage
+  enemyTag: Enemy
   cooltime: 0.15
   bullet: {fileID: 7233594671075936834, guid: 80733dec8d1fa594abedd125afd5f411, type: 3}
   bulletspeed: 2000

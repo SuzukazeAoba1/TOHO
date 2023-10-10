@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 4738266241542712580}
   m_Layer: 6
   m_Name: Dollbullet
-  m_TagString: Untagged
+  m_TagString: Bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -135,6 +135,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ATK: 4
+  effectID: 3
   Speed: 5
   destroy_Time: 4
   DText: {fileID: 8084929658759913246, guid: f0994d24f73fc5947aa11aa3090df006, type: 3}

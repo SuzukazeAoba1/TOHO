@@ -7,6 +7,8 @@ public class Bullet : MonoBehaviour
 {
     
     public float ATK;
+    public int effectID = 1;
+    private int eID = 0;
     private float attackpoint = 5;
     public float Speed;
     public float destroy_Time = 4;
@@ -14,10 +16,12 @@ public class Bullet : MonoBehaviour
     public GameObject DText;
     private float bulletspeed;
     private GameObject damageText;
+    private GameObject effect;
     private Vector3 offset = new Vector3(0, 2f, 0);
 
     private void Awake()
     {
+        eID = effectID - 1;
     }
     // Start is called before the first frame update
     void Start()
@@ -74,9 +78,11 @@ public class Bullet : MonoBehaviour
         if (other.gameObject.CompareTag("Enemy"))
         {
             other.gameObject.GetComponent<Enemy>().Damage(attackpoint);
+            effect = GameManager.instance.EffectPool.Get(eID);
+            effect.transform.position = other.ClosestPoint(transform.position);
             damageText = GameManager.instance.GitaPool.Get(0);
-            damageText.transform.position = transform.position + offset;
-            damageText.transform.localScale = new Vector3(other.transform.localScale.x / 5, other.transform.localScale.x / 5, other.transform.localScale.x / 5);
+            damageText.transform.position = other.ClosestPoint(transform.position);
+            //damageText.transform.localScale = new Vector3(other.transform.localScale.x / 5, other.transform.localScale.x / 5, other.transform.localScale.x / 5);
             damageText.GetComponent<TextMesh>().text = attackpoint.ToString();
             gameObject.SetActive(false);
 
@@ -85,8 +91,10 @@ public class Bullet : MonoBehaviour
         {
             if (attackpoint > other.gameObject.GetComponent<Barrage>().HP)
             {
+                effect = GameManager.instance.EffectPool.Get(eID);
+                effect.transform.position = other.ClosestPoint(transform.position);
                 damageText = GameManager.instance.GitaPool.Get(0);
-                damageText.transform.position = transform.position + offset;
+                damageText.transform.position = other.ClosestPoint(transform.position);
                 damageText.transform.localScale = new Vector3(other.transform.localScale.x / 5, other.transform.localScale.x / 5, other.transform.localScale.x / 5);
                 damageText.GetComponent<TextMesh>().text = attackpoint.ToString();
                 attackpoint -= other.gameObject.GetComponent<Barrage>().HP;
@@ -96,10 +104,12 @@ public class Bullet : MonoBehaviour
             }
             else
             {
+                effect = GameManager.instance.EffectPool.Get(eID);
+                effect.transform.position = other.ClosestPoint(transform.position);
                 other.gameObject.GetComponent<Barrage>().HP -= attackpoint;
                 damageText = GameManager.instance.GitaPool.Get(0);
-                damageText.transform.position = transform.position + offset;
-                damageText.transform.localScale = new Vector3(other.transform.localScale.x / 2, other.transform.localScale.x / 2, other.transform.localScale.x / 2);
+                damageText.transform.position = other.ClosestPoint(transform.position);
+                damageText.transform.localScale = new Vector3(other.transform.localScale.x / 4, other.transform.localScale.x / 4, other.transform.localScale.x / 4);
                 damageText.GetComponent<TextMesh>().text = attackpoint.ToString();
                 gameObject.SetActive(false);
 
