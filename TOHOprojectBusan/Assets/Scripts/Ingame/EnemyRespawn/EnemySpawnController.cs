@@ -13,6 +13,7 @@ public class EnemySpawnController : MonoBehaviour
     public EnemyMoveContainer MoveContainer;
     public EnemyMoveController MoveController;
     public EnemyBarrageContainer BarrageContainer;
+    public EnemyBarrageController BarrageController;
 
     List<Dictionary<string, object>> sqawnpattendata;
     List<Dictionary<string, object>> movesequencedata;
@@ -39,6 +40,7 @@ public class EnemySpawnController : MonoBehaviour
 
         MoveController.SetContainer(MoveContainer);
         MoveController.SetZonePos(movingzone);
+        BarrageController.SetContainer(BarrageContainer);
 
         sqawnpattendata.Clear();
         movesequencedata.Clear();
@@ -73,12 +75,14 @@ public class EnemySpawnController : MonoBehaviour
         {
             spawnTimer += Time.deltaTime * 10.0f;
 
-            if (spawnTimer >= nextSpawnTime && spawnCounter < SpawnContainer.SpawnContainer.Count)
+            spawnbuf = SpawnContainer.SpawnContainer[spawnCounter]; //정보를 가져옴
+            nextSpawnTime = spawnbuf.m_spawntime;
+
+            if (spawnTimer >= nextSpawnTime && spawnCounter < SpawnContainer.SpawnContainer.Count) //
             {
-                spawnbuf = SpawnContainer.SpawnContainer[spawnCounter];
-                spawner.Spawn(spawnbuf.m_spawnposid, spawnbuf.m_enemyid, spawnbuf.m_movesequenceid, spawnbuf.m_spawnfilp);
-                nextSpawnTime = spawnbuf.m_spawntime;
+                spawner.Spawn(spawnbuf.m_spawnposid, spawnbuf.m_enemyid, spawnbuf.m_movesequenceid, spawnbuf.m_spawnfilp); 
                 spawnCounter += 1;
+                //BarrageController.Shoot(transform, false);
             }
         }
     }
