@@ -8,7 +8,7 @@ public class CameraController : MonoBehaviour
     public GameObject Gplayer;
     public Transform gManager;
     private Vector3 position = Vector3.zero;
-    private Vector3 offset = new Vector3(0, 4.3f, -10);
+    private Vector3 offset = new Vector3(0, 4f, -10);
     private float xrange;
     private float yrange;
     float verticalSize;
@@ -20,9 +20,9 @@ public class CameraController : MonoBehaviour
         mainCamera = Camera.main;
         verticalSize = mainCamera.orthographicSize;
         horizontalSize = verticalSize * mainCamera.aspect;
-        offsetLast = ((gManager.gameObject.GetComponent<GameManager>().movingzone.y -1) / 2) -offset.y; 
+        offsetLast = ((gManager.gameObject.GetComponent<GameManager>().movingzone.y) / 2) -offset.y + 0.5f; 
         xrange = ((gManager.gameObject.GetComponent<GameManager>().movingzone.x)  / 2) - verticalSize + 2f;
-        yrange = ((gManager.gameObject.GetComponent<GameManager>().movingzone.y)  / 2) - horizontalSize - 2.7f;
+        yrange = ((gManager.gameObject.GetComponent<GameManager>().movingzone.y)  / 2) - horizontalSize - 0.5f;
 
     }
 

@@ -9,7 +9,7 @@ public class Player : MonoBehaviour
     public GameManager gManager;
     [Header ("# PlayerStatus")]
     public int maxHealth = 5;
-    private int health = 5;
+    public int health = 5;
     public float speed = 4.5f;
     public float bulletspeed = 200f;
     private Vector3 position = Vector3.zero;

@@ -6,7 +6,7 @@ using System.Linq;
 
 public class UpgradeUI : MonoBehaviour
 {
-    public int maxEquip = 4;
+    public int maxEquip = 2;
     RectTransform rect;
     UpgradeButton[] Buttons;
     UpgradeButton[] items;
@@ -31,8 +31,7 @@ public class UpgradeUI : MonoBehaviour
 
     private void Start()
     {
-        Debug.Log(selected[0]);
-        Notnullcount();
+
     }
     
 
@@ -57,16 +56,14 @@ public class UpgradeUI : MonoBehaviour
 
     public void Select(int index)
     {
-        if(Notnullcount() < maxEquip)
-        {
-            Buttons[index].Onclik();
-            selected[selectcount] = Buttons[index];
-            selectcount++;
-        }
-        if (Notnullcount() == maxEquip)
-        {
-            Buttons[index].Onclik();
-        }
+        Buttons[index].Onclik();
+        Debug.Log("기본 무기 지급됨");
+
+
+    }
+
+    public void ADDweapon(UpgradeButton button)
+    {
 
     }
 
@@ -94,32 +91,56 @@ public class UpgradeUI : MonoBehaviour
         }
         //그 중에서 규칙에 맞는 랜덤 아이템 3개 활성화
         int[] ran = new int[3];
-        while (true)
+        if (Notnullcount() < maxEquip)
         {
-            ran[0] = Random.Range(0, weapons.Length);
-            ran[1] = Random.Range(0, weapons.Length);
-            ran[2] = Random.Range(0, weapons.Length);
-            if (ran[0]!=ran[1] && ran[1]!=ran[2]&& ran[2] != ran[0])
+            while (true)
             {
-                break;
-            }
-                
-        }
+                ran[0] = Random.Range(0, weapons.Length);
+                ran[1] = Random.Range(0, weapons.Length);
+                ran[2] = Random.Range(0, weapons.Length);
+                if (ran[0] != ran[1] && ran[1] != ran[2] && ran[2] != ran[0])
+                {
+                    break;
+                }
 
-        for (int index=0; index < ran.Length; index++)
-        {
-            UpgradeButton ranItem = weapons[ran[index]];
-
-            //규칙 1. 만렙은 안됨. 만렙이면 소비아이템으로  대체
-            if (ranItem.level == ranItem.data.levels.Length-1)
-            {
-                items[Random.Range(0, items.Length)].gameObject.SetActive(true);
             }
-            else
+
+            for (int index = 0; index < ran.Length; index++)
             {
+                UpgradeButton ranItem = weapons[ran[index]];
                 ranItem.gameObject.SetActive(true);
+
             }
-            
+        }
+        else if (Notnullcount() == maxEquip)
+        {
+            while (true)
+            {
+                ran[0] = Random.Range(0, selected.Length);
+                ran[1] = Random.Range(0, selected.Length);
+                ran[2] = Random.Range(0, selected.Length);
+                if (ran[0] != ran[1] && ran[1] != ran[2] && ran[2] != ran[0])
+                {
+                    break;
+                }
+
+            }
+
+            for (int index = 0; index < ran.Length; index++)
+            {
+                UpgradeButton ranItem = selected[ran[index]];
+
+                //규칙 1. 만렙은 안됨. 만렙이면 소비아이템으로  대체
+                if (ranItem.level == ranItem.data.levels.Length - 1)
+                {
+                    items[Random.Range(0, items.Length)].gameObject.SetActive(true);
+                }
+                else
+                {
+                    ranItem.gameObject.SetActive(true);
+                }
+
+            }
         }
         //규칙 1. 만렙은 안됨
     }
@@ -127,7 +148,6 @@ public class UpgradeUI : MonoBehaviour
     private int Notnullcount()
     {
         int nonNullCount = selected.Count(item => item != null);
-        Debug.Log(nonNullCount);
         return nonNullCount;
     }
 }
