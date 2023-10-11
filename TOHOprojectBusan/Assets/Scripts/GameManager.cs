@@ -53,7 +53,7 @@ public class GameManager : MonoBehaviour
         //다중 캐릭터 선택 넣을 경우 이걸 바꿔야됨.
         //레이무의 기본 무기 시작할때 지급(레이무 무기 버튼을 한번 누른 취급)
 
-        //upgradeUI.Select(0);
+        upgradeUI.Select(0);
         DOTween.Init(true, true, LogBehaviour.Verbose);
 
         Init();

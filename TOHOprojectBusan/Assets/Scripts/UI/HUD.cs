@@ -54,7 +54,7 @@ public class HUD : MonoBehaviour
                 {
                     second = remainingSeconds.ToString();
                 }
-                text.text = minute + " : " + second;
+                text.text = "버틴 시간 : " + minute + " : " + second;
                 break;
 
         }
