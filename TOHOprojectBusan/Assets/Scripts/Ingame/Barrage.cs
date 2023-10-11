@@ -8,14 +8,6 @@ public class Barrage : MonoBehaviour
     public float HP;
     public float Speed;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
-
     public float Pierce(float atk)
     {
         if(HP <= atk)
@@ -43,6 +35,8 @@ public class Barrage : MonoBehaviour
     }
     void Update()
     {
+
+        transform.Translate(Speed * Vector2.up * Time.deltaTime);
 
         if (HP <= 0)
         {

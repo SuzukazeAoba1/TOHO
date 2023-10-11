@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class EnemyBarrageController : MonoBehaviour
 {
-    private BarrageContainer barragecon;
-    private BarrageSequence barrageseq;
-    private BarragePatten barragepat;
+    public BarrageContainer barragecon;
+    public BarrageSequence barrageseq;
+    public BarragePatten barragepat;
 
     public void Shoot(GameObject enemy, bool flip)
     {
@@ -20,7 +20,8 @@ public class EnemyBarrageController : MonoBehaviour
 
     private void ShotPatten(GameObject enemy, bool flip)
     {
-        //GameObject buf = Instantiate(barrageController.container[0], new Vector3(0, 30, 0), Quaternion.identity);
+        GameObject barrage = Instantiate(barragecon.barrage[0], enemy.transform.position, Quaternion.Euler(0,0,-180));
+        barrage.GetComponent<Barrage>().Speed = 10;
     }
 
 
