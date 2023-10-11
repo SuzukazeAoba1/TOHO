@@ -6,7 +6,7 @@ using System.Linq;
 
 public class UpgradeUI : MonoBehaviour
 {
-    public int MaxEquip = 4;
+    public int maxEquip = 4;
     RectTransform rect;
     UpgradeButton[] Buttons;
     UpgradeButton[] items;
@@ -15,6 +15,7 @@ public class UpgradeUI : MonoBehaviour
 
     public Button Healitem;
     private bool isPaused;
+    private int selectcount = 0;
 
     // Start is called before the first frame update
     void Awake()
@@ -23,7 +24,7 @@ public class UpgradeUI : MonoBehaviour
         Buttons = GetComponentsInChildren<UpgradeButton>(true);
         weapons = Buttons.Where(item => item.gameObject.name.Contains("Weapon")).ToArray();
         items = Buttons.Where(item => item.gameObject.name.Contains("Item")).ToArray();
-        selected = new UpgradeButton[MaxEquip];
+        selected = new UpgradeButton[maxEquip];
 
 
     }
@@ -56,8 +57,17 @@ public class UpgradeUI : MonoBehaviour
 
     public void Select(int index)
     {
-        //if(selected.)
-        Buttons[index].Onclik();
+        if(Notnullcount() < maxEquip)
+        {
+            Buttons[index].Onclik();
+            selected[selectcount] = Buttons[index];
+            selectcount++;
+        }
+        if (Notnullcount() == maxEquip)
+        {
+            Buttons[index].Onclik();
+        }
+
     }
 
     void TogglePause()

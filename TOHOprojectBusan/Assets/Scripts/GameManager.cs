@@ -23,8 +23,7 @@ public class GameManager : MonoBehaviour
     public WeaponSpawn weaponSpawn;
     public UpgradeUI upgradeUI;
     [Header("# PlayerStats")]
-    public int health;
-    public int maxHealth = 5;
+    public GameObject player;
     public int level;
     public int exp;
     public int[] nextExp = { 1, 2, 2, 2, 2, 2, 2, 2, 3, 3, 3, 3, 4 ,4,4,4,4,4,4,4,4,4,4,4,4,4};
@@ -49,7 +48,6 @@ public class GameManager : MonoBehaviour
             Debug.LogWarning("이 씬에 게임 매니저가 두 개 존재합니다!");
             Destroy(gameObject);
         }
-        health = maxHealth;
         level = 1;
 
         //다중 캐릭터 선택 넣을 경우 이걸 바꿔야됨.
@@ -77,10 +75,6 @@ public class GameManager : MonoBehaviour
     {
         gameTime += Time.deltaTime;
 
-        if (health <= 0)
-        {
-            Die();
-        }
         //키보드 입력을 받으면 메인 화면 씬으로 전환
     }
 
