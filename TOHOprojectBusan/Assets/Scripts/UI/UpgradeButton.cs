@@ -8,6 +8,7 @@ public class UpgradeButton : MonoBehaviour
     public GameObject player;
     public WeaponData data;
     public int level;
+    public Transform upgradeUI;
 
     Image icon;
     Text textlevel;
@@ -15,6 +16,7 @@ public class UpgradeButton : MonoBehaviour
 
     private void Awake()
     {
+        upgradeUI = transform.parent;
         Image[] images = GetComponentsInChildren<Image>();
 
         foreach (var image in images)
@@ -79,6 +81,7 @@ public class UpgradeButton : MonoBehaviour
                     }
                 }
 
+                upgradeUI.gameObject.GetComponent<UpgradeUI>().SetdataofButton(data);
                 level++;
                 break;
             case WeaponData.ItemType.Heal:

@@ -62,6 +62,22 @@ public class UpgradeUI : MonoBehaviour
 
     }
 
+    public void SetdataofButton(WeaponData recievedata)
+    {
+        if(Notnullcount() < maxEquip)
+        {
+            for(int i = 0; i < Buttons.Length; i++)
+            {
+                if(Buttons[i].GetComponent<UpgradeButton>().data == recievedata)
+                {
+                    selected[selectcount] = Buttons[i];
+                    selectcount++;
+                    Notnullcount();
+                }
+            }
+        }
+    }
+
     public void ADDweapon(UpgradeButton button)
     {
 
@@ -150,4 +166,6 @@ public class UpgradeUI : MonoBehaviour
         int nonNullCount = selected.Count(item => item != null);
         return nonNullCount;
     }
+
+    
 }
