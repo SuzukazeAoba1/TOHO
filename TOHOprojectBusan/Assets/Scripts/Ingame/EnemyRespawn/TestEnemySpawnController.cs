@@ -30,17 +30,20 @@ public class TestEnemySpawnController : MonoBehaviour
 
     public void Init(Vector2 movingzone)
     {
+        
         MoveContainer = gameObject.AddComponent<EnemyMoveContainer>();
+        MoveController = gameObject.AddComponent<EnemyMoveController>();
+        spawner = gameObject.AddComponent<EnemySpawner>();
+
         MoveContainer.SetTestData();
 
-        MoveController = gameObject.AddComponent<EnemyMoveController>();
         MoveController.SetContainer(MoveContainer);
         MoveController.SetZonePos(movingzone);
-
-        spawner = gameObject.AddComponent<EnemySpawner>();
+ 
         spawner.SetTestController(this);
         spawner.SetMoveController(MoveController);
         spawner.SetZonePos(movingzone);
+  
     }
 
     public void Play()
