@@ -32,6 +32,12 @@ public struct BarrageData
 public class BarragePatten
 {
     public List<BarrageData> patten;
+
+    public BarragePatten()
+    {
+        patten = new List<BarrageData>();
+        patten.Clear();
+    }
 }
 
 public class EnemyBarragePatten : MonoBehaviour
@@ -48,11 +54,8 @@ public class EnemyBarragePatten : MonoBehaviour
 
         int currentid = 0;
 
-        BarragePatten pattenbuf = new BarragePatten
-        {
-            patten = new List<BarrageData>()
-        };
-        pattenbuf.patten.Clear();
+        BarragePatten pattenbuf = new BarragePatten();
+        
         List.Add(pattenbuf);
 
         foreach (var Seq in data)
@@ -75,7 +78,6 @@ public class EnemyBarragePatten : MonoBehaviour
             {
                 currentid = pattenid;
                 pattenbuf = new BarragePatten();
-                pattenbuf.patten.Clear();
                 List.Add(pattenbuf);
             }
 
