@@ -16,6 +16,7 @@ public class EnemySpawnController : MonoBehaviour
 
     public EnemyBarrageContainer BarrageContainer;
     public EnemyBarragePatten BarragePatten;
+    public BarrageContainer BarrageList;
 
     List<Dictionary<string, object>> sqawnpattendata;
     List<Dictionary<string, object>> movesequencedata;
@@ -96,7 +97,7 @@ public class EnemySpawnController : MonoBehaviour
                 if (nextSpawnTime < spawnTimer)
                 {
                     GameObject buf = spawner.Spawn(spawnbuf.m_spawnposid, spawnbuf.m_enemyid, spawnbuf.m_movesequenceid, spawnbuf.m_spawnfilp);
-                    //buf.GetComponent<Enemy>().SetBarrageSetting();
+                    buf.GetComponent<Enemy>().SetBarrageSetting(BarrageList, BarrageContainer.List[0], BarragePatten.List[0]);
                     spawnCounter += 1; 
                 }
             }
