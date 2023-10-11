@@ -37,8 +37,7 @@ public class Player : MonoBehaviour
     }
     void Start()
     {
-        Debug.Log(xRange);
-        Debug.Log(yRange);
+
     }
 
     // Update is called once per frame
