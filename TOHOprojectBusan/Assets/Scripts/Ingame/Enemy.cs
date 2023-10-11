@@ -10,6 +10,7 @@ public class Enemy : MonoBehaviour
 
     public float HP;
     public double speed;
+    public bool test = false;
 
     private void Start()
     {
@@ -18,7 +19,7 @@ public class Enemy : MonoBehaviour
 
     private void Fire()
     {
-
+        if (test) return;
         barrageController.Shoot(this.gameObject, false);
     }
 

@@ -44,6 +44,7 @@ public class EnemySpawner : MonoBehaviour
             SpawnerPosTest.transform.position = new Vector3(spawnpos.x, spawnpos.y, 0);
 
             GameObject buf = Instantiate(tspawnController.TestEnemy[enemyid], new Vector3(spawnpos.x, spawnpos.y, 0), Quaternion.identity);
+            buf.GetComponent<Enemy>().test = true;
             moveController.Moving(buf, movepattenid, flip);
         }
     }

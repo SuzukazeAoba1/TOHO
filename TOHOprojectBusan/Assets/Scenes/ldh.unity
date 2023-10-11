@@ -482,8 +482,7 @@ MonoBehaviour:
   EffectPool: {fileID: 641156776}
   weaponSpawn: {fileID: 365142047}
   upgradeUI: {fileID: 2084294362}
-  health: 0
-  maxHealth: 5
+  player: {fileID: 1404641476}
   level: 0
   exp: 0
   nextExp: 0100000002000000020000000200000002000000020000000200000002000000030000000300000003000000030000000400000004000000040000000400000004000000040000000400000004000000040000000400000004000000040000000400000004000000
@@ -3271,7 +3270,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &962037966
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6256,7 +6255,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a5710745e317bc44b3246bf1fbb6779, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxEquip: 4
+  maxEquip: 4
   selected: []
   Healitem: {fileID: 0}
 --- !u!1 &2112243180
