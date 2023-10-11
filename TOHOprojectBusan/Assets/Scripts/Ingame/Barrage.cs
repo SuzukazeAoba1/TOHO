@@ -5,9 +5,31 @@ using DG.Tweening;
 
 public class Barrage : MonoBehaviour
 {
+    public GameObject myEnemy;
     public float HP;
-    public float Speed;
-    public float add_Speed;
+    public float Speed_now;
+    public float Speed_base;
+    public float Speed_add;
+    public float delay;
+
+    public void ActiveTimerOn()
+    {
+        if (delay > 0.0f) Invoke("ActivateSelf", delay);
+        else              gameObject.SetActive(true);
+    }
+    
+    private void ActivateSelf()
+    {
+        transform.position = myEnemy.transform.position;
+        gameObject.SetActive(true);
+    }
+
+    public void SetSpeed(float basespeed, float addspeed)
+    {
+        Speed_base = basespeed;
+        Speed_now = basespeed;
+        Speed_add = addspeed;
+    }
 
     public float Pierce(float atk)
     {
@@ -37,7 +59,7 @@ public class Barrage : MonoBehaviour
     void Update()
     {
 
-        transform.Translate(Speed * Vector2.up * Time.deltaTime);
+        transform.Translate(Speed_now * Vector2.up * Time.deltaTime);
 
         if (HP <= 0)
         {
@@ -46,6 +68,27 @@ public class Barrage : MonoBehaviour
             transform.DOKill();
             Destroy(gameObject);
         }
+    }
+
+    void FixedUpdate()
+    {
+
+        if(Speed_add > 0)
+        {
+            if (Speed_now < Speed_base + Speed_add)
+            {
+                Speed_now += Speed_add * Time.timeScale * 0.01f;
+            }
+        }
+        else 
+        {
+            if (Speed_now > Speed_base + Speed_add)
+            {
+                Speed_now += Speed_add * Time.timeScale * 0.01f;
+            }
+        }
+
+        
     }
     //private void ondestroy()
     //{

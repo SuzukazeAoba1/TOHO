@@ -10,29 +10,33 @@ public class Enemy : MonoBehaviour
 
     public float HP;
     public double speed;
+    public bool m_flip;
     public bool test = false;
 
     private void Start()
     {
-        InvokeRepeating("Fire", 2.0f, 2.0f);
+        InvokeRepeating("Fire", 3.0f, 3.0f);
     }
 
-    private void Fire()
+    public void SetBarrageSetting(BarrageContainer con, BarrageSequence seq, BarragePatten pat, bool flip)
     {
-        if (test) return;
-        barrageController.Shoot(this.gameObject, false);
-    }
-
-    public void SetBarrageSetting(BarrageContainer con, BarrageSequence seq, BarragePatten pat)
-    {
+        m_flip = flip;
         barrageController = gameObject.AddComponent<EnemyBarrageController>();
-        barrageController.Setting(con, seq, pat);
+        barrageController.Setting(con, seq, pat); 
     }
 
     public void SetMoveSequence(Sequence seq)
     {
         mySequence = seq;
     }
+
+    private void Fire()
+    {
+        if (test) return;
+        barrageController.Shoot(this.gameObject, m_flip);
+    }
+
+
 
     public float Damage(float atk)
     {

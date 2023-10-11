@@ -21,14 +21,33 @@ public class EnemyBarrageController : MonoBehaviour
     private void ShotPatten(GameObject enemy, bool flip)
     {
         foreach (var bullet in barragepat.patten)
-        {
-            GameObject barrage = Instantiate(barragecon.barrage[bullet.m_barrageid], enemy.transform.position, Quaternion.Euler(0, 0, -bullet.m_angle));
-            barrage.transform.Translate(Vector2.up * bullet.m_distance);
-            barrage.GetComponent<Barrage>().Speed = bullet.m_basespeed;
-            barrage.GetComponent<Barrage>().add_Speed = bullet.m_addspeed;
+        { 
+            ShotBullet(bullet, enemy, flip);
+            //bullet.m_targeting
         }
     }
+    
+    private void ShotBullet(BarrageData Barrage, GameObject enemy, bool flip)
+    {
+        float barrageangle;
 
+        if (!flip)
+        {
+            barrageangle = - Barrage.m_angle;
+        }
+        else
+        {
+            barrageangle = - (360 - Barrage.m_angle);
+        }
+
+        GameObject buf = Instantiate(barragecon.barrage[Barrage.m_barrageid], enemy.transform.position, Quaternion.Euler(0, 0, barrageangle));
+        buf.transform.Translate(Vector2.up * Barrage.m_distance * 0.1f);
+        buf.GetComponent<Barrage>().myEnemy = enemy;
+        buf.GetComponent<Barrage>().delay = Barrage.m_delay / 60.0f;
+        buf.GetComponent<Barrage>().SetSpeed(Barrage.m_basespeed, Barrage.m_addspeed);
+        buf.SetActive(false);
+        buf.GetComponent<Barrage>().ActiveTimerOn();
+    }
 
     public void Setting(BarrageContainer con, BarrageSequence seq, BarragePatten pat)
     {
