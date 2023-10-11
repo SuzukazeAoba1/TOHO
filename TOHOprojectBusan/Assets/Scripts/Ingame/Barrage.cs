@@ -7,6 +7,7 @@ public class Barrage : MonoBehaviour
 {
     public float HP;
     public float Speed;
+    public float add_Speed;
 
     public float Pierce(float atk)
     {

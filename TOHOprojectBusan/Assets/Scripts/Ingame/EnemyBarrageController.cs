@@ -20,8 +20,13 @@ public class EnemyBarrageController : MonoBehaviour
 
     private void ShotPatten(GameObject enemy, bool flip)
     {
-        GameObject barrage = Instantiate(barragecon.barrage[0], enemy.transform.position, Quaternion.Euler(0,0,-180));
-        barrage.GetComponent<Barrage>().Speed = 10;
+        foreach (var bullet in barragepat.patten)
+        {
+            GameObject barrage = Instantiate(barragecon.barrage[bullet.m_barrageid], enemy.transform.position, Quaternion.Euler(0, 0, -bullet.m_angle));
+            barrage.transform.Translate(Vector2.up * bullet.m_distance);
+            barrage.GetComponent<Barrage>().Speed = bullet.m_basespeed;
+            barrage.GetComponent<Barrage>().add_Speed = bullet.m_addspeed;
+        }
     }
 
 
