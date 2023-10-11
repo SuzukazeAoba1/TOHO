@@ -449,10 +449,16 @@ MonoBehaviour:
   SpawnContainer: {fileID: 47938437}
   EnemyContainer: {fileID: 139694443}
   MoveController: {fileID: 266479206}
+<<<<<<< HEAD
+  MoveContainer: {fileID: 1020607485}
+  BarrageContainer: {fileID: 1774761512}
+  BarragePatten: {fileID: 0}
+=======
   MoveContainer: {fileID: 1891287848}
   BarrageContainer: {fileID: 1055467440}
   BarragePatten: {fileID: 455092972}
   BarrageList: {fileID: 2112243182}
+>>>>>>> 95ee6c4ff785e4049a628e3b0b1f043950fd29d1
   spawnTimer: 0
   spawnCounter: 0
   nextSpawnTime: 0
@@ -3043,7 +3049,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 920673417}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 28019e850abd54b43be943eb0173d4d7, type: 3}
+  m_Script: {fileID: 11500000, guid: beb6ce24f159573458faa955975e5208, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   Gplayer: {fileID: 1404641476}
@@ -6333,6 +6339,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a5710745e317bc44b3246bf1fbb6779, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MaxEquip: 4
+  selected: []
   Healitem: {fileID: 0}
 --- !u!1 &2112243180
 GameObject:

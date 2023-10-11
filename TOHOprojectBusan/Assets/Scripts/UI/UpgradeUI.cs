@@ -6,10 +6,13 @@ using System.Linq;
 
 public class UpgradeUI : MonoBehaviour
 {
+    public int MaxEquip = 4;
     RectTransform rect;
     UpgradeButton[] Buttons;
     UpgradeButton[] items;
     UpgradeButton[] weapons;
+    public UpgradeButton[] selected;
+
     public Button Healitem;
     private bool isPaused;
 
@@ -20,12 +23,15 @@ public class UpgradeUI : MonoBehaviour
         Buttons = GetComponentsInChildren<UpgradeButton>(true);
         weapons = Buttons.Where(item => item.gameObject.name.Contains("Weapon")).ToArray();
         items = Buttons.Where(item => item.gameObject.name.Contains("Item")).ToArray();
-        
+        selected = new UpgradeButton[MaxEquip];
+
+
     }
 
     private void Start()
     {
-
+        Debug.Log(selected[0]);
+        Notnullcount();
     }
     
 
@@ -50,6 +56,7 @@ public class UpgradeUI : MonoBehaviour
 
     public void Select(int index)
     {
+        //if(selected.)
         Buttons[index].Onclik();
     }
 
@@ -105,5 +112,12 @@ public class UpgradeUI : MonoBehaviour
             
         }
         //±ÔÄ¢ 1. ¸¸·¾Àº ¾ÈµÊ
+    }
+
+    private int Notnullcount()
+    {
+        int nonNullCount = selected.Count(item => item != null);
+        Debug.Log(nonNullCount);
+        return nonNullCount;
     }
 }
