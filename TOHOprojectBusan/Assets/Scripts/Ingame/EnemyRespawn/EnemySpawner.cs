@@ -51,7 +51,7 @@ public class EnemySpawner : MonoBehaviour
     /// <summary>
     /// 몬스터 id를 입력받아 해당 위치에 몬스터 오브젝트를 생성하고 이동 패턴을 붙여주는 메소드
     /// </summary>
-    public void Spawn(int spawnpointid, int enemyid, int movesequenceid, bool flip)
+    public GameObject Spawn(int spawnpointid, int enemyid, int movesequenceid, bool flip)
     {
         if (spawnpointid >= 0 && spawnpointid <= 100)
         {
@@ -76,8 +76,11 @@ public class EnemySpawner : MonoBehaviour
             SpawnerPosTest.transform.position = new Vector3(spawnpos.x, spawnpos.y, 0);
 
             GameObject buf = Instantiate(enemyContainer.container[enemyid], new Vector3(spawnpos.x, spawnpos.y, 0), Quaternion.identity);
+
             moveController.Moving(buf, movesequenceid, flip);
+            return buf;
         }
+        return null;
     }
 
     public void SetTestController(TestEnemySpawnController con)

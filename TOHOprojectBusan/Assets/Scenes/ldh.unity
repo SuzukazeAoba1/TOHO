@@ -313,7 +313,6 @@ GameObject:
   - component: {fileID: 266479208}
   - component: {fileID: 266479207}
   - component: {fileID: 266479206}
-  - component: {fileID: 266479209}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: GameController
@@ -362,7 +361,7 @@ MonoBehaviour:
   EnemyContainer: {fileID: 1551267937}
   MoveController: {fileID: 266479206}
   MoveContainer: {fileID: 1020607485}
-  BarrageController: {fileID: 266479209}
+  BarrageController: {fileID: 0}
   BarrageContainer: {fileID: 1774761512}
   BarragePatten: {fileID: 538293837}
   spawnTimer: 0
@@ -370,18 +369,6 @@ MonoBehaviour:
   nextSpawnTime: 0
   pause: 0
   reset: 0
---- !u!114 &266479209
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 266479205}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e699adb3d16756e46b5eb1cdc2d56d17, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &266479210
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -14,7 +14,6 @@ public class EnemySpawnController : MonoBehaviour
     public EnemyMoveController MoveController;
     public EnemyMoveContainer MoveContainer;
 
-    public EnemyBarrageController BarrageController;
     public EnemyBarrageContainer BarrageContainer;
     public EnemyBarragePatten BarragePatten;
 
@@ -56,13 +55,13 @@ public class EnemySpawnController : MonoBehaviour
         barragesquencedata.Clear();
         barragepattendata.Clear();
 
-        sqawnpattendata = CSVReader.Read("spawn_patten_data");
+        sqawnpattendata = CSVReader.Read("main_spawn_data");
         movesequencedata = CSVReader.Read("move_sequence_data");
         barragesquencedata = CSVReader.Read("barrage_sequence_data");
         barragepattendata = CSVReader.Read("barrage_patten_data");
 
-        MoveContainer.SetFileData(movesequencedata);
         SpawnContainer.SetFileData(sqawnpattendata);
+        MoveContainer.SetFileData(movesequencedata);
         BarrageContainer.SetFileData(barragesquencedata);
         BarragePatten.SetFileData(barragepattendata);
 
@@ -96,9 +95,9 @@ public class EnemySpawnController : MonoBehaviour
 
                 if (nextSpawnTime < spawnTimer)
                 {
-                    spawner.Spawn(spawnbuf.m_spawnposid, spawnbuf.m_enemyid, spawnbuf.m_movesequenceid, spawnbuf.m_spawnfilp);
-                    spawnCounter += 1;
-                    //BarrageController.Shoot(transform, false);
+                    GameObject buf = spawner.Spawn(spawnbuf.m_spawnposid, spawnbuf.m_enemyid, spawnbuf.m_movesequenceid, spawnbuf.m_spawnfilp);
+                    //buf.GetComponent<Enemy>().SetBarrageSetting();
+                    spawnCounter += 1; 
                 }
             }
         }
