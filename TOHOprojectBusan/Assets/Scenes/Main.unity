@@ -2966,7 +2966,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 920673417}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 28019e850abd54b43be943eb0173d4d7, type: 3}
+  m_Script: {fileID: 11500000, guid: beb6ce24f159573458faa955975e5208, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   Gplayer: {fileID: 1404641476}
@@ -6256,6 +6256,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a5710745e317bc44b3246bf1fbb6779, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MaxEquip: 4
+  selected: []
   Healitem: {fileID: 0}
 --- !u!1 &2112243180
 GameObject:

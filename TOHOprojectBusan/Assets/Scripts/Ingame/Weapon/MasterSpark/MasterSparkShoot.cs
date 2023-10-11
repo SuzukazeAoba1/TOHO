@@ -44,7 +44,7 @@ public class MasterSparkShoot : MonoBehaviour
 
     private void FixedUpdate()
     {
-        //playerlPos = main_camera.GetComponent<CameraController>().camera_position();
+        playerlPos = main_camera.GetComponent<CameraController>().camera_position();
     }
 
 
@@ -68,7 +68,7 @@ public class MasterSparkShoot : MonoBehaviour
 
     IEnumerator ShakeCamera()
     {
-        //originalPos = main_camera.GetComponent<CameraController>().camera_position();
+        originalPos = main_camera.GetComponent<CameraController>().camera_position();
 
         float elapsed = 0f;
 
