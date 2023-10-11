@@ -61,14 +61,9 @@ public class EnemySpawnController : MonoBehaviour
         barragepattendata = CSVReader.Read("barrage_patten_data");
 
         SpawnContainer.SetFileData(sqawnpattendata);
-<<<<<<< HEAD
+        MoveContainer.SetFileData(movesequencedata);
         //BarrageContainer.SetFileData(barragesquencedata);
         //BarragePatten.SetFileData(barragepattendata);
-=======
-        MoveContainer.SetFileData(movesequencedata);
-        BarrageContainer.SetFileData(barragesquencedata);
-        BarragePatten.SetFileData(barragepattendata);
->>>>>>> 3cd97f45b013d1ac4a653c0cdcc5560611bd767c
 
         pause = true;
         reset = false;
