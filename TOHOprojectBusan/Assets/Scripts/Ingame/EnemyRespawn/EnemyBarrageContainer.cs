@@ -4,7 +4,7 @@ using UnityEngine;
 
 
 [Serializable]
-public struct BarrageSequence
+public class BarrageSequence
 {
     //public string name;
 

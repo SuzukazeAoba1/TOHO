@@ -5,15 +5,27 @@ using DG.Tweening;
 
 public class Enemy : MonoBehaviour
 {
+    EnemyBarrageController barrageController;
     Sequence mySequence;
+
     public float HP;
     public double speed;
 
-    public void SetSequence(Sequence seq)
+    private void Start()
+    {
+        barrageController = gameObject.AddComponent<EnemyBarrageController>();
+        //시퀀스와 컨테이너 연결 필요
+    }
+
+    public void SetBarrageSetting(BarrageContainer con, BarrageSequence seq, BarragePatten pat)
+    {
+        barrageController.Setting(con, seq, pat);
+    }
+
+    public void SetMoveSequence(Sequence seq)
     {
         mySequence = seq;
     }
-
 
     public float Damage(float atk)
     {

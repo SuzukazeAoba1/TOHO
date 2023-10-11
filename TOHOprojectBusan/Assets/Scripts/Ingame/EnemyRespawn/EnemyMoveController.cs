@@ -68,7 +68,8 @@ public class EnemyMoveController : MonoBehaviour
                 default: break;
             }
         }
-        target.GetComponent<Enemy>().SetSequence(seq);
+
+        target.GetComponent<Enemy>().SetMoveSequence(seq);
         seq.Play();
 
     }
