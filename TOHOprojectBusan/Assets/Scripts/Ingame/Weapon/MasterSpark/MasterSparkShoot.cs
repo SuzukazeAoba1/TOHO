@@ -3,18 +3,25 @@ using UnityEngine;
 
 public class MasterSparkShoot : MonoBehaviour
 {
+    public GameObject Parent;
     public Transform[] spark;
-    public float cooltime = 120;
+    private float cooltime = 120;
     public Transform main_camera;
     public float shakeAmount = 0.7f;
     public float decreaseFactor = 1.0f;
-    public float duration = 3.5f;
+    private float duration = 3.5f;
 
     Vector3 originalPos;
     Vector3 playerlPos;
 
+    private void Awake()
+    {
+        duration = Parent.GetComponent<MastersparkManager>().duration;
+        cooltime = Parent.GetComponent<MastersparkManager>().cooltime;
+    }
     void Start()
     {
+        
         spark = new Transform[transform.childCount];
         for (int i = 0; i < transform.childCount; i++)
         {
@@ -25,7 +32,7 @@ public class MasterSparkShoot : MonoBehaviour
         {
             spark[i].gameObject.SetActive(false);
         }
-        InvokeRepeating("Shoot", 2f, cooltime);
+        //InvokeRepeating("Shoot", 2f, cooltime);
     }
 
     void Update()
@@ -37,7 +44,7 @@ public class MasterSparkShoot : MonoBehaviour
 
     private void FixedUpdate()
     {
-        playerlPos = main_camera.GetComponent<Camera>().camera_position();
+        playerlPos = main_camera.GetComponent<CameraController>().camera_position();
     }
 
 
@@ -61,7 +68,7 @@ public class MasterSparkShoot : MonoBehaviour
 
     IEnumerator ShakeCamera()
     {
-        originalPos = main_camera.GetComponent<Camera>().camera_position();
+        originalPos = main_camera.GetComponent<CameraController>().camera_position();
 
         float elapsed = 0f;
 

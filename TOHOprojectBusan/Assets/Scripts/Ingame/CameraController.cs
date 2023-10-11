@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Camera : MonoBehaviour
+public class CameraContrroller : MonoBehaviour
 {
     public GameObject Gplayer;
     private Vector3 position = Vector3.zero;
