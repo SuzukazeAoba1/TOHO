@@ -63,8 +63,8 @@ public class EnemySpawnController : MonoBehaviour
 
         MoveContainer.SetFileData(movesequencedata);
         SpawnContainer.SetFileData(sqawnpattendata);
-        BarrageContainer.SetFileData(barragesquencedata);
-        BarragePatten.SetFileData(barragepattendata);
+        //BarrageContainer.SetFileData(barragesquencedata);
+        //BarragePatten.SetFileData(barragepattendata);
 
         pause = true;
         reset = false;

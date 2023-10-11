@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    [Header("# 외부 게임오브젝트")]
+    public HealthGUI healthGui;
+    public GameManager gManager;
+    [Header ("# PlayerStatus")]
     public int maxHealth = 5;
     private int health = 5;
     public float speed = 4.5f;
@@ -11,8 +15,8 @@ public class Player : MonoBehaviour
     private Vector3 position = Vector3.zero;
     private float H;
     private float V;
-    private float xRange = 9.8f;
-    private float yRange = 13.8f;
+    private float xRange;
+    private float yRange;
 
     public float invincibility_time = 1.3f;
     private float damageTimer = 1f;
@@ -20,18 +24,21 @@ public class Player : MonoBehaviour
 
     private GameObject damageText;
     private Vector3 offset = new Vector3(0, 1f, 0);
-    public HealthGUI healthGui;
+    
 
     // Start is called before the first frame update
 
     void Awake()
     {
+        xRange = (gManager.gameObject.GetComponent<GameManager>().movingzone.x - 1) /2;
+        yRange = (gManager.gameObject.GetComponent<GameManager>().movingzone.y - 1) / 2;
         health = maxHealth;
         healthGui.HealthSet(health);
     }
     void Start()
     {
-        
+        Debug.Log(xRange);
+        Debug.Log(yRange);
     }
 
     // Update is called once per frame
