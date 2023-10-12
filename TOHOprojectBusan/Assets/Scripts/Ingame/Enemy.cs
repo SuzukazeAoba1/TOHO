@@ -5,6 +5,7 @@ using DG.Tweening;
 
 public class Enemy : MonoBehaviour
 {
+    public GameObject player;
     public EnemyBarrageController barrageController;
     Sequence mySequence;
 
@@ -21,8 +22,10 @@ public class Enemy : MonoBehaviour
     public void SetBarrageSetting(BarrageContainer con, BarrageSequence seq, BarragePatten pat, bool flip)
     {
         m_flip = flip;
+
+        player = GameManager.instance.gameObject.GetComponent<GameManager>().player;
         barrageController = gameObject.AddComponent<EnemyBarrageController>();
-        barrageController.Setting(con, seq, pat); 
+        barrageController.Setting(con, seq, pat);
     }
 
     public void SetMoveSequence(Sequence seq)
@@ -35,8 +38,6 @@ public class Enemy : MonoBehaviour
         if (test) return;
         barrageController.Shoot(this.gameObject, m_flip);
     }
-
-
 
     public float Damage(float atk)
     {
