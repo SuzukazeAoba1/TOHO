@@ -8,27 +8,36 @@ public class EnemyBarrageController : MonoBehaviour
     public BarrageSequence barrageseq;
     public BarragePatten barragepat;
 
+    public int shotcount;
+
     public void Shoot(GameObject enemy, GameObject player, bool flip)
     {
         ShotSeq(enemy, player, flip);
     }
 
     private void ShotSeq(GameObject enemy, GameObject player, bool flip)
-    { 
-        ShotPatten(enemy, player, flip);
+    {
+        for (int i = 0; i < barrageseq.m_shotnum; i++)
+        {
+            ShotPatten(barrageseq.m_firstangle + barrageseq.m_perangle * i, enemy, player, flip);
+        }
     }
 
-    private void ShotPatten(GameObject enemy, GameObject player, bool flip)
+    private void ShotPatten(int groupangle, GameObject enemy, GameObject player, bool flip)
     {
+        GameObject pattengroup = new GameObject();
+        pattengroup.transform.position = enemy.transform.position;
+        pattengroup.name = "barragepatten " + barrageseq.m_barragepattenid;
+        pattengroup.AddComponent<EnemyBarrageGroup>().SetSeq(barrageseq.m_basevector, groupangle);
 
         foreach (var bullet in barragepat.patten) //패턴 그룹
         { 
-            ShotBullet(bullet, enemy, player, flip);
+            ShotBullet(bullet, pattengroup, enemy, player, flip);
         }
 
     }
     
-    private void ShotBullet(BarrageData Barrage, GameObject enemy, GameObject player, bool flip)
+    private void ShotBullet(BarrageData Barrage, GameObject pattengroup, GameObject enemy, GameObject player, bool flip)
     {
         float barrageangle;
         Quaternion barragerotation;
@@ -46,6 +55,7 @@ public class EnemyBarrageController : MonoBehaviour
 
         GameObject buf = Instantiate(barragecon.barrage[Barrage.m_barrageid], enemy.transform.position, barragerotation);
         buf.GetComponent<Barrage>().SetData(enemy, player, Barrage.m_basespeed, Barrage.m_addspeed, Barrage.m_distance, Barrage.m_delay / 60.0f);
+        buf.transform.SetParent(pattengroup.transform);
 
         buf.SetActive(false);
         buf.GetComponent<Barrage>().ActiveTimerOn();

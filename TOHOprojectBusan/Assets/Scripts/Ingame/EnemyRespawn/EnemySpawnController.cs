@@ -98,7 +98,7 @@ public class EnemySpawnController : MonoBehaviour
                 {
                     int pattenid = BarrageSequence.List[spawnbuf.m_barragesequenceid].m_barragepattenid;
                     GameObject buf = spawner.Spawn(spawnbuf.m_spawnposid, spawnbuf.m_enemyid, spawnbuf.m_movesequenceid, spawnbuf.m_spawnfilp);
-                    buf.GetComponent<Enemy>().SetBarrageSetting(BarrageList, BarrageSequence.List[spawnbuf.m_barragesequenceid], BarragePatten.List[pattenid], spawnbuf.m_spawnfilp);
+                    buf.GetComponent<Enemy>().SetBarrageSetting(BarrageList, BarrageSequence.List[spawnbuf.m_barragesequenceid], BarragePatten.List[pattenid], spawnbuf.m_spawnfilp, BarrageSequence.List[spawnbuf.m_barragesequenceid].m_shotinterval);
                     spawnCounter += 1;
                 }
             }

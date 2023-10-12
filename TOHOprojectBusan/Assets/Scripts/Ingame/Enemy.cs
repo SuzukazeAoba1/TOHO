@@ -13,19 +13,21 @@ public class Enemy : MonoBehaviour
     public double speed;
     public bool m_flip;
     public bool test = false;
+    public float testcooltime = 3.0f;
 
     private void Start()
     {
-        InvokeRepeating("Fire", 3.0f, 3.0f);
+        InvokeRepeating("Fire", testcooltime, testcooltime);
     }
 
-    public void SetBarrageSetting(BarrageContainer con, BarrageSequence seq, BarragePatten pat, bool flip)
+    public void SetBarrageSetting(BarrageContainer con, BarrageSequence seq, BarragePatten pat, bool flip, float cooltime)
     {
         m_flip = flip;
 
         player = GameManager.instance.gameObject.GetComponent<GameManager>().player;
         barrageController = gameObject.AddComponent<EnemyBarrageController>();
         barrageController.Setting(con, seq, pat);
+        testcooltime = cooltime / 10.0f;
     }
 
     public void SetMoveSequence(Sequence seq)

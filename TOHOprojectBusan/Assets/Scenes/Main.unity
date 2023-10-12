@@ -456,9 +456,9 @@ MonoBehaviour:
   spawnTimer: 0
   spawnCounter: 0
   nextSpawnTime: 0
-  testbarragepatten: 0
+  testbarrageseq: 0
   pause: 0
-  reset: 0
+  reset: 1
 --- !u!114 &266479210
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7590,6 +7590,7 @@ MonoBehaviour:
   itemgui: {fileID: 453460047}
   selected: []
   Healitem: {fileID: 0}
+  selectcount: 0
 --- !u!1 &2112243180
 GameObject:
   m_ObjectHideFlags: 0
