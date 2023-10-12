@@ -21,7 +21,6 @@ public class UpgradeUI : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
-        maxEquip--;
         rect = GetComponent<RectTransform>();
         Buttons = GetComponentsInChildren<UpgradeButton>(true);
         weapons = Buttons.Where(item => item.gameObject.name.Contains("Weapon")).ToArray();

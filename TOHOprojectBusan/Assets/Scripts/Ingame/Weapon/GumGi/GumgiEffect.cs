@@ -42,8 +42,11 @@ public class GumgiEffect : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
+        Color eC = other.GetComponent<SpriteRenderer>().color;
         if (other.gameObject.CompareTag("Enemy"))
         {
+            Invoke("Crestore", 0.1f);
+            other.GetComponent<SpriteRenderer>().color = new Color(eC.r / 3, eC.r / 3, eC.b / 3);
             effect = GameManager.instance.EffectPool.Get(eID);
             Vector3 ePosition = other.ClosestPoint(transform.position);
             ePosition.y += offset;
@@ -56,6 +59,8 @@ public class GumgiEffect : MonoBehaviour
         }
         else if (other.gameObject.CompareTag("Barrage"))
         {
+            Invoke("Crestore", 0.1f);
+            other.GetComponent<SpriteRenderer>().color = new Color(eC.r / 3, eC.r / 3, eC.b / 3);
             effect = GameManager.instance.EffectPool.Get(eID);
             Vector3 ePosition = other.ClosestPoint(transform.position);
             ePosition.y += offset;
@@ -67,7 +72,10 @@ public class GumgiEffect : MonoBehaviour
             damageText.GetComponent<TextMeshPro>().text = attackpoint.ToString();
 
         }
-        
+        void Crestore()
+        {
+            other.GetComponent<SpriteRenderer>().color = eC;
+        }
     }
 
     private void DeactivateSelf()

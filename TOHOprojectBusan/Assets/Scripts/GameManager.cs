@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -22,6 +23,7 @@ public class GameManager : MonoBehaviour
     public PoolManager EffectPool;
     public WeaponSpawn weaponSpawn;
     public UpgradeUI upgradeUI;
+    public GameObject main_camera;
     [Header("# PlayerStats")]
     public GameObject player;
     public int level;
@@ -81,6 +83,7 @@ public class GameManager : MonoBehaviour
     public void Die()
     {
         isDead = true;
+        SceneManager.LoadScene("Dead");
     }
     public void GetExp(int nExp)
     {

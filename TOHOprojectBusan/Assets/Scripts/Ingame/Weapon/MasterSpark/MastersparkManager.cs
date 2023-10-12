@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class MastersparkManager : MonoBehaviour
 {
-    public float speed = 10f;
-    private float vspeed = 10f;
+    public float speed = 1f;
+    private float vspeed = 1f;
     private Vector3 RotateV = new Vector3(0, 0, -1);
-    public float cooltime = 120;
+    public float Cooltime = 150;
+    private float cooltime = 120;
     public float duration = 3.5f;
     public Transform magicCircle;
     public Transform circleMove;
@@ -17,14 +18,30 @@ public class MastersparkManager : MonoBehaviour
     public GameObject player;
     private SpriteRenderer circleSR;
     private Color originalColor;
-    private bool canshoot = true;
+    private bool canshoot = false;
     // Start is called before the first frame update
+
+    private void Awake()
+    {
+        player = GameObject.FindGameObjectWithTag("Player");
+        
+    }
     void Start()
     {
+        cooltime = Cooltime;
+        save_position = player.transform.position + new Vector3(0, 0, 0);
+        circleMove.position = player.transform.position + new Vector3(0, 1.62f, 0);
         save_scale = magicCircle.transform.localScale;
         circleSR = magicCircle.GetComponent<SpriteRenderer>();
         originalColor = circleSR.color;
         vspeed = speed;
+    }
+    private void OnEnable()
+    {
+        //save_position = player.transform.position + new Vector3(0, 0, 0);
+        //circleMove.position = player.transform.position + new Vector3(0, 1.62f, 0);
+        Invoke("SparkShoot", 3f);
+        vspeed = speed * 12;
     }
 
     // Update is called once per frame
@@ -48,6 +65,7 @@ public class MastersparkManager : MonoBehaviour
     {
         Invoke("StopSpark", duration);
         canshoot = false;
+        cooltime = Cooltime;
         moveMagicCircle();
         circleSR.sortingLayerName = "Default";
         Spark.GetComponent<MasterSparkShoot>().Shoot();
@@ -58,6 +76,7 @@ public class MastersparkManager : MonoBehaviour
     {
         Spark.GetComponent<MasterSparkShoot>().StopShoot();
         vspeed = speed;
+        cooltime = Cooltime;
         magicCircle.position = save_position;
         magicCircle.localScale = save_scale;
         Color startColor = originalColor;
@@ -130,4 +149,8 @@ public class MastersparkManager : MonoBehaviour
         yield return null;
     }
 
+    public void cooltimego(float newCooltime)
+    {
+        Cooltime = newCooltime;
+    }
 }
