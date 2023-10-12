@@ -525,7 +525,7 @@ MonoBehaviour:
   EnemyContainer: {fileID: 139694443}
   MoveController: {fileID: 266479206}
   MoveContainer: {fileID: 1891287848}
-  BarrageSequence: {fileID: 0}
+  BarrageSequence: {fileID: 1055467440}
   BarragePatten: {fileID: 455092972}
   BarrageList: {fileID: 2112243182}
   spawnTimer: 0
