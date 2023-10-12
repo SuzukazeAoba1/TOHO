@@ -6,7 +6,7 @@ using System.Linq;
 
 public class UpgradeUI : MonoBehaviour
 {
-    public int maxEquip = 4;
+    public int maxEquip = 3;
     RectTransform rect;
     public ItemGUI itemgui;
     UpgradeButton[] Buttons;
@@ -16,12 +16,12 @@ public class UpgradeUI : MonoBehaviour
 
     public Button Healitem;
     private bool isPaused;
-    private int selectcount = 0;
+    public int selectcount = 0;
 
     // Start is called before the first frame update
     void Awake()
     {
-        maxEquip++;
+        maxEquip--;
         rect = GetComponent<RectTransform>();
         Buttons = GetComponentsInChildren<UpgradeButton>(true);
         weapons = Buttons.Where(item => item.gameObject.name.Contains("Weapon")).ToArray();
@@ -65,22 +65,22 @@ public class UpgradeUI : MonoBehaviour
 
     public void SetdataofButton(WeaponData recievedata)
     {
-        if(selectcount < maxEquip)
+        if (selectcount < maxEquip)
         {
-            for(int i = 0; i < Buttons.Length; i++)
+            for (int i = 0; i < Buttons.Length; i++)
             {
-                if(Buttons[i].GetComponent<UpgradeButton>().data == recievedata)
+                if (Buttons[i].GetComponent<UpgradeButton>().data == recievedata)
                 {
                     selected.Add(Buttons[i]);
                     itemgui.GetitemSlot(selectcount, recievedata);
-
-
                 }
             }
+
+            Debug.Log(selectcount + "번 선택되었습니다");
             selectcount++;
-            Debug.Log(selectcount);
+            Debug.Log(selected[selectcount - 1]); // 수정된 부분
         }
-        else
+        else if (selectcount >= maxEquip)
         {
             Debug.Log("무기 다 선택됨");
         }
@@ -114,10 +114,9 @@ public class UpgradeUI : MonoBehaviour
             item.gameObject.SetActive(false);
         }
         //그 중에서 규칙에 맞는 랜덤 아이템 3개 활성화
-        
+        int[] ran = new int[3];
         if (selectcount < maxEquip)
         {
-            int[] ran = new int[3];
             while (true)
             {
                 ran[0] = Random.Range(0, weapons.Length);
@@ -139,12 +138,12 @@ public class UpgradeUI : MonoBehaviour
         }
         else if (selectcount >= maxEquip)
         {
-            int[] ran = new int[3];
+            
             while (true)
             {
-                ran[0] = Random.Range(0, selectcount - 1);
-                ran[1] = Random.Range(0, selectcount - 1);
-                ran[2] = Random.Range(0, selectcount - 1);
+                ran[0] = Random.Range(0, selectcount);
+                ran[1] = Random.Range(0, selectcount);
+                ran[2] = Random.Range(0, selectcount);
                 if (ran[0] != ran[1] && ran[1] != ran[2] && ran[2] != ran[0])
                 {
                     break;
