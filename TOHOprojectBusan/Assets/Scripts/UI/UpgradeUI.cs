@@ -11,7 +11,7 @@ public class UpgradeUI : MonoBehaviour
     UpgradeButton[] Buttons;
     UpgradeButton[] items;
     UpgradeButton[] weapons;
-    public UpgradeButton[] selected;
+    public List<UpgradeButton> selected = new List<UpgradeButton>();
 
     public Button Healitem;
     private bool isPaused;
@@ -24,7 +24,6 @@ public class UpgradeUI : MonoBehaviour
         Buttons = GetComponentsInChildren<UpgradeButton>(true);
         weapons = Buttons.Where(item => item.gameObject.name.Contains("Weapon")).ToArray();
         items = Buttons.Where(item => item.gameObject.name.Contains("Item")).ToArray();
-        selected = new UpgradeButton[maxEquip];
 
 
     }
@@ -64,15 +63,13 @@ public class UpgradeUI : MonoBehaviour
 
     public void SetdataofButton(WeaponData recievedata)
     {
-        if(Notnullcount() < maxEquip)
+        if(selected.Count() < maxEquip)
         {
             for(int i = 0; i < Buttons.Length; i++)
             {
                 if(Buttons[i].GetComponent<UpgradeButton>().data == recievedata)
                 {
-                    selected[selectcount] = Buttons[i];
-                    selectcount++;
-                    Notnullcount();
+                    selected.Add(Buttons[i]);
                 }
             }
         }
@@ -107,7 +104,7 @@ public class UpgradeUI : MonoBehaviour
         }
         //그 중에서 규칙에 맞는 랜덤 아이템 3개 활성화
         int[] ran = new int[3];
-        if (Notnullcount() < maxEquip)
+        if (selected.Count() < maxEquip)
         {
             while (true)
             {
@@ -128,13 +125,13 @@ public class UpgradeUI : MonoBehaviour
 
             }
         }
-        else if (Notnullcount() == maxEquip)
+        else if (selected.Count() == maxEquip)
         {
             while (true)
             {
-                ran[0] = Random.Range(0, selected.Length);
-                ran[1] = Random.Range(0, selected.Length);
-                ran[2] = Random.Range(0, selected.Length);
+                ran[0] = Random.Range(0, selected.Count());
+                ran[1] = Random.Range(0, selected.Count());
+                ran[2] = Random.Range(0, selected.Count());
                 if (ran[0] != ran[1] && ran[1] != ran[2] && ran[2] != ran[0])
                 {
                     break;
@@ -161,11 +158,7 @@ public class UpgradeUI : MonoBehaviour
         //규칙 1. 만렙은 안됨
     }
 
-    private int Notnullcount()
-    {
-        int nonNullCount = selected.Count(item => item != null);
-        return nonNullCount;
-    }
+
 
     
 }
