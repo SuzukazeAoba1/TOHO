@@ -81,6 +81,43 @@ public class UpgradeButton : MonoBehaviour
                     }
                 }
 
+                level++;
+                break;
+            case WeaponData.ItemType.Heal:
+                if (player.GetComponent<Player>().health < player.GetComponent<Player>().maxHealth)
+                {
+                    player.GetComponent<Player>().Heal(data.levels[level]);
+                }
+                break;
+        }
+
+        if (level == data.levels.Length - 1)
+        {
+            GetComponent<Button>().interactable = false;
+        }
+    }
+    /*public void Onclik()
+    {
+        switch (data.itemType)
+        {
+            case WeaponData.ItemType.Weapon:
+                if (level == 0)
+                {
+                    GameObject newWeapon = Instantiate(data.Weaponobject, player.transform);
+                    upgradeUI.SetdataofButton(data);
+                }
+                else
+                {
+                    WeaponUpgrade[] upgrades = player.GetComponentsInChildren<WeaponUpgrade>();
+                    foreach (var upgrade in upgrades)
+                    {
+                        if (upgrade.weaponId == data.weaponID)
+                        {
+                            upgrade.ActivateSelectedLevel(level);
+                        }
+                    }
+                }
+
                 
                 level++;
                 break;
@@ -98,5 +135,6 @@ public class UpgradeButton : MonoBehaviour
             GetComponent<Button>().interactable = false;
         }
     }
+    */
 
 }
