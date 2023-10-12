@@ -8,45 +8,49 @@ public class EnemyBarrageController : MonoBehaviour
     public BarrageSequence barrageseq;
     public BarragePatten barragepat;
 
-    public void Shoot(GameObject enemy, bool flip)
+    public void Shoot(GameObject enemy, GameObject player, bool flip)
     {
-        ShotSeq(enemy, flip);
+        ShotSeq(enemy, player, flip);
     }
 
-    private void ShotSeq(GameObject enemy, bool flip)
-    {
-        ShotPatten(enemy, flip);
+    private void ShotSeq(GameObject enemy, GameObject player, bool flip)
+    { 
+        ShotPatten(enemy, player, flip);
     }
 
-    private void ShotPatten(GameObject enemy, bool flip)
+    private void ShotPatten(GameObject enemy, GameObject player, bool flip)
     {
-        foreach (var bullet in barragepat.patten)
+
+        foreach (var bullet in barragepat.patten) //패턴 그룹
         { 
-            ShotBullet(bullet, enemy, flip);
-            //bullet.m_targeting
+            ShotBullet(bullet, enemy, player, flip);
         }
+
     }
     
-    private void ShotBullet(BarrageData Barrage, GameObject enemy, bool flip)
+    private void ShotBullet(BarrageData Barrage, GameObject enemy, GameObject player, bool flip)
     {
         float barrageangle;
+        Quaternion barragerotation;
 
         if (!flip)
         {
-            barrageangle = - Barrage.m_angle;
+            barrageangle = -Barrage.m_angle;
+            barragerotation = Quaternion.Euler(0, 0, barrageangle);
         }
         else
         {
-            barrageangle = - (360 - Barrage.m_angle);
+            barrageangle = -(360 - Barrage.m_angle);
+            barragerotation = Quaternion.Euler(0, 0, barrageangle);
         }
 
-        GameObject buf = Instantiate(barragecon.barrage[Barrage.m_barrageid], enemy.transform.position, Quaternion.Euler(0, 0, barrageangle));
-        buf.transform.Translate(Vector2.up * Barrage.m_distance * 0.1f);
-        buf.GetComponent<Barrage>().myEnemy = enemy;
-        buf.GetComponent<Barrage>().delay = Barrage.m_delay / 60.0f;
-        buf.GetComponent<Barrage>().SetSpeed(Barrage.m_basespeed, Barrage.m_addspeed);
+        GameObject buf = Instantiate(barragecon.barrage[Barrage.m_barrageid], enemy.transform.position, barragerotation);
+        buf.GetComponent<Barrage>().SetData(enemy, player, Barrage.m_basespeed, Barrage.m_addspeed, Barrage.m_distance, Barrage.m_delay / 60.0f);
+
         buf.SetActive(false);
         buf.GetComponent<Barrage>().ActiveTimerOn();
+
+
     }
 
     public void Setting(BarrageContainer con, BarrageSequence seq, BarragePatten pat)

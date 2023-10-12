@@ -23,8 +23,7 @@ public class BarragePattenDrawer : PropertyDrawer
          x3 = x2 + 51,
          x4 = x3 + 31,
          x5 = x4 + 31,
-         x6 = x5 + 31,
-         x7 = x6 + 41;
+         x6 = x5 + 31;
 
         // Calculate rects
         var Rect1 = new Rect(x1, position.y, 40, position.height);
@@ -33,7 +32,6 @@ public class BarragePattenDrawer : PropertyDrawer
         var Rect4 = new Rect(x4, position.y, 30, position.height);
         var Rect5 = new Rect(x5, position.y, 30, position.height);
         var Rect6 = new Rect(x6, position.y, 40, position.height);
-        var Rect7 = new Rect(x7, position.y, 20, position.height);
 
         // Draw fields - pass GUIContent.none to each so they are drawn without labels
         EditorGUI.PropertyField(Rect1, property.FindPropertyRelative("m_barrageid"), GUIContent.none);
@@ -42,7 +40,6 @@ public class BarragePattenDrawer : PropertyDrawer
         EditorGUI.PropertyField(Rect4, property.FindPropertyRelative("m_basespeed"), GUIContent.none);
         EditorGUI.PropertyField(Rect5, property.FindPropertyRelative("m_addspeed"), GUIContent.none);
         EditorGUI.PropertyField(Rect6, property.FindPropertyRelative("m_delay"), GUIContent.none);
-        EditorGUI.PropertyField(Rect7, property.FindPropertyRelative("m_targeting"), GUIContent.none);
 
         // Set indent back to what it was
         EditorGUI.indentLevel = indent;

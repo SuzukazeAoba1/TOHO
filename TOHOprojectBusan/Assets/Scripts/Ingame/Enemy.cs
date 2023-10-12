@@ -36,7 +36,7 @@ public class Enemy : MonoBehaviour
     private void Fire()
     {
         if (test) return;
-        barrageController.Shoot(this.gameObject, m_flip);
+        barrageController.Shoot(gameObject, player, m_flip);
     }
 
     public float Damage(float atk)
