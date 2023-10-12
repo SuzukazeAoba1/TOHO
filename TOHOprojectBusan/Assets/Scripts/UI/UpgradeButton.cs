@@ -16,7 +16,6 @@ public class UpgradeButton : MonoBehaviour
 
     private void Awake()
     {
-        upgradeUI = transform.parent.GetComponent<UpgradeUI>();
         Image[] images = GetComponentsInChildren<Image>();
 
         foreach (var image in images)
@@ -36,7 +35,6 @@ public class UpgradeButton : MonoBehaviour
 
     private void OnEnable()
     {
-        upgradeUI = transform.parent.GetComponent<UpgradeUI>();
         Text[] texts = GetComponentsInChildren<Text>();
         foreach (var text in texts)
         {
@@ -69,7 +67,7 @@ public class UpgradeButton : MonoBehaviour
                 if (level == 0)
                 {
                     GameObject newWeapon = Instantiate(data.Weaponobject, player.transform);
-                    //upgradeUI.gameObject.GetComponent<UpgradeUI>().SetdataofButton(data);
+                    upgradeUI.SetdataofButton(data);
                 }
                 else
                 {
