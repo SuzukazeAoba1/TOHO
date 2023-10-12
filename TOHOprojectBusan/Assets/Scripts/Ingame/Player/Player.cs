@@ -178,6 +178,7 @@ public class Player : MonoBehaviour
     void Die()
     {
         isdead = true;
+        GameManager.instance.Die();
     }
 
     public void Heal(int count)
@@ -192,6 +193,7 @@ public class Player : MonoBehaviour
         while (isDamaged)
         {
             yield return new WaitForSeconds(invincibility_time);
+            isDamaged = false;
         }
     }
     IEnumerator Blink()

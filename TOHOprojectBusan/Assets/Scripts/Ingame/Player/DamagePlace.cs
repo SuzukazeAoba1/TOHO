@@ -22,6 +22,7 @@ public class DamagePlace : MonoBehaviour
         if (other.gameObject.CompareTag("Barrage"))
         {
             player.GetComponent<Player>().Damage();
+            other.gameObject.SetActive(false);
         }
             
     }

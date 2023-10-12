@@ -44,11 +44,14 @@ public class UMYANGOK : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
+        Color eC = other.GetComponent<SpriteRenderer>().color;
         if (candamage <= 0f)
         {
             candamage = Cooltime;
             if (other.gameObject.CompareTag("Enemy"))
             {
+                Invoke("Crestore", 0.1f);
+                other.GetComponent<SpriteRenderer>().color = new Color(eC.r / 3, eC.r / 3, eC.b / 3);
                 Vector3 ePosition = other.ClosestPoint(transform.position);
                 ePosition.y += 1f;
                 effect = GameManager.instance.EffectPool.Get(eID);
@@ -61,6 +64,8 @@ public class UMYANGOK : MonoBehaviour
             }
             else if (other.gameObject.CompareTag("Barrage"))
             {
+                Invoke("Crestore", 0.1f);
+                other.GetComponent<SpriteRenderer>().color = new Color(eC.r / 3, eC.r / 3, eC.b / 3);
                 Vector3 ePosition = other.ClosestPoint(transform.position);
                 ePosition.y += offset;
                 effect = GameManager.instance.EffectPool.Get(eID);
@@ -70,6 +75,10 @@ public class UMYANGOK : MonoBehaviour
                 //damageText.transform.localScale = new Vector3(other.transform.localScale.x / 6f, other.transform.localScale.y / 6f, other.transform.localScale.z / 6f);
                 damageText.GetComponent<TextMeshPro>().text = attackpoint.ToString();
 
+            }
+            void Crestore()
+            {
+                other.GetComponent<SpriteRenderer>().color = eC;
             }
         }
     }

@@ -1,0 +1,28 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class Deadzone : MonoBehaviour
+{
+    // Start is called before the first frame update
+    void Start()
+    {
+        
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        collision.gameObject.SetActive(false);
+    }
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        other.gameObject.SetActive(false);
+
+    }
+}

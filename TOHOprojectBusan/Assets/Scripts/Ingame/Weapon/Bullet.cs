@@ -19,6 +19,7 @@ public class Bullet : MonoBehaviour
     private GameObject damageText;
     private GameObject effect;
     public float offset = 0.7f;
+    private bool isdamaged = false;
 
     private void Awake()
     {
@@ -76,10 +77,12 @@ public class Bullet : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
+        Color eC = other.GetComponent<SpriteRenderer>().color;
+        
         if (other.gameObject.CompareTag("Enemy"))
         {
-            
 
+            
             Vector3 ePosition = other.ClosestPoint(transform.position);
             ePosition.y += offset;
             effect = GameManager.instance.EffectPool.Get(eID);
@@ -94,6 +97,7 @@ public class Bullet : MonoBehaviour
         }
         else if (other.gameObject.CompareTag("Barrage"))
         {
+            
             float pierced = other.gameObject.GetComponent<Barrage>().Pierce(attackpoint);
             effect = GameManager.instance.EffectPool.Get(eID);
             Vector3 ePosition = other.ClosestPoint(transform.position);
@@ -106,6 +110,8 @@ public class Bullet : MonoBehaviour
             other.gameObject.GetComponent<Barrage>().Damage(attackpoint);
             attackpoint = pierced;
         }
+
+
     }
 
     private void DeactivateSelf()
@@ -116,5 +122,6 @@ public class Bullet : MonoBehaviour
     {
         damageText.SetActive(false);
     }
+
 
 }
