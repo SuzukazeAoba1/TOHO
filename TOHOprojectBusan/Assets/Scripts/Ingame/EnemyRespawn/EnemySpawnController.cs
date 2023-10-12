@@ -29,7 +29,7 @@ public class EnemySpawnController : MonoBehaviour
     public float spawnTimer;
     public int spawnCounter;
     public float nextSpawnTime;
-    public int testbarragepatten = 0;
+    public int testbarrageseq = 0;
 
     public bool pause;
     public bool reset;
@@ -96,8 +96,9 @@ public class EnemySpawnController : MonoBehaviour
 
                 if (nextSpawnTime < spawnTimer)
                 {
+                    int pattenid = BarrageSequence.List[spawnbuf.m_barragesequenceid].m_barragepattenid;
                     GameObject buf = spawner.Spawn(spawnbuf.m_spawnposid, spawnbuf.m_enemyid, spawnbuf.m_movesequenceid, spawnbuf.m_spawnfilp);
-                    buf.GetComponent<Enemy>().SetBarrageSetting(BarrageList, BarrageSequence.List[0], BarragePatten.List[testbarragepatten], spawnbuf.m_spawnfilp);
+                    buf.GetComponent<Enemy>().SetBarrageSetting(BarrageList, BarrageSequence.List[spawnbuf.m_barragesequenceid], BarragePatten.List[pattenid], spawnbuf.m_spawnfilp);
                     spawnCounter += 1;
                 }
             }

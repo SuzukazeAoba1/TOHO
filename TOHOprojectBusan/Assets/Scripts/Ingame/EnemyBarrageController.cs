@@ -14,16 +14,18 @@ public class EnemyBarrageController : MonoBehaviour
     }
 
     private void ShotSeq(GameObject enemy, GameObject player, bool flip)
-    {
+    { 
         ShotPatten(enemy, player, flip);
     }
 
     private void ShotPatten(GameObject enemy, GameObject player, bool flip)
     {
-        foreach (var bullet in barragepat.patten)
+
+        foreach (var bullet in barragepat.patten) //패턴 그룹
         { 
             ShotBullet(bullet, enemy, player, flip);
         }
+
     }
     
     private void ShotBullet(BarrageData Barrage, GameObject enemy, GameObject player, bool flip)
