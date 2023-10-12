@@ -39,7 +39,8 @@ public class MastersparkManager : MonoBehaviour
 
     private void FixedUpdate()
     {
-        save_position = player.transform.position + new Vector3(-0.05f, 0, 0);
+        save_position = player.transform.position + new Vector3(0, 0, 0);
+        circleMove.position = player.transform.position + new Vector3(0, 1.62f, 0);
         magicCircle.transform.Rotate(RotateV, vspeed);
     }
 
