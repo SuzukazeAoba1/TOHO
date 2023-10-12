@@ -12,15 +12,17 @@ public class Player : MonoBehaviour
     public int health = 5;
     public float speed = 4.5f;
     public float bulletspeed = 200f;
+    public float invincibility_time = 1.2f;
     private Vector3 position = Vector3.zero;
     private float H;
     private float V;
     private float xRange;
     private float yRange;
 
-    public float invincibility_time = 1.3f;
     private float damageTimer = 1f;
     private bool isdead = false;
+    private bool isDamaged = false;
+    private SpriteRenderer mySR;
 
     private GameObject damageText;
     private Vector3 offset = new Vector3(0, 1f, 0);
@@ -30,6 +32,7 @@ public class Player : MonoBehaviour
 
     void Awake()
     {
+        mySR = GetComponent<SpriteRenderer>();
         xRange = (gManager.gameObject.GetComponent<GameManager>().movingzone.x - 1) /2;
         yRange = (gManager.gameObject.GetComponent<GameManager>().movingzone.y - 1) / 2;
         health = maxHealth;
@@ -140,16 +143,12 @@ public class Player : MonoBehaviour
             }
 
         }*/
-        
-        if (other.gameObject.CompareTag("Barrage"))
-        {
-                Damage();
-                Destroy(other.gameObject);
-                Debug.Log("대미지 입음");
-            
-                damageTimer = invincibility_time;
 
-        }
+        /*if (other.gameObject.CompareTag("Barrage"))
+        {
+            Damage();
+        }*/
+
 
         if (other.gameObject.CompareTag("Experiance"))
         {
@@ -157,17 +156,23 @@ public class Player : MonoBehaviour
             GameManager.instance.GetExp(1);
         }
     }
-    void Damage()
+    public void Damage()
     {
-
-        if (health > 1)
+        if (!isDamaged)
         {
-            health--;
-            healthGui.HealhtPull();
-        }
-        else if (health == 1)
-        {
-            Die();
+            if (health > 1)
+            {
+                isDamaged = true;
+                health--;
+                healthGui.HealhtPull();
+                StartCoroutine(Hurt());
+                StartCoroutine(Blink());
+            }
+            else if (health == 1)
+            {
+                healthGui.HealhtPull();
+                Die();
+            }
         }
     }
     void Die()
@@ -182,4 +187,22 @@ public class Player : MonoBehaviour
 
     }
 
+    IEnumerator Hurt()
+    {
+        while (isDamaged)
+        {
+            yield return new WaitForSeconds(invincibility_time);
+        }
+    }
+    IEnumerator Blink()
+    {
+        while(isDamaged)
+        {
+            Color myC = mySR.color;
+            yield return new WaitForSeconds(0.1f);
+            mySR.color = new Color(myC.r / 3, myC.g / 3, myC.b / 3);
+            yield return new WaitForSeconds(0.1f);
+            mySR.color = myC;
+        }
+    }
 }

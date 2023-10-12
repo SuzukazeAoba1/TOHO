@@ -16,8 +16,10 @@ public class MasterSparkShoot : MonoBehaviour
 
     private void Awake()
     {
+        Parent = transform.parent.gameObject;
+        main_camera = GameObject.FindGameObjectWithTag("MainCamera").transform;
         duration = Parent.GetComponent<MastersparkManager>().duration;
-        cooltime = Parent.GetComponent<MastersparkManager>().cooltime;
+        cooltime = Parent.GetComponent<MastersparkManager>().Cooltime;
     }
     void Start()
     {

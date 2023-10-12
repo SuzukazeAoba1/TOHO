@@ -10,24 +10,41 @@ public class WeaponUpgrade : MonoBehaviour
     private int level = 0;
     public int Maxlevel = 4;
     public KeyCode keyCode = KeyCode.Q;
+
     // Start is called before the first frame update
     void Start()
     {
-        levels = new GameObject[transform.childCount];
-        for (int i = 0; i < transform.childCount; i++)
+        if(weaponId != 4)
         {
-            levels[i] = transform.GetChild(i).gameObject;
+            levels = new GameObject[transform.childCount];
+            for (int i = 0; i < transform.childCount; i++)
+            {
+                levels[i] = transform.GetChild(i).gameObject;
+            }
+            ActivateSelectedLevel(level);
         }
-        ActivateSelectedLevel(level);
+        
     }
 
     public void Levelup()
     {
         if (level < Maxlevel - 1)
         {
-            level++;
-            currentlevel++;
-            ActivateSelectedLevel(level);
+            if (weaponId == 4)
+            {
+                level++;
+                currentlevel++;
+                float[] cooltimes = { 150, 90, 75, 40 };
+                GetComponent<MastersparkManager>().cooltimego(cooltimes[level]);
+                // 배열을 사용하거나 처리하는 코드 추가
+            }
+            else
+            {
+                level++;
+                currentlevel++;
+                ActivateSelectedLevel(level);
+            }
+
         }
         else
         {

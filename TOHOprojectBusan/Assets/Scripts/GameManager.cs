@@ -22,6 +22,7 @@ public class GameManager : MonoBehaviour
     public PoolManager EffectPool;
     public WeaponSpawn weaponSpawn;
     public UpgradeUI upgradeUI;
+    public GameObject main_camera;
     [Header("# PlayerStats")]
     public GameObject player;
     public int level;

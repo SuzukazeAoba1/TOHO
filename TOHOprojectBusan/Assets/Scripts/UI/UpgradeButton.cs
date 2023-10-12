@@ -76,7 +76,7 @@ public class UpgradeButton : MonoBehaviour
                     {
                         if (upgrade.weaponId == data.weaponID)
                         {
-                            upgrade.ActivateSelectedLevel(level);
+                            upgrade.Levelup();
                         }
                     }
                 }
