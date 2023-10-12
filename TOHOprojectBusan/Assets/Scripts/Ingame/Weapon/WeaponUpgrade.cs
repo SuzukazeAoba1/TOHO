@@ -20,6 +20,7 @@ public class WeaponUpgrade : MonoBehaviour
             for (int i = 0; i < transform.childCount; i++)
             {
                 levels[i] = transform.GetChild(i).gameObject;
+
             }
             ActivateSelectedLevel(level);
         }
@@ -36,6 +37,7 @@ public class WeaponUpgrade : MonoBehaviour
                 currentlevel++;
                 float[] cooltimes = { 150, 90, 75, 40 };
                 GetComponent<MastersparkManager>().cooltimego(cooltimes[level]);
+                GetComponent<MastersparkManager>().StartShoot();
                 // 배열을 사용하거나 처리하는 코드 추가
             }
             else

@@ -18,7 +18,7 @@ public class MastersparkManager : MonoBehaviour
     public GameObject player;
     private SpriteRenderer circleSR;
     private Color originalColor;
-    private bool canshoot = false;
+    public bool canshoot = false;
     // Start is called before the first frame update
 
     private void Awake()
@@ -29,25 +29,22 @@ public class MastersparkManager : MonoBehaviour
     void Start()
     {
         cooltime = Cooltime;
-        save_position = player.transform.position + new Vector3(0, 0, 0);
-        circleMove.position = player.transform.position + new Vector3(0, 1.62f, 0);
         save_scale = magicCircle.transform.localScale;
         circleSR = magicCircle.GetComponent<SpriteRenderer>();
         originalColor = circleSR.color;
         vspeed = speed;
+        StartShoot();
     }
     private void OnEnable()
     {
         //save_position = player.transform.position + new Vector3(0, 0, 0);
         //circleMove.position = player.transform.position + new Vector3(0, 1.62f, 0);
-        Invoke("SparkShoot", 3f);
-        vspeed = speed * 12;
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-        
         if (canshoot)
         {
             SparkShoot();
@@ -64,6 +61,8 @@ public class MastersparkManager : MonoBehaviour
     private void SparkShoot()
     {
         Invoke("StopSpark", duration);
+        magicCircle.position = save_position;
+        circleMove.position = save_position + new Vector3(0, 1.62f, 0);
         canshoot = false;
         cooltime = Cooltime;
         moveMagicCircle();
@@ -126,7 +125,7 @@ public class MastersparkManager : MonoBehaviour
     void moveMagicCircle()
     {
         StartCoroutine("ScaleMagicCircle");
-        Vector3 targetPosition = circleMove.position;
+        Vector3 targetPosition = player.transform.position + new Vector3(0, 1.62f, 0);
 
         // 이동 속도
         float moveSpeed = 6f;
@@ -152,5 +151,13 @@ public class MastersparkManager : MonoBehaviour
     public void cooltimego(float newCooltime)
     {
         Cooltime = newCooltime;
+    }
+
+    public void StartShoot()
+    {
+        canshoot = false;
+        circleSR.color = originalColor;
+        Invoke("SparkShoot", 3f);
+        vspeed = speed * 12;
     }
 }
