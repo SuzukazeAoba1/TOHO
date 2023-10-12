@@ -13,9 +13,8 @@ public struct BarrageData
     public int m_basespeed;
     public int m_addspeed;
     public int m_delay;
-    public bool m_targeting;
 
-    public BarrageData(int barrageid, int angle, int distance, int basespeed, int addspeed, int delay, bool targeting)
+    public BarrageData(int barrageid, int angle, int distance, int basespeed, int addspeed, int delay)
     {
         //name = " ";
         m_barrageid = barrageid;
@@ -24,7 +23,6 @@ public struct BarrageData
         m_basespeed = basespeed;
         m_addspeed = addspeed;
         m_delay = delay;
-        m_targeting = targeting;
     }
 }
 
@@ -49,9 +47,7 @@ public class EnemyBarragePatten : MonoBehaviour
         List.Clear();
         BarrageData barragebuf;
 
-        int pattenid, barrageid, angle, distance, basespeed, addspeed, delay, targeting;
-        bool booltarget;
-
+        int pattenid, barrageid, angle, distance, basespeed, addspeed, delay;
         int currentid = 0;
 
         BarragePatten pattenbuf = new BarragePatten();
@@ -67,12 +63,7 @@ public class EnemyBarragePatten : MonoBehaviour
             basespeed = int.Parse(Seq["basespeed"].ToString());
             addspeed = int.Parse(Seq["addspeed"].ToString());
             delay = int.Parse(Seq["delay"].ToString());
-            targeting = int.Parse(Seq["targeting"].ToString());
 
-            if(targeting == 0) 
-                booltarget = false;
-            else
-                booltarget = true;
 
             if(currentid < pattenid)
             {
@@ -81,7 +72,7 @@ public class EnemyBarragePatten : MonoBehaviour
                 List.Add(pattenbuf);
             }
 
-            barragebuf = new BarrageData(barrageid, angle, distance, basespeed, addspeed, delay, booltarget);
+            barragebuf = new BarrageData(barrageid, angle, distance, basespeed, addspeed, delay);
             pattenbuf.patten.Add(barragebuf);
         }
     }

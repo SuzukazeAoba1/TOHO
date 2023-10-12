@@ -5,31 +5,45 @@ using DG.Tweening;
 
 public class Barrage : MonoBehaviour
 {
+    public GameObject Target;
     public GameObject myEnemy;
+
     public float HP;
     public float Speed_now;
     public float Speed_base;
     public float Speed_add;
-    public float delay;
+    public float m_delay;
+    public float m_distance;
 
     public void ActiveTimerOn()
     {
-        if (delay > 0.0f) Invoke("ActivateSelf", delay);
-        else              gameObject.SetActive(true);
+        if (m_delay > 0.0f)
+        {
+            Invoke("ActivateSelf", m_delay);
+        }
+        else
+        {
+            ActivateSelf();
+        }
     }
     
     private void ActivateSelf()
     {
+        transform.Translate(0.1f * m_distance * Vector2.up);
         transform.position = myEnemy.transform.position;
         gameObject.SetActive(true);
     }
 
-    public void SetSpeed(float basespeed, float addspeed)
+    public void SetData(GameObject enemy, GameObject player, float basespeed, float addspeed, float distance, float delay)
     {
+        Target = player;
+        myEnemy = enemy;
+        m_delay = delay;
+        m_distance = distance;
         Speed_base = basespeed;
         Speed_now = basespeed;
         Speed_add = addspeed;
-    }
+     }
 
     public float Pierce(float atk)
     {
