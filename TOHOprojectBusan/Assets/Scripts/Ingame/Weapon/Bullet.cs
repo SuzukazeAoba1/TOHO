@@ -82,7 +82,9 @@ public class Bullet : MonoBehaviour
         if (other.gameObject.CompareTag("Enemy"))
         {
 
-            
+            Color othercolor = other.gameObject.GetComponent<SpriteRenderer>().color;
+            other.gameObject.GetComponent<SpriteRenderer>().color = new Color(othercolor.r / 3, othercolor.g / 3, othercolor.b / 3);
+            other.gameObject.GetComponent<Enemy>().isdamaged = true;
             Vector3 ePosition = other.ClosestPoint(transform.position);
             ePosition.y += offset;
             effect = GameManager.instance.EffectPool.Get(eID);
@@ -97,7 +99,8 @@ public class Bullet : MonoBehaviour
         }
         else if (other.gameObject.CompareTag("Barrage"))
         {
-            
+            Color othercolor = other.gameObject.GetComponent<SpriteRenderer>().color;
+            other.gameObject.GetComponent<SpriteRenderer>().color = new Color(othercolor.r / 3, othercolor.g / 3, othercolor.b / 3);
             float pierced = other.gameObject.GetComponent<Barrage>().Pierce(attackpoint);
             effect = GameManager.instance.EffectPool.Get(eID);
             Vector3 ePosition = other.ClosestPoint(transform.position);
@@ -113,7 +116,7 @@ public class Bullet : MonoBehaviour
 
 
     }
-
+    
     private void DeactivateSelf()
     {
         gameObject.SetActive(false);

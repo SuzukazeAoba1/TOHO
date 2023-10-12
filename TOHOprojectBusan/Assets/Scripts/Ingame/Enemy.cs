@@ -14,12 +14,23 @@ public class Enemy : MonoBehaviour
     public bool m_flip;
     public bool test = false;
     public float testcooltime = 3.0f;
+    public bool isdamaged = false;
+    private Color myColor;
 
     private void Start()
     {
+        myColor = GetComponent<SpriteRenderer>().color;
         InvokeRepeating("Fire", testcooltime, testcooltime);
     }
 
+    private void Update()
+    {
+        if(isdamaged)
+        {
+            Invoke("RestoreColor", 0.2f);
+                    
+        }
+    }
     public void SetBarrageSetting(BarrageContainer con, BarrageSequence seq, BarragePatten pat, bool flip, float cooltime)
     {
         m_flip = flip;
@@ -60,5 +71,11 @@ public class Enemy : MonoBehaviour
         exp.transform.position = transform.position;
         mySequence.Kill(true);
         Destroy(gameObject);
+    }
+
+    private void RestoreColor()
+    {
+        gameObject.GetComponent<SpriteRenderer>().color = myColor;
+        isdamaged = false;
     }
 }
