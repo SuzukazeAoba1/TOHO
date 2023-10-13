@@ -10,16 +10,22 @@ public class EnemyBarrageController : MonoBehaviour
 
     public int bulletcount;
 
+
     public void Shoot(GameObject enemy, GameObject player, bool flip)
     {
-        ShotSeq(enemy, player, flip);
+        StartCoroutine(ShotSeq(enemy, player, flip)); //test
     }
 
-    private void ShotSeq(GameObject enemy, GameObject player, bool flip)
+    private IEnumerator ShotSeq(GameObject enemy, GameObject player, bool flip)
     {
-        for (int i = 0; i < barrageseq.m_shotnum; i++)
+        while (true)
         {
-            ShotPatten(barrageseq.m_firstangle + barrageseq.m_perangle * i, enemy, player, flip);
+            for (int i = 0; i < barrageseq.m_shotnum; i++)
+            {
+                ShotPatten(barrageseq.m_firstangle + barrageseq.m_perangle * i, enemy, player, flip);
+                yield return new WaitForSeconds(barrageseq.m_shotinterval);
+            }
+            yield return new WaitForSeconds(barrageseq.m_shotlooptime);
         }
     }
 
