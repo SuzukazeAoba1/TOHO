@@ -28,15 +28,19 @@ public class EnemyBarrageController : MonoBehaviour
         GameObject pattengroup = new GameObject();
         pattengroup.transform.position = enemy.transform.position;
         pattengroup.name = "barragepatten " + barrageseq.m_barragepattenid;
-        pattengroup.AddComponent<EnemyBarrageGroup>().SetSeq(barrageseq.m_basevector, groupangle);
 
-        bulletcount = 1;
+        EnemyBarrageGroup group = pattengroup.AddComponent<EnemyBarrageGroup>();
+        group.SetSeq(barrageseq.m_basevector, groupangle);
+
+        bulletcount = 0;
 
         foreach (var bullet in barragepat.patten) //패턴 그룹
         {
             bulletcount++;
             ShotBullet(bullet, pattengroup, enemy, player, flip);
         }
+
+        group.bulletcount = bulletcount;
 
     }
     
@@ -57,8 +61,7 @@ public class EnemyBarrageController : MonoBehaviour
         }
 
         GameObject buf = Instantiate(barragecon.barrage[Barrage.m_barrageid], enemy.transform.position, barragerotation);
-        buf.GetComponent<Barrage>().SetData(enemy, player, Barrage.m_basespeed, Barrage.m_addspeed, Barrage.m_distance, Barrage.m_delay / 60.0f);
-        buf.transform.SetParent(pattengroup.transform);
+        buf.GetComponent<Barrage>().SetData(enemy, pattengroup, player, Barrage.m_basespeed, Barrage.m_addspeed, Barrage.m_distance, Barrage.m_delay / 60.0f);
         buf.GetComponent<SpriteRenderer>().sortingOrder = 999 - bulletcount;
 
         buf.SetActive(false);

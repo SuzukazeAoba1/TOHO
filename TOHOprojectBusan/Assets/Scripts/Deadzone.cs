@@ -5,20 +5,10 @@ using UnityEngine;
 public class Deadzone : MonoBehaviour
 {
     // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.gameObject.CompareTag("Bullet"))
+        if (collision.gameObject.CompareTag("Bullet"))
         {
             collision.gameObject.SetActive(false);
         }
@@ -30,7 +20,20 @@ public class Deadzone : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D other)
     {
-        Destroy(other.gameObject);
+        if (other.gameObject.CompareTag("Barrage"))
+        {
+            //other.gameObject.SetActive(false);
+            other.gameObject.GetComponent<Barrage>().Death();
+        }
+        else if (other.gameObject.CompareTag("Enemy"))
+        {
+            other.gameObject.GetComponent<Enemy>().Death();
+        }
+        else
+        {
+            Destroy(other.gameObject);
+        }
+        
 
     }
 }

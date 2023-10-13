@@ -7,6 +7,7 @@ public class Barrage : MonoBehaviour
 {
     public GameObject Target;
     public GameObject myEnemy;
+    public GameObject myGroup;
 
     public float HP;
     public float Speed_now;
@@ -17,6 +18,9 @@ public class Barrage : MonoBehaviour
 
     public void ActiveTimerOn()
     {
+
+        transform.SetParent(myGroup.transform);
+
         if (m_delay > 0.0f)
         {
             Invoke("ActivateSelf", m_delay);
@@ -34,9 +38,10 @@ public class Barrage : MonoBehaviour
         gameObject.SetActive(true);
     }
 
-    public void SetData(GameObject enemy, GameObject player, float basespeed, float addspeed, float distance, float delay)
+    public void SetData(GameObject enemy, GameObject group, GameObject player, float basespeed, float addspeed, float distance, float delay)
     {
         Target = player;
+        myGroup = group;
         myEnemy = enemy;
         m_delay = delay;
         m_distance = distance;
@@ -72,15 +77,11 @@ public class Barrage : MonoBehaviour
     }
     void Update()
     {
-
         transform.Translate(Speed_now * Vector2.up * Time.deltaTime);
 
         if (HP <= 0)
         {
-            GameObject exp = GameManager.instance.GitaPool.Get(1);
-            exp.transform.position = transform.position;
-            transform.DOKill();
-            Destroy(gameObject);
+            Death();
         }
     }
 
@@ -112,8 +113,11 @@ public class Barrage : MonoBehaviour
 
     public void Death()
     {
+        myGroup.GetComponent<EnemyBarrageGroup>().bulletcount--;
+
         GameObject exp = GameManager.instance.GitaPool.Get(1);
         exp.transform.position = transform.position;
+
         Destroy(gameObject);
     }
 
