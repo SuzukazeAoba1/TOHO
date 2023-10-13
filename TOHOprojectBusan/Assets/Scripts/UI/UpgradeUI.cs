@@ -12,6 +12,7 @@ public class UpgradeUI : MonoBehaviour
     UpgradeButton[] Buttons;
     UpgradeButton[] items;
     UpgradeButton[] weapons;
+    AudioSource pausesound;
     public List<UpgradeButton> selected = new List<UpgradeButton>();
 
     public Button Healitem;
@@ -21,6 +22,7 @@ public class UpgradeUI : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
+        pausesound = GetComponent<AudioSource>();
         rect = GetComponent<RectTransform>();
         Buttons = GetComponentsInChildren<UpgradeButton>(true);
         weapons = Buttons.Where(item => item.gameObject.name.Contains("Weapon")).ToArray();
@@ -44,6 +46,7 @@ public class UpgradeUI : MonoBehaviour
     public void Show()
     {
         Next();
+        pausesound.Play();
         rect.localScale = new Vector3(1, 1, 1);
         TogglePause();
     }
