@@ -1,7 +1,43 @@
 fileFormatVersion: 2
-guid: 06ab8df29e280e3419c950fd11f3e82b
+guid: 5c84abe82c26fb04187fb4f4ad429738
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: -568070040710533370
+    second: Barrage0_0
+  - first:
+      213: 1562962119968859986
+    second: Barrage0_1
+  - first:
+      213: -2502059536438842389
+    second: Barrage0_5
+  - first:
+      213: 513625921613976607
+    second: Barrage0_6
+  - first:
+      213: -6479026081269940855
+    second: Barrage0_7
+  - first:
+      213: -8219577226665957806
+    second: Barrage0_8
+  - first:
+      213: -3786821240464557646
+    second: Barrage0_9
+  - first:
+      213: 4177757997200639736
+    second: Barrage0_11
+  - first:
+      213: -8007231321199443600
+    second: Barrage0_13
+  - first:
+      213: 7759730702058344766
+    second: Barrage0_14
+  - first:
+      213: 2308604124900150824
+    second: Barrage0_15
+  - first:
+      213: -8629367174654429042
+    second: Barrage0_16
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -91,11 +127,11 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Barrage4_0
+      name: Barrage0_0
       rect:
         serializedVersion: 2
-        x: 13
-        y: 12
+        x: 15
+        y: 13
         width: 55
         height: 101
       alignment: 0
@@ -105,19 +141,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f609ee61996daa850800000000000000
-      internalID: 6389154974381543535
+      spriteID: 60f28e7ce4fcd18f0800000000000000
+      internalID: -568070040710533370
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Barrage4_1
+      name: Barrage0_1
       rect:
         serializedVersion: 2
-        x: 185
-        y: 13
-        width: 63
+        x: 187
+        y: 14
+        width: 64
         height: 95
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -126,20 +162,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6032eaa7d90814a30800000000000000
-      internalID: 4197777741542466310
+      spriteID: 257a22664c1c0b510800000000000000
+      internalID: 1562962119968859986
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Barrage4_5
+      name: Barrage0_5
       rect:
         serializedVersion: 2
-        x: 1756
+        x: 1758
         y: 17
-        width: 73
-        height: 95
+        width: 74
+        height: 94
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -147,17 +183,17 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ae8c489b5199f9950800000000000000
-      internalID: 6458048709258430698
+      spriteID: beb2fabab16e64dd0800000000000000
+      internalID: -2502059536438842389
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Barrage4_6
+      name: Barrage0_6
       rect:
         serializedVersion: 2
-        x: 1937
+        x: 1939
         y: 16
         width: 63
         height: 98
@@ -168,17 +204,17 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 21af49d5a258c9170800000000000000
-      internalID: 8186564639657884178
+      spriteID: f14db3ded04c02700800000000000000
+      internalID: 513625921613976607
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Barrage4_7
+      name: Barrage0_7
       rect:
         serializedVersion: 2
-        x: 355
+        x: 358
         y: 15
         width: 73
         height: 90
@@ -189,20 +225,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 08dfe4767df7405c0800000000000000
-      internalID: -4250131585202979456
+      spriteID: 98df96f3b10e516a0800000000000000
+      internalID: -6479026081269940855
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Barrage4_8
+      name: Barrage0_8
       rect:
         serializedVersion: 2
-        x: 522
-        y: 19
-        width: 86
-        height: 82
+        x: 525
+        y: 18
+        width: 85
+        height: 83
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -210,19 +246,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 33e95e344244d20a0800000000000000
-      internalID: -6904787731140469197
+      spriteID: 2566fa0cf023eed80800000000000000
+      internalID: -8219577226665957806
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Barrage4_9
+      name: Barrage0_9
       rect:
         serializedVersion: 2
-        x: 692
+        x: 695
         y: 23
-        width: 95
+        width: 94
         height: 73
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -231,19 +267,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4efa2bac821d0b4a0800000000000000
-      internalID: -6579529082458689564
+      spriteID: 2b9b43e2522827bc0800000000000000
+      internalID: -3786821240464557646
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Barrage4_11
+      name: Barrage0_11
       rect:
         serializedVersion: 2
-        x: 865
-        y: 28
-        width: 108
+        x: 868
+        y: 27
+        width: 98
         height: 63
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -252,20 +288,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c8f6bf29e7a49f8c0800000000000000
-      internalID: -3965056089430724724
+      spriteID: 8f601b483c06af930800000000000000
+      internalID: 4177757997200639736
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Barrage4_13
+      name: Barrage0_13
       rect:
         serializedVersion: 2
-        x: 1042
-        y: 32
+        x: 1044
+        y: 31
         width: 101
-        height: 56
+        height: 55
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -273,18 +309,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2dba827efcafc7140800000000000000
-      internalID: 4718922280420813778
+      spriteID: 0718689998990e090800000000000000
+      internalID: -8007231321199443600
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Barrage4_14
+      name: Barrage0_14
       rect:
         serializedVersion: 2
-        x: 1219
-        y: 28
+        x: 1221
+        y: 27
         width: 95
         height: 63
       alignment: 0
@@ -294,19 +330,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2741445d0097ddb30800000000000000
-      internalID: 4313737062575772786
+      spriteID: e3151e0f5f910bb60800000000000000
+      internalID: 7759730702058344766
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Barrage4_15
+      name: Barrage0_15
       rect:
         serializedVersion: 2
-        x: 1396
-        y: 24
-        width: 91
+        x: 1398
+        y: 23
+        width: 90
         height: 73
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -315,20 +351,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 47a6be8526f1f4f20800000000000000
-      internalID: 3408977950201834100
+      spriteID: 82ecca7583fc90020800000000000000
+      internalID: 2308604124900150824
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Barrage4_16
+      name: Barrage0_16
       rect:
         serializedVersion: 2
-        x: 1576
+        x: 1578
         y: 20
-        width: 82
-        height: 86
+        width: 83
+        height: 85
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -336,8 +372,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0bd2b7b03db2037c0800000000000000
-      internalID: -4093723875849065040
+      spriteID: e887e4666445e3880800000000000000
+      internalID: -8629367174654429042
       vertices: []
       indices: 
       edges: []
