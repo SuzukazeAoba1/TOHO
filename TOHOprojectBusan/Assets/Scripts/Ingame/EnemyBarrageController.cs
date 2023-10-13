@@ -8,7 +8,7 @@ public class EnemyBarrageController : MonoBehaviour
     public BarrageSequence barrageseq;
     public BarragePatten barragepat;
 
-    public int shotcount;
+    public int bulletcount;
 
     public void Shoot(GameObject enemy, GameObject player, bool flip)
     {
@@ -30,8 +30,11 @@ public class EnemyBarrageController : MonoBehaviour
         pattengroup.name = "barragepatten " + barrageseq.m_barragepattenid;
         pattengroup.AddComponent<EnemyBarrageGroup>().SetSeq(barrageseq.m_basevector, groupangle);
 
+        bulletcount = 1;
+
         foreach (var bullet in barragepat.patten) //패턴 그룹
-        { 
+        {
+            bulletcount++;
             ShotBullet(bullet, pattengroup, enemy, player, flip);
         }
 
@@ -56,6 +59,7 @@ public class EnemyBarrageController : MonoBehaviour
         GameObject buf = Instantiate(barragecon.barrage[Barrage.m_barrageid], enemy.transform.position, barragerotation);
         buf.GetComponent<Barrage>().SetData(enemy, player, Barrage.m_basespeed, Barrage.m_addspeed, Barrage.m_distance, Barrage.m_delay / 60.0f);
         buf.transform.SetParent(pattengroup.transform);
+        buf.GetComponent<SpriteRenderer>().sortingOrder = 999 - bulletcount;
 
         buf.SetActive(false);
         buf.GetComponent<Barrage>().ActiveTimerOn();

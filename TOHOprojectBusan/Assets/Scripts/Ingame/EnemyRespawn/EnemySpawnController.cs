@@ -66,7 +66,7 @@ public class EnemySpawnController : MonoBehaviour
         BarrageSequence.SetFileData(barragesquencedata);
         BarragePatten.SetFileData(barragepattendata);
 
-        pause = true;
+        pause = false;
         reset = false;
     }
 
