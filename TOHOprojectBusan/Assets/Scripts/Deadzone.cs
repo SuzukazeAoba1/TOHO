@@ -18,11 +18,19 @@ public class Deadzone : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        collision.gameObject.SetActive(false);
+        if(collision.gameObject.CompareTag("Bullet"))
+        {
+            collision.gameObject.SetActive(false);
+        }
+        else
+        {
+            Destroy(collision.gameObject);
+        }
+        
     }
     private void OnTriggerEnter2D(Collider2D other)
     {
-        other.gameObject.SetActive(false);
+        Destroy(other.gameObject);
 
     }
 }
