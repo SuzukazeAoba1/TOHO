@@ -153,7 +153,7 @@ public class Player : MonoBehaviour
         if (other.gameObject.CompareTag("Experiance"))
         {
             other.gameObject.SetActive(false);
-            GameManager.instance.GetExp(1);
+            GameManager.instance.GetExp(other.GetComponent<ExpObject>().EXP);
         }
     }
     public void Damage()
