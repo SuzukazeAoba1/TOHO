@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class UpgradeButton : MonoBehaviour
 {
@@ -11,8 +12,10 @@ public class UpgradeButton : MonoBehaviour
     public UpgradeUI upgradeUI;
 
     Image icon;
-    Text textlevel;
-    Text textdesc2;
+    TextMeshProUGUI textlevel;
+    TextMeshProUGUI textex;
+    TextMeshProUGUI textdesc;
+    TextMeshProUGUI textname;
 
     private void Awake()
     {
@@ -28,20 +31,43 @@ public class UpgradeButton : MonoBehaviour
             }
         }
 
+
         
-        
-        
+
+
     }
 
     private void OnEnable()
     {
-        Text[] texts = GetComponentsInChildren<Text>();
+        TextMeshProUGUI[] texts = GetComponentsInChildren<TextMeshProUGUI>();
         foreach (var text in texts)
         {
-            if (text.transform.parent != null && text.transform.parent.name == "TextArea")
+            if (text.transform.parent != null && text.transform.parent.name == "NameArea")
+            {
+                textname = text;
+                textname.text = data.itemName;
+                break;
+            }
+        }
+        foreach (var text in texts)
+        {
+            if (text.transform.parent != null && text.transform.parent.name == "LevelArea")
             {
                 textlevel = text;
-                textlevel.text = "Lv." + (level);
+                if (level == 0)
+                {
+                    textlevel.text = "»õ ¹«±â";
+                }
+                else if (level < data.levels.Length - 2)
+                {
+                    textlevel.text = "Lv." + (level) + " ¡æ " + (level + 1);
+                }
+                else if (level >= data.levels.Length - 2)
+                {
+                    textlevel.text = "Lv." + (level) + " ¡æ Lv.MAX";
+                }
+                
+                //textlevel.text = "Lv." + (level);
                 break;
             }
         }
@@ -49,7 +75,17 @@ public class UpgradeButton : MonoBehaviour
         {
             if (text.transform.parent != null && text.transform.parent.name == "DescArea")
             {
-                textdesc2 = text;
+                textdesc = text;
+                textdesc.text = data.itemDesc[level];
+                break;
+            }
+        }
+        foreach (var text in texts)
+        {
+            if (text.transform.parent != null && text.transform.parent.name == "ExArea")
+            {
+                textex = text;
+                textex.text = data.itemEx[level];
                 break;
             }
         }
