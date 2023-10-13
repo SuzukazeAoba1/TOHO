@@ -15,8 +15,14 @@ MonoBehaviour:
   itemType: 1
   weaponID: 0
   itemName: 
-  itemDesc: []
-  itemEx: []
+  itemDesc:
+  - 
+  - 
+  - 
+  itemEx:
+  - 
+  - 
+  - 
   itemIcon: {fileID: 21300000, guid: e7f55f081e468004eaa5b9802e786e13, type: 3}
   levels: 010000000100000001000000
   Weaponobject: {fileID: 0}
