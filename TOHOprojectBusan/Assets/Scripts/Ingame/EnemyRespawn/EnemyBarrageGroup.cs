@@ -5,11 +5,17 @@ using UnityEngine;
 public class EnemyBarrageGroup : MonoBehaviour
 {
     private float spd;
-    public float destroyDelay = 20.0f;
+    public int bulletcount;
+    public float destroyDelay = 5.0f;
 
     void Start()
     { 
-        StartCoroutine(DestroyAfterDelay());
+        //StartCoroutine(DestroyAfterDelay());
+    }
+
+    private void Update()
+    {
+        if(bulletcount == 0) Destroy(gameObject);
     }
 
     IEnumerator DestroyAfterDelay()
