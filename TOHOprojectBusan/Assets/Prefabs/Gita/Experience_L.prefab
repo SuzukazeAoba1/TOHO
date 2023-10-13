@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 1930701992435363401}
   - component: {fileID: 1679285024654353821}
   m_Layer: 9
-  m_Name: Experience
+  m_Name: Experience_L
   m_TagString: Experiance
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 1930701992435363400}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -2.13, y: 1.71, z: 0}
-  m_LocalScale: {x: 3.1692767, y: 3.1692767, z: 3.1692767}
+  m_LocalScale: {x: 4.7869043, y: 4.7869043, z: 4.7869043}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -147,6 +147,6 @@ MonoBehaviour:
   target: {fileID: 0}
   range: 2.5
   speed: 7
-  EXP: 1
-  destroy_Time: 18
+  EXP: 3
+  destroy_Time: 60
   addforce: 50

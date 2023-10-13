@@ -2,13 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BaisicSHoot : MonoBehaviour
+public class BulletPoolSpawn : MonoBehaviour
 {
-    public GameObject Bullet;
-    public float cooltime = 0.15f;
-    public float bulletspeed = 200f;
-    private float shoottimer = 0f;
-
+    public float shoottimer = 15f;
+    private float canshoot = 0.05f;
+    private float shootdealy = 0.05f;
+    public int bulletId = 0;
+    public GameObject bullet;
     // Start is called before the first frame update
     void Start()
     {
@@ -19,22 +19,24 @@ public class BaisicSHoot : MonoBehaviour
     void Update()
     {
         shoottimer -= Time.deltaTime;
-        if(shoottimer <= 0)
+        canshoot -= Time.deltaTime;
+        if (shoottimer >= 0)
         {
-            Shoot();
-            shoottimer = cooltime;
+            if(canshoot<=0)
+            {
+                Shoot();
+            }
+            
         }
     }
 
     private void Shoot()
     {
-        GameObject newBullet = GameManager.instance.BulletPool.Get(0);
+        GameObject newBullet = GameManager.instance.BulletPool.Get(bulletId);
         newBullet.transform.position = transform.position;
         newBullet.transform.rotation = Quaternion.Euler(0, 0, 90);
-        newBullet.GetComponent<AudioSource>().volume = 0.08f;
-        newBullet.GetComponent<AudioSource>().Play();
-            
+
         //GameObject newBullet = Instantiate(Bullet, transform.position, Quaternion.Euler(0, 0, 90));
-        newBullet.GetComponent<Rigidbody2D>().AddForce(new Vector2(0, bulletspeed));
+        newBullet.GetComponent<Rigidbody2D>().AddForce(new Vector2(0, 600f));
     }
 }

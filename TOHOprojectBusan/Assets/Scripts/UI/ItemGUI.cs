@@ -17,11 +17,11 @@ public class ItemGUI : MonoBehaviour
 
     private void Start()
     {
-        Debug.Log(slots[0]);
+        /*Debug.Log(slots[0]);
         Debug.Log(slots[1]);
         Debug.Log(slots[2]);
         Debug.Log(slots[3]);
-        Debug.Log(slots[4]);
+        Debug.Log(slots[4]);*/
     }
     public void GetitemSlot(int i, WeaponData data)
     {

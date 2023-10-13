@@ -45,8 +45,9 @@ public class GumgiEffect : MonoBehaviour
         Color eC = other.GetComponent<SpriteRenderer>().color;
         if (other.gameObject.CompareTag("Enemy"))
         {
-            Invoke("Crestore", 0.1f);
-            other.GetComponent<SpriteRenderer>().color = new Color(eC.r / 3, eC.r / 3, eC.b / 3);
+            Color othercolor = other.gameObject.GetComponent<SpriteRenderer>().color;
+            other.gameObject.GetComponent<SpriteRenderer>().color = new Color(othercolor.r / 3, othercolor.g / 3, othercolor.b / 3);
+            other.gameObject.GetComponent<Enemy>().isdamaged = true;
             effect = GameManager.instance.EffectPool.Get(eID);
             Vector3 ePosition = other.ClosestPoint(transform.position);
             ePosition.y += offset;
@@ -59,8 +60,6 @@ public class GumgiEffect : MonoBehaviour
         }
         else if (other.gameObject.CompareTag("Barrage"))
         {
-            Invoke("Crestore", 0.1f);
-            other.GetComponent<SpriteRenderer>().color = new Color(eC.r / 3, eC.r / 3, eC.b / 3);
             effect = GameManager.instance.EffectPool.Get(eID);
             Vector3 ePosition = other.ClosestPoint(transform.position);
             ePosition.y += offset;
