@@ -92,6 +92,8 @@ public class Doll : MonoBehaviour
         newDollBullet.transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
         newDollBullet.transform.position = ShootPoint.transform.position;
         newDollBullet.transform.Rotate(0, 0, 90);
+        newDollBullet.GetComponent<AudioSource>().volume = 0.06f;
+        newDollBullet.GetComponent<AudioSource>().Play();
         newDollBullet.GetComponent<Rigidbody2D>().AddForce(direction * bulletspeed);
     }
 
@@ -101,6 +103,8 @@ public class Doll : MonoBehaviour
         JnewDollBullet.transform.position = ShootPoint.transform.position;
         //GameObject JnewDollBullet = Instantiate(bullet, transform.position, Quaternion.Euler(0, 0, 90));
         JnewDollBullet.transform.rotation = Quaternion.Euler(0, 0, 180);
+        JnewDollBullet.GetComponent<AudioSource>().volume = 0.06f;
+        JnewDollBullet.GetComponent<AudioSource>().Play();
         JnewDollBullet.GetComponent<Rigidbody2D>().AddForce(new Vector2(0, bulletspeed));
     }
 }

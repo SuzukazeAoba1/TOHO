@@ -12,9 +12,9 @@ public class GameManager : MonoBehaviour
     public float camerasize;
     public Vector2 movingzone;
     public Vector2 deathzone;
-    [Header("# Game Object")]
+    [Header("# 승리조건")]
     public float gameTime = 0;
-    public float maxGameTime = 6 * 60;
+    public float maxGameTime = 10f;
     [Header("# Game Object")]
     public PoolManager BulletPool;
     public PoolManager BarragePool;
@@ -76,7 +76,10 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         gameTime += Time.deltaTime;
-
+        if(gameTime >= maxGameTime)
+        {
+            SceneManager.LoadScene("Victory");
+        }
         //키보드 입력을 받으면 메인 화면 씬으로 전환
     }
 
