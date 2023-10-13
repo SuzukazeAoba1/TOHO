@@ -131,7 +131,15 @@ public class UpgradeUI : MonoBehaviour
             for (int index = 0; index < ran.Length; index++)
             {
                 UpgradeButton ranItem = weapons[ran[index]];
-                ranItem.gameObject.SetActive(true);
+
+                if (ranItem.level == ranItem.data.levels.Length - 1)
+                {
+                    items[Random.Range(0, items.Length)].gameObject.SetActive(true);
+                }
+                else
+                {
+                    ranItem.gameObject.SetActive(true);
+                }
 
             }
         }

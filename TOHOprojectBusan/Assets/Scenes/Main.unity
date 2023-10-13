@@ -3340,7 +3340,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47d00c3eb103c7546aac2fe89e86b147, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shoottimer: 15
+  shoottimer: 3
   bulletId: 2
   bullet: {fileID: 0}
 --- !u!1 &783452228
@@ -4052,7 +4052,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47d00c3eb103c7546aac2fe89e86b147, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shoottimer: 15
+  shoottimer: 3
   bulletId: 1
   bullet: {fileID: 0}
 --- !u!1 &913470262
@@ -7697,7 +7697,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47d00c3eb103c7546aac2fe89e86b147, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shoottimer: 15
+  shoottimer: 3
   bulletId: 0
   bullet: {fileID: 0}
 --- !u!1 &1695142472
