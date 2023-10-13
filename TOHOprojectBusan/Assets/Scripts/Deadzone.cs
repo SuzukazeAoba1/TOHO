@@ -33,7 +33,6 @@ public class Deadzone : MonoBehaviour
         {
             Destroy(other.gameObject);
         }
-        
 
     }
 }

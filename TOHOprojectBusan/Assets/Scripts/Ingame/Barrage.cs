@@ -72,7 +72,7 @@ public class Barrage : MonoBehaviour
 
         if (HP <= 0)
         {
-            Death();
+            Kill();
         }
     }
     void Update()
@@ -81,7 +81,7 @@ public class Barrage : MonoBehaviour
 
         if (HP <= 0)
         {
-            Death();
+            Kill();
         }
     }
 
@@ -111,13 +111,19 @@ public class Barrage : MonoBehaviour
     //    exp.transform.position = transform.position;
     //}
 
-    public void Death()
+    public void Kill()
     {
         myGroup.GetComponent<EnemyBarrageGroup>().bulletcount--;
 
         GameObject exp = GameManager.instance.GitaPool.Get(1);
         exp.transform.position = transform.position;
 
+        Destroy(gameObject);
+    }
+
+    public void Death()
+    {
+        myGroup.GetComponent<EnemyBarrageGroup>().bulletcount--;
         Destroy(gameObject);
     }
 
