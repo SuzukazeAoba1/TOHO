@@ -36,7 +36,7 @@ public class WeaponUpgrade : MonoBehaviour
                 level++;
                 currentlevel++;
                 float[] cooltimes = { 150, 90, 75, 40 };
-                GetComponent<MastersparkManager>().cooltimego(cooltimes[level]);
+                GetComponent<MastersparkManager>().set_cooltime = cooltimes[level];
                 GetComponent<MastersparkManager>().StartShoot();
                 // 배열을 사용하거나 처리하는 코드 추가
             }

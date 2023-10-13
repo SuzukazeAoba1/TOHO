@@ -1,14 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using DG.Tweening;
 
 public class MastersparkManager : MonoBehaviour
 {
-    public float speed = 1f;
-    private float vspeed = 1f;
+    public float speed = 10f;
+    private float vspeed = 10f;
     private Vector3 RotateV = new Vector3(0, 0, -1);
-    public float Cooltime = 150;
+    public float set_cooltime = 120;
     private float cooltime = 120;
     public float duration = 3.5f;
     public Transform magicCircle;
@@ -19,23 +18,35 @@ public class MastersparkManager : MonoBehaviour
     public GameObject player;
     private SpriteRenderer circleSR;
     private Color originalColor;
-    public bool canshoot = false;
-    Tween fadeInTween;
+    private bool canshoot = false;
     // Start is called before the first frame update
 
     private void Awake()
     {
-        player = GameObject.FindGameObjectWithTag("Player");
-        
-    }
-    void Start()
-    {
-        cooltime = Cooltime;
+        if (player == null)
+        {
+            // 플레이어를 이름으로 찾아서 할당
+            player = GameObject.FindWithTag("Player");
+
+            // 찾지 못한 경우 에러 메시지 출력
+            if (player == null)
+            {
+                Debug.LogError("Player not found!");
+            }
+        }
+        cooltime = set_cooltime;
+        save_position = player.transform.position + new Vector3(0, 0, 0);
+        circleMove.position = player.transform.position + new Vector3(0, 1.62f, 0);
         save_scale = magicCircle.transform.localScale;
         circleSR = magicCircle.GetComponent<SpriteRenderer>();
         originalColor = circleSR.color;
         vspeed = speed;
-        StartShoot();
+    }
+    void Start()
+    {
+        Invoke("CanShoot", 3f);
+        vspeed = speed * 12;
+
     }
     private void OnEnable()
     {
@@ -47,6 +58,7 @@ public class MastersparkManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
         if (canshoot)
         {
             SparkShoot();
@@ -63,10 +75,7 @@ public class MastersparkManager : MonoBehaviour
     private void SparkShoot()
     {
         Invoke("StopSpark", duration);
-        magicCircle.position = save_position;
-        circleMove.position = save_position + new Vector3(0, 1.62f, 0);
         canshoot = false;
-        cooltime = Cooltime;
         moveMagicCircle();
         circleSR.sortingLayerName = "Default";
         Spark.GetComponent<MasterSparkShoot>().Shoot();
@@ -77,7 +86,7 @@ public class MastersparkManager : MonoBehaviour
     {
         Spark.GetComponent<MasterSparkShoot>().StopShoot();
         vspeed = speed;
-        cooltime = Cooltime;
+        cooltime = set_cooltime;
         magicCircle.position = save_position;
         magicCircle.localScale = save_scale;
         Color startColor = originalColor;
@@ -89,32 +98,33 @@ public class MastersparkManager : MonoBehaviour
     void FadeInObject()
     {
         // 투명도를 1까지 서서히 변경
-        Color firstTargetColor = originalColor;
-        firstTargetColor.a = 0.3f;
+        Color firsttargetColor = originalColor;
+        firsttargetColor.a = 0.3f;
 
-        fadeInTween = DOTween.To(() => circleSR.color, color => circleSR.color = color, firstTargetColor, (cooltime / 10) * 8)
-            .OnComplete(() =>
+        LeanTween.value(gameObject, UpdateColor, circleSR.color, firsttargetColor, ((cooltime / 10) * 8))
+            .setOnComplete(() =>
             {
-            // 중간 타겟값에서 현재 색상값으로 갱신
-            firstTargetColor = circleSR.color;
+                // 중간 타겟값에서 현재 색상값으로 갱신
+                firsttargetColor = circleSR.color;
 
-            // 나머지 10%의 시간동안 움직임
-            Color middleTargetColor = originalColor;
+                // 나머지 10%의 시간동안 움직임
+                Color middleTargetColor = originalColor;
+
                 middleTargetColor.a = 0.9f;
-
-                Tween moveTween = DOTween.To(() => circleSR.color, color => circleSR.color = color, middleTargetColor, (cooltime / 10) * 2 - 3)
-                    .OnComplete(() =>
+                vspeed = speed * 3;
+                LeanTween.value(gameObject, UpdateColor, firsttargetColor, middleTargetColor, ((cooltime / 10) * 2) - 3)
+                    .setOnComplete(() =>
                     {
-                    // 다시 중간 타겟값 갱신
-                    middleTargetColor = circleSR.color;
+                        middleTargetColor = circleSR.color;
                         Color finalTargetColor = originalColor;
-                        firstTargetColor.a = 1f;
-
-                        Tween finalTween = DOTween.To(() => circleSR.color, color => circleSR.color = color, middleTargetColor, 3)
-                            .OnComplete(() =>
+                        firsttargetColor.a = 1f;
+                        vspeed = speed * 12;
+                        LeanTween.value(gameObject, UpdateColor, middleTargetColor, middleTargetColor, 3)
+                            .setOnComplete(() =>
                             {
                                 canshoot = true; // 알파가 1이 되면 canshoot을 true로 설정
-                        });
+                            });
+
                     });
             });
     }
@@ -125,8 +135,8 @@ public class MastersparkManager : MonoBehaviour
 
     void moveMagicCircle()
     {
-        StartCoroutine(ScaleMagicCircle());
-        Vector3 targetPosition = player.transform.position + new Vector3(0, 1.62f, 0);
+        StartCoroutine("ScaleMagicCircle");
+        Vector3 targetPosition = circleMove.position;
 
         // 이동 속도
         float moveSpeed = 6f;
@@ -134,40 +144,45 @@ public class MastersparkManager : MonoBehaviour
         // 이동 시간
         float moveTime = 0.2f;
 
-        // DOTween을 사용하여 특정 시간 동안 특정 위치로 이동
-        magicCircle.DOMove(targetPosition, moveTime).SetEase(Ease.Linear).SetSpeedBased().OnComplete(() =>
-        {
-            // 이동이 끝나면 여기에 추가 작업을 수행할 수 있습니다.
-        });
+        // LeanTween을 사용하여 특정 시간 동안 특정 위치로 이동
+        LeanTween.move(magicCircle.gameObject, targetPosition, moveTime).setEase(LeanTweenType.linear).setSpeed(moveSpeed);
+
     }
 
     IEnumerator ScaleMagicCircle()
     {
         Vector3 targetScale = new Vector3(2.1924f, 2.1924f, 2.1924f);
         float scaletime = 0.2f;
-
-        // DOTween을 사용하여 특정 시간 동안 특정 크기로 스케일 변경
-        magicCircle.DOScale(targetScale, scaletime).SetEase(Ease.OutQuad).OnComplete(() =>
-        {
-            // 스케일 변경이 끝나면 여기에 추가 작업을 수행할 수 있습니다.
-        });
-
+        LeanTween.scale(magicCircle.gameObject, targetScale, scaletime)
+            .setEase(LeanTweenType.easeOutQuad)
+            .setOnComplete(() => { });
         yield return null;
     }
 
-    public void cooltimego(float newCooltime)
+    void CancelFadeAndSetAlphaToOne()
     {
-        Cooltime = newCooltime;
+        LeanTween.cancel(gameObject); // 현재 게임 오브젝트에 대한 모든 LeanTween을 취소
+
+        // circleSR의 알파값을 1로 설정
+        Color finalColor = originalColor;
+        finalColor.a = 1f;
+        UpdateColor(finalColor);
+
+        canshoot = true; // 알파가 1이 되면 canshoot을 true로 설정
     }
 
     public void StartShoot()
     {
+        CancelFadeAndSetAlphaToOne();
         canshoot = false;
-        circleSR.color = originalColor;
-
-        // 3초 후에 SparkShoot 메서드 호출
-        Invoke("SparkShoot", 3f);
-
+        Invoke("CanShoot", 3f);
         vspeed = speed * 12;
+
     }
+
+    void CanShoot()
+    {
+        canshoot = true;
+    }
+
 }
