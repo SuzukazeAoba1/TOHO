@@ -12,25 +12,32 @@ public class Enemy : MonoBehaviour
     public float HP;
     public double speed;
     public bool m_flip;
+
     public bool test = false;
-    public float testcooltime = 3.0f;
+    public float firstcooltime = 1f;
+
     public bool isdamaged = false;
     private Color myColor;
 
     private void Start()
     {
         myColor = GetComponent<SpriteRenderer>().color;
-        InvokeRepeating("Fire", testcooltime, testcooltime);
+        Invoke("Fire", firstcooltime);
     }
 
     private void Update()
     {
         if(isdamaged)
         {
-            Invoke("RestoreColor", 0.2f);
-                    
+            Invoke("RestoreColor", 0.2f);        
         }
     }
+    private void Fire()
+    {
+        if (test) return;
+        barrageController.Shoot(gameObject, player, m_flip);
+    }
+
     public void SetBarrageSetting(BarrageContainer con, BarrageSequence seq, BarragePatten pat, bool flip, float cooltime)
     {
         m_flip = flip;
@@ -38,18 +45,13 @@ public class Enemy : MonoBehaviour
         player = GameManager.instance.gameObject.GetComponent<GameManager>().player;
         barrageController = gameObject.AddComponent<EnemyBarrageController>();
         barrageController.Setting(con, seq, pat);
-        testcooltime = cooltime / 10.0f;
+        firstcooltime = seq.m_shotfirst;
+
     }
 
     public void SetMoveSequence(Sequence seq)
     {
         mySequence = seq;
-    }
-
-    private void Fire()
-    {
-        if (test) return;
-        barrageController.Shoot(gameObject, player, m_flip);
     }
 
     public float Damage(float atk)
@@ -58,20 +60,27 @@ public class Enemy : MonoBehaviour
 
         if (HP <= 0)
         {
-            Death();
+            Kill();
         }
 
         if (HP > atk) return 0;
         else return atk - HP;
     }
 
-    public void Death()
+    
+    public void Kill()
     {
         mySequence.Kill(true);
 
         GameObject exp = GameManager.instance.GitaPool.Get(2);
         exp.transform.position = transform.position;
-        
+
+        Destroy(gameObject);
+    }
+
+    public void Death()
+    {
+        mySequence.Kill(true);
         Destroy(gameObject);
     }
 

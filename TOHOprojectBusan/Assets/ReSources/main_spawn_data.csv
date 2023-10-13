@@ -1,4 +1,5 @@
 spawntime,enemyid,spawnposid,movesequenceid,barragesequenceid,spawnfilp
+<<<<<<< HEAD
 40,0,30,0,0,0
 40,0,10,0,0,0
 40,0,10,0,0,1
@@ -402,3 +403,6 @@ spawntime,enemyid,spawnposid,movesequenceid,barragesequenceid,spawnfilp
 1745,1,45,17,3,0
 1745,1,45,17,3,1
 1770,4,65,22,11,1
+=======
+10,0,10,0,0,0
+>>>>>>> 728d08493569bcbeb0866ff4e36572065afecbc1
