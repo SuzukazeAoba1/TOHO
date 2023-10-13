@@ -487,6 +487,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   container:
   - {fileID: 3882188159281121841, guid: 6a156d4424d6a904b80dff5f5e8298a1, type: 3}
+  - {fileID: 3882188159281121841, guid: a28316fbb3b369141b4f7967b963bc4d, type: 3}
+  - {fileID: 3882188159281121841, guid: 907bf3329ed3af346a2f3de354d7a987, type: 3}
+  - {fileID: 3882188159281121841, guid: 2a050854ed5d02c449cb4506a5dbf660, type: 3}
+  - {fileID: 3882188159281121841, guid: 3f8833d3781a12842b6850e62949b31a, type: 3}
 --- !u!1 &148879178
 GameObject:
   m_ObjectHideFlags: 0
