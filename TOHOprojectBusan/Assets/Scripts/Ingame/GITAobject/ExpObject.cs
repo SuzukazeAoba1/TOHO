@@ -4,29 +4,35 @@ using UnityEngine;
 
 public class ExpObject : MonoBehaviour
 {
-    public Transform target;
-    public float range = 1.5f;
     public float speed = 7f;
+    public float range = 1.5f;
     public int EXP = 1;
     public float destroy_Time = 7f;
     public float addforce = 50f;
-    // Start is called before the first frame update
+
+    private Transform target;
+    private Rigidbody2D rb;
+
     private void OnEnable()
     {
         Invoke("DeactivateSelf", destroy_Time);
-        InvokeRepeating("UpdateTraget", 0f, 0.2f);
-        transform.GetComponent<Rigidbody2D>().AddForce(new Vector2(0, addforce));
+        InvokeRepeating("UpdateTarget", 0f, 0.2f);
+        rb = GetComponent<Rigidbody2D>();
+        rb.AddForce(new Vector2(0, addforce));
     }
 
-    // Update is called once per frame
     void Update()
     {
-        
         if (target != null)
         {
-            Vector2 direction = (target.position - transform.position).normalized;
-            gameObject.GetComponent<Rigidbody2D>().AddForce(direction * speed);
+            MoveToTarget();
         }
+    }
+
+    void MoveToTarget()
+    {
+        Vector2 direction = (target.position - transform.position).normalized;
+        rb.velocity = direction * speed;
     }
 
     private void DeactivateSelf()
@@ -34,29 +40,19 @@ public class ExpObject : MonoBehaviour
         gameObject.SetActive(false);
     }
 
-    void UpdateTraget()
+    void UpdateTarget()
     {
         GameObject[] enemies = GameObject.FindGameObjectsWithTag("Player");
-        float shortesDistance = Mathf.Infinity;
-        GameObject neareatEnemy = null;
+        float shortestDistance = Mathf.Infinity;
 
         foreach (GameObject enemy in enemies)
         {
             float distanceToEnemy = Vector3.Distance(transform.position, enemy.transform.position);
-            if (distanceToEnemy < shortesDistance)
+            if (distanceToEnemy < shortestDistance && distanceToEnemy < range)
             {
-                shortesDistance = distanceToEnemy;
-                neareatEnemy = enemy;
+                shortestDistance = distanceToEnemy;
+                target = enemy.transform;
             }
-        }
-
-        if (neareatEnemy != null && shortesDistance <= range)
-        {
-            target = neareatEnemy.transform;
-        }
-        else
-        {
-            target = null;
         }
     }
 }

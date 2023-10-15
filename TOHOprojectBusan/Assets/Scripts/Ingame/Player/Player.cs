@@ -13,6 +13,7 @@ public class Player : MonoBehaviour
     public float speed = 4.5f;
     public float bulletspeed = 200f;
     public float invincibility_time = 1.2f;
+    [Header("# 사운드효과")]
     private Vector3 position = Vector3.zero;
     private float H;
     private float V;

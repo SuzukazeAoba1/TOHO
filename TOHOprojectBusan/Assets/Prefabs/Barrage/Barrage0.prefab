@@ -115,6 +115,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Target: {fileID: 0}
   myEnemy: {fileID: 0}
+  myGroup: {fileID: 0}
   HP: 2
   Speed_now: 0
   Speed_base: 0

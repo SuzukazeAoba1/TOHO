@@ -16,6 +16,9 @@ public class MastersparkManager : MonoBehaviour
     private Vector3 save_scale;
     public GameObject Spark;
     public GameObject player;
+    public Backgroundaudio bgm;
+    public AudioSource volume;
+    private float save_volume;
     private SpriteRenderer circleSR;
     private Color originalColor;
     private bool canshoot = false;
@@ -34,6 +37,9 @@ public class MastersparkManager : MonoBehaviour
                 Debug.LogError("Player not found!");
             }
         }
+        bgm = FindObjectOfType<Backgroundaudio>();
+        volume = bgm.GetComponent<AudioSource>();
+        save_volume = volume.volume;
         cooltime = set_cooltime;
         save_position = player.transform.position + new Vector3(0, 0, 0);
         circleMove.position = player.transform.position + new Vector3(0, 1.62f, 0);
@@ -78,6 +84,9 @@ public class MastersparkManager : MonoBehaviour
         canshoot = false;
         moveMagicCircle();
         circleSR.sortingLayerName = "Default";
+        HideVolume();
+
+
         Spark.GetComponent<MasterSparkShoot>().Shoot();
         vspeed = speed * 40;
 
@@ -89,6 +98,7 @@ public class MastersparkManager : MonoBehaviour
         cooltime = set_cooltime;
         magicCircle.position = save_position;
         magicCircle.localScale = save_scale;
+        StartCoroutine(RetoreVolume());
         Color startColor = originalColor;
         startColor.a = 0f;
         circleSR.sortingLayerName = "Foreground";
@@ -184,5 +194,31 @@ public class MastersparkManager : MonoBehaviour
     {
         canshoot = true;
     }
+    void HideVolume()
+    {
+        LeanTween.value(gameObject, SetVolume, volume.volume, 0.018f, 0.4f)
+           .setOnComplete(() =>
+           {
 
+           });
+    }
+    void RestoreVolumeset()
+    {
+        LeanTween.value(gameObject, SetVolume, volume.volume, save_volume, 1.2f)
+            .setOnComplete(() =>
+            {
+            });
+    }
+
+    private void SetVolume(float nvoluem)
+    {
+        volume.volume = nvoluem;
+    }
+
+    IEnumerator RetoreVolume()
+    {
+        yield return new WaitForSeconds(1.2f);
+
+        RestoreVolumeset();
+    }
 }

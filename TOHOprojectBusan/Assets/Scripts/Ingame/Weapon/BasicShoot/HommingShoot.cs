@@ -14,6 +14,13 @@ public class HommingShoot : MonoBehaviour
     public float bulletspeed = 200f;
     private float angle;
     private Quaternion rotation;
+    private AudioSource myAS;
+
+    private void Awake()
+    {
+        myAS = GetComponent<AudioSource>();
+        myAS.volume = 0.02f;
+    }
     private void Start()
     {
         InvokeRepeating("UpdateTraget", 0f, 0.02f);
@@ -82,8 +89,7 @@ public class HommingShoot : MonoBehaviour
         newDollBullet.transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
         newDollBullet.transform.position = transform.position;
         newDollBullet.transform.Rotate(0, 0, 90);
-        newDollBullet.GetComponent<AudioSource>().volume = 0.06f;
-        newDollBullet.GetComponent<AudioSource>().Play();
+        myAS.Play();
         newDollBullet.GetComponent<Rigidbody2D>().AddForce(direction * bulletspeed);
     }
 
@@ -93,8 +99,9 @@ public class HommingShoot : MonoBehaviour
         JnewDollBullet.transform.position = transform.position;
         //GameObject JnewDollBullet = Instantiate(bullet, transform.position, Quaternion.Euler(0, 0, 90));
         JnewDollBullet.transform.Rotate(0, 0, 90);
-        JnewDollBullet.GetComponent<AudioSource>().volume = 0.06f;
-        JnewDollBullet.GetComponent<AudioSource>().Play();
+        myAS.Play();
         JnewDollBullet.GetComponent<Rigidbody2D>().AddForce(new Vector2(0, bulletspeed));
     }
+
+
 }

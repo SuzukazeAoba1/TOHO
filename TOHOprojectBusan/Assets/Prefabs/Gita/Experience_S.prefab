@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 1930701992435363404}
   - component: {fileID: 1930701992435363403}
   - component: {fileID: 1930701992435363402}
-  - component: {fileID: 1930701992435363401}
   - component: {fileID: 1679285024654353821}
+  - component: {fileID: 1851982645351829829}
   m_Layer: 9
   m_Name: Experience_S
   m_TagString: Experiance
@@ -28,8 +28,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1930701992435363400}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.13, y: 1.71, z: 0}
-  m_LocalScale: {x: 1.5, y: 1.5, z: 3.1692767}
+  m_LocalPosition: {x: -2.13, y: 1.7256, z: 0}
+  m_LocalScale: {x: 1.3535058, y: 1.3535058, z: 2.8597562}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -74,7 +74,7 @@ SpriteRenderer:
   m_SortingLayerID: -1706388453
   m_SortingLayer: -7
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 978d2311abf8dc4478d10e89fc45e42e, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 886e0de2e081bfc4fa290ec8980bf750, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -106,32 +106,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!61 &1930701992435363401
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1930701992435363400}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.16, y: 0.16}
-    newSize: {x: 0.16, y: 0.16}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 0.16, y: 0.16}
-  m_EdgeRadius: 0
 --- !u!114 &1679285024654353821
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -144,9 +118,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c426a922f4a86644b2416a15dd9151d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 0}
-  range: 2.5
-  speed: 7
+  speed: 16
+  range: 6
   EXP: 1
   destroy_Time: 60
   addforce: 50
+--- !u!58 &1851982645351829829
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1930701992435363400}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.00000013326546, y: -0.033953905}
+  serializedVersion: 2
+  m_Radius: 0.13942672

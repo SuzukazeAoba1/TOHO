@@ -10,7 +10,7 @@ public class Bullet : MonoBehaviour
     public float ATK;
     public int effectID = 1;
     private int eID = 0;
-    private float attackpoint = 5;
+    public float attackpoint = 5;
     public float Speed;
     public float destroy_Time = 4;
     private float time_To_Destroy;
@@ -99,17 +99,33 @@ public class Bullet : MonoBehaviour
         }
         else if (other.gameObject.CompareTag("Barrage"))
         {
-            float pierced = other.gameObject.GetComponent<Barrage>().Pierce(attackpoint);
             effect = GameManager.instance.EffectPool.Get(eID);
             Vector3 ePosition = other.ClosestPoint(transform.position);
             ePosition.y += offset;
-            effect.transform.position = other.ClosestPoint(transform.position);
-            damageText = GameManager.instance.GitaPool.Get(0);
-            damageText.transform.position = ePosition;
-            //damageText.transform.localScale = new Vector3(other.transform.localScale.x / 6f, other.transform.localScale.y / 6f, other.transform.localScale.z / 6f);
-            damageText.GetComponent<TextMeshPro>().text = attackpoint.ToString();
-            other.gameObject.GetComponent<Barrage>().Damage(attackpoint);
-            attackpoint = pierced;
+
+            if (attackpoint > other.gameObject.GetComponent<Barrage>().HP)
+            {
+                ePosition.y += offset;
+                effect.transform.position = other.ClosestPoint(transform.position);
+                damageText = GameManager.instance.GitaPool.Get(0);
+                damageText.transform.position = ePosition;
+                //damageText.transform.localScale = new Vector3(other.transform.localScale.x / 6f, other.transform.localScale.y / 6f, other.transform.localScale.z / 6f);
+                damageText.GetComponent<TextMeshPro>().text = attackpoint.ToString();
+                other.gameObject.GetComponent<Barrage>().Kill();
+                attackpoint = attackpoint - other.gameObject.GetComponent<Barrage>().HP;
+            }
+            else if(attackpoint <= other.gameObject.GetComponent<Barrage>().HP)
+            {
+                ePosition.y += offset;
+                effect.transform.position = other.ClosestPoint(transform.position);
+                damageText = GameManager.instance.GitaPool.Get(0);
+                damageText.transform.position = ePosition;
+                //damageText.transform.localScale = new Vector3(other.transform.localScale.x / 6f, other.transform.localScale.y / 6f, other.transform.localScale.z / 6f);
+                damageText.GetComponent<TextMeshPro>().text = attackpoint.ToString();
+                other.gameObject.GetComponent<Barrage>().Damage(attackpoint);
+            }
+            
+            
         }
 
 

@@ -118,9 +118,9 @@ public class GameManager : MonoBehaviour
     {
         exp += nExp;
         //테이블에 없는 경험치부턴 무제한으로 늘어나게 함
-        if(exp >= nextExp[Mathf.Min(level, nextExp.Length-1)])
+        if (exp >= nextExp[Mathf.Min(level, nextExp.Length - 1)])
         {
-            
+
             exp -= nextExp[Mathf.Min(level, nextExp.Length - 1)];
             level++;
             upgradeUI.Show();

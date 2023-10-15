@@ -15,20 +15,28 @@ public class GumgiEffect : MonoBehaviour
     private Animator myAnim;
     private GameObject damageText;
     private GameObject effect;
+    public AudioClip[] sounds;
+    private AudioSource myAS;
     public float offset = 0.7f;
     // Start is called before the first frame update
 
     private void Awake()
     {
+        myAS = GetComponent<AudioSource>();
+        myAS.volume = 0.41f;
         myCL = GetComponent<PolygonCollider2D>();
         myAnim = GetComponent<Animator>();
         attackpoint = atk;
         eID = effectID - 1;
+
     }
     
     private void OnEnable()
     {
+        int ran = Random.Range(0, sounds.Length - 1);
+        myAS.clip = sounds[ran];
         Invoke("DeactivateSelf", effect_time);
+        myAS.Play();
         myCL.enabled = false;
         myAnim.SetBool("Slashing", true);
         Invoke("ColliderOn", ready_time);
