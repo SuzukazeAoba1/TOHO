@@ -22,14 +22,26 @@ public class EnemyBarrageController : MonoBehaviour
         {
             for (int i = 0; i < barrageseq.m_shotnum; i++)
             {
-                ShotPatten(barrageseq.m_firstangle + barrageseq.m_perangle * i, enemy, player, flip);
+                float angle;
+
+                if(barrageseq.m_target)
+                {
+                    Vector2 dir = player.transform.position - enemy.transform.position;
+                    angle =  180 - ((Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg) - 90);
+                }
+                else
+                {
+                    angle = barrageseq.m_firstangle + barrageseq.m_perangle * i;
+                }
+                Debug.Log(angle);
+                ShotPatten(angle, enemy, player, flip);
                 yield return new WaitForSeconds(barrageseq.m_shotinterval);
             }
             yield return new WaitForSeconds(barrageseq.m_shotlooptime);
         }
     }
 
-    private void ShotPatten(int groupangle, GameObject enemy, GameObject player, bool flip)
+    private void ShotPatten(float groupangle, GameObject enemy, GameObject player, bool flip)
     {
         GameObject pattengroup = new GameObject();
         pattengroup.transform.position = enemy.transform.position;
@@ -43,14 +55,14 @@ public class EnemyBarrageController : MonoBehaviour
         foreach (var bullet in barragepat.patten) //패턴 그룹
         {
             bulletcount++;
-            ShotBullet(bullet, pattengroup, enemy, player, groupangle, flip);
+            ShotBullet(bullet, pattengroup, enemy, player, flip);
         }
 
         group.bulletcount = bulletcount;
 
     }
     
-    private void ShotBullet(BarrageData Barrage, GameObject pattengroup, GameObject enemy, GameObject player, int groupangle, bool flip)
+    private void ShotBullet(BarrageData Barrage, GameObject pattengroup, GameObject enemy, GameObject player,bool flip)
     {
         float barrageangle;
         Quaternion barragerotation;
@@ -70,7 +82,7 @@ public class EnemyBarrageController : MonoBehaviour
 
         GameObject buf = Instantiate(barragecon.barrage[Barrage.m_barrageid], enemy.transform.position, barragerotation);
         buf.GetComponent<Barrage>().SetData(enemy, pattengroup, player, Barrage.m_basespeed, Barrage.m_addspeed, Barrage.m_distance, Barrage.m_delay / 60.0f);
-        buf.GetComponent<SpriteRenderer>().sortingOrder = 999 - bulletcount;
+        buf.GetComponent<SpriteRenderer>().sortingOrder = 999 - bulletcount; 
 
         buf.SetActive(false);
         buf.GetComponent<Barrage>().ActiveTimerOn();

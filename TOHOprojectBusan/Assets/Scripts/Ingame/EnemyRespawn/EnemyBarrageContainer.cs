@@ -2,8 +2,6 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-
-[Serializable]
 public class BarrageSequence
 {
     //public string name;
@@ -16,8 +14,9 @@ public class BarrageSequence
     public float m_shotlooptime;
     public int m_firstangle;
     public int m_perangle;
+    public bool m_target;
 
-    public BarrageSequence(int barragepatten, int shotnum, int shotfirst, int shotinterval, int shotlooptime,  int basevector, int firstangle, int perangle)
+    public BarrageSequence(int barragepatten, int shotnum, int shotfirst, int shotinterval, int shotlooptime,  int basevector, int firstangle, int perangle, int target)
     {
         //name = " ";
         m_barragepattenid = barragepatten;
@@ -28,6 +27,9 @@ public class BarrageSequence
         m_basevector = basevector;
         m_firstangle = firstangle;
         m_perangle = perangle;
+
+        if (target == 0) m_target = false;
+        else             m_target = true;
     }
 }
 public class EnemyBarrageContainer : MonoBehaviour
@@ -36,9 +38,10 @@ public class EnemyBarrageContainer : MonoBehaviour
 
     public void SetFileData(List<Dictionary<string, object>> data)
     {
+        List = new List<BarrageSequence>();
         List.Clear();
         BarrageSequence sequenceBuf;
-        int pattenid, shotnum, shotfirst, shotinterval, shotlooptime, basevector, firstangle, perangle;
+        int pattenid, shotnum, shotfirst, shotinterval, shotlooptime, basevector, firstangle, perangle, target;
 
         foreach (var Seq in data)
         {
@@ -50,8 +53,9 @@ public class EnemyBarrageContainer : MonoBehaviour
             basevector = int.Parse(Seq["basevector"].ToString());
             firstangle = int.Parse(Seq["firstangle"].ToString());
             perangle = int.Parse(Seq["perangle"].ToString());
+            target = int.Parse(Seq["target"].ToString());
 
-            sequenceBuf = new BarrageSequence(pattenid, shotnum, shotfirst, shotinterval, shotlooptime, basevector, firstangle, perangle);
+            sequenceBuf = new BarrageSequence(pattenid, shotnum, shotfirst, shotinterval, shotlooptime, basevector, firstangle, perangle, target);
             List.Add(sequenceBuf);
         }
 
