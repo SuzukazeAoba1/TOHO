@@ -43,14 +43,14 @@ public class EnemyBarrageController : MonoBehaviour
         foreach (var bullet in barragepat.patten) //패턴 그룹
         {
             bulletcount++;
-            ShotBullet(bullet, pattengroup, enemy, player, flip);
+            ShotBullet(bullet, pattengroup, enemy, player, groupangle, flip);
         }
 
         group.bulletcount = bulletcount;
 
     }
     
-    private void ShotBullet(BarrageData Barrage, GameObject pattengroup, GameObject enemy, GameObject player, bool flip)
+    private void ShotBullet(BarrageData Barrage, GameObject pattengroup, GameObject enemy, GameObject player, int groupangle, bool flip)
     {
         float barrageangle;
         Quaternion barragerotation;
@@ -65,6 +65,8 @@ public class EnemyBarrageController : MonoBehaviour
             barrageangle = -(360 - Barrage.m_angle);
             barragerotation = Quaternion.Euler(0, 0, barrageangle);
         }
+
+        
 
         GameObject buf = Instantiate(barragecon.barrage[Barrage.m_barrageid], enemy.transform.position, barragerotation);
         buf.GetComponent<Barrage>().SetData(enemy, pattengroup, player, Barrage.m_basespeed, Barrage.m_addspeed, Barrage.m_distance, Barrage.m_delay / 60.0f);
