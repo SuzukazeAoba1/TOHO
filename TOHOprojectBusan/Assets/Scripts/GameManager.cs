@@ -15,6 +15,11 @@ public class GameManager : MonoBehaviour
     [Header("# 승리조건")]
     public float gameTime = 0;
     public float maxGameTime = 10f;
+    [Header("# 페이즈 관리")]
+    public float[] phasetimes;
+    public Background[] backgrounds;
+    public Backgroundaudio backgroundaudio;
+    public int nextphase = 1;
     [Header("# Game Object")]
     public PoolManager BulletPool;
     public PoolManager BarragePool;
@@ -57,6 +62,7 @@ public class GameManager : MonoBehaviour
 
         upgradeUI.Select(0);
         DOTween.Init(true, true, LogBehaviour.Verbose);
+        LeanTween.init(500);
 
         Init();
         Title();
@@ -79,6 +85,26 @@ public class GameManager : MonoBehaviour
         if(gameTime >= maxGameTime)
         {
             SceneManager.LoadScene("Victory");
+        }
+
+        if (gameTime >= phasetimes[nextphase])
+        {
+            if (backgrounds != null)
+            {
+                // Backgrounds 배열의 각 요소에 대해 반복
+                foreach (Background background in backgrounds)
+                {
+                    // 각 Background 개체의 Change 함수 호출
+                    if (background != null) // null 체크 추가
+                    {
+                        background.Backgroundchange(nextphase);
+                    }
+                }
+            }
+
+            backgroundaudio.Musicchange(nextphase);
+
+            nextphase++;
         }
         //키보드 입력을 받으면 메인 화면 씬으로 전환
     }

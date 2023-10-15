@@ -10,7 +10,7 @@ public class UpgradeButton : MonoBehaviour
     public WeaponData data;
     public int level;
     public UpgradeUI upgradeUI;
-
+    private AudioSource selecteffect;
     Image icon;
     TextMeshProUGUI textlevel;
     TextMeshProUGUI textex;
@@ -19,6 +19,7 @@ public class UpgradeButton : MonoBehaviour
 
     private void Awake()
     {
+        selecteffect = GetComponent<AudioSource>();
         Image[] images = GetComponentsInChildren<Image>();
 
         foreach (var image in images)
@@ -97,6 +98,7 @@ public class UpgradeButton : MonoBehaviour
 
     public void Onclik()
     {
+        selecteffect.Play();
         switch (data.itemType)
         {
             case WeaponData.ItemType.Weapon:
@@ -127,6 +129,7 @@ public class UpgradeButton : MonoBehaviour
                 break;
         }
 
+        
         if (level == data.levels.Length - 1)
         {
             GetComponent<Button>().interactable = false;
