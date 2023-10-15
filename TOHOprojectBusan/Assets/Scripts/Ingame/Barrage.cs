@@ -33,7 +33,8 @@ public class Barrage : MonoBehaviour
     
     private void ActivateSelf()
     {
-        if(myEnemy != null) transform.position = myEnemy.transform.position;
+        transform.localRotation = Quaternion.identity * transform.rotation;
+        transform.localPosition = Vector3.zero;
         transform.Translate(0.1f * m_distance * Vector2.up);
         gameObject.SetActive(true);
     }
