@@ -1756,9 +1756,8 @@ MonoBehaviour:
   spawnTimer: 0
   spawnCounter: 0
   nextSpawnTime: 0
-  testbarrageseq: 0
   pause: 0
-  reset: 1
+  reset: 0
 --- !u!114 &266479210
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7087,7 +7086,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d742e92bbfc734e4ebe45d617677d746, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  List: []
 --- !u!1 &1063623282
 GameObject:
   m_ObjectHideFlags: 0

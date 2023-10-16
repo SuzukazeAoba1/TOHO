@@ -35,8 +35,8 @@ public class HUD : MonoBehaviour
             case InfoType.Kill:
                 break;
             case InfoType.Text:
-                float minutes = Mathf.FloorToInt(GameManager.instance.gameTime / 60f);
-                float remainingSeconds = Mathf.RoundToInt(GameManager.instance.gameTime % 60f);
+                int minutes = Mathf.FloorToInt(GameManager.instance.gameTime / 60f);
+                int remainingSeconds = Mathf.FloorToInt(GameManager.instance.gameTime % 60f);
                 string minute;
                 string second;
                 if(minutes < 10)

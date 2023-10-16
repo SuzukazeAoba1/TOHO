@@ -29,7 +29,6 @@ public class EnemySpawnController : MonoBehaviour
     public float spawnTimer;
     public int spawnCounter;
     public float nextSpawnTime;
-    public int testbarrageseq = 0;
 
     public bool pause;
     public bool reset;
@@ -78,15 +77,15 @@ public class EnemySpawnController : MonoBehaviour
         pause = false;
     }
 
-    void Update()
+    public void Update()
     {
-        if(reset)
-        {
-            Play();
-            reset = false;
-        }
+        //if(reset)
+        //{
+        //    Play();
+        //    reset = false;
+        //}
 
-        if (!pause)
+        //if (!pause)
         {
             if (spawnCounter < SpawnContainer.SpawnContainer.Count)
             {
