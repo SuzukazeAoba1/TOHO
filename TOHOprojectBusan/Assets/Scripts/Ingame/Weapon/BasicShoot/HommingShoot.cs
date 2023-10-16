@@ -19,7 +19,7 @@ public class HommingShoot : MonoBehaviour
     private void Awake()
     {
         myAS = GetComponent<AudioSource>();
-        myAS.volume = 0.02f;
+        myAS.volume = 0.013f;
     }
     private void Start()
     {

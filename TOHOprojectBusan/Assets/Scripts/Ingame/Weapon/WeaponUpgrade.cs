@@ -31,7 +31,27 @@ public class WeaponUpgrade : MonoBehaviour
     {
         if (level < Maxlevel - 1)
         {
-            if (weaponId == 4)
+            level++;
+            currentlevel++;
+            switch (weaponId)
+            {
+                case 4:
+                    
+                    float[] cooltimes = { 150, 90, 75, 40 };
+                    GetComponent<MastersparkManager>().set_cooltime = cooltimes[level];
+                    GetComponent<MastersparkManager>().StartShoot();
+                    break;
+                case 5:
+                    float[] cooltimes2 = { 30, 20, 12, 7 };
+                    float[] healthes = { 1000, 1500, 2000, 2500 };
+                    GetComponent<KogasaManager>().time_to_spawn = cooltimes2[level];
+                    GetComponent<KogasaManager>().kogasahp = healthes[level];
+                    break;
+                default:
+                    ActivateSelectedLevel(level);
+                    break;
+            }
+            /*if (weaponId == 4)
             {
                 level++;
                 currentlevel++;
@@ -42,10 +62,8 @@ public class WeaponUpgrade : MonoBehaviour
             }
             else
             {
-                level++;
-                currentlevel++;
-                ActivateSelectedLevel(level);
-            }
+                
+            }*/
 
         }
         else

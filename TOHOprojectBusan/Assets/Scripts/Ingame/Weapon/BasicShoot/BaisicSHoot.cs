@@ -15,7 +15,7 @@ public class BaisicSHoot : MonoBehaviour
     private void Awake()
     {
         myAS = GetComponent<AudioSource>();
-        myAS.volume = 0.05f;
+        myAS.volume = 0.023f;
     }
     void Start()
     {
