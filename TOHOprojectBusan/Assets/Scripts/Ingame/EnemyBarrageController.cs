@@ -33,7 +33,6 @@ public class EnemyBarrageController : MonoBehaviour
                 {
                     angle = barrageseq.m_firstangle + barrageseq.m_perangle * i;
                 }
-                Debug.Log(angle);
                 ShotPatten(angle, enemy, player, flip);
                 yield return new WaitForSeconds(barrageseq.m_shotinterval);
             }
