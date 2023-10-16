@@ -6,6 +6,7 @@ public class BulletPoolSpawn : MonoBehaviour
 {
     public float shoottimer = 15f;
     private float canshoot = 0.05f;
+    public float shootdealy = 0.05f;
     public int bulletId = 0;
     public GameObject bullet;
     // Start is called before the first frame update
