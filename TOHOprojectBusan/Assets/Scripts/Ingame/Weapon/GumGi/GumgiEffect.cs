@@ -79,10 +79,6 @@ public class GumgiEffect : MonoBehaviour
             damageText.GetComponent<TextMeshPro>().text = attackpoint.ToString();
 
         }
-        void Crestore()
-        {
-            other.GetComponent<SpriteRenderer>().color = eC;
-        }
     }
 
     private void DeactivateSelf()

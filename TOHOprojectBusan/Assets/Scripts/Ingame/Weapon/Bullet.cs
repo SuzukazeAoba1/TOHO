@@ -19,7 +19,6 @@ public class Bullet : MonoBehaviour
     private GameObject damageText;
     private GameObject effect;
     public float offset = 0.7f;
-    private bool isdamaged = false;
 
     private void Awake()
     {
