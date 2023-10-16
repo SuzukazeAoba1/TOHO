@@ -20,7 +20,7 @@ public class Doll : MonoBehaviour
     private void Start()
     {
         myAS = GetComponent<AudioSource>();
-        myAS.volume = 0.03f;
+        myAS.volume = 0.01f;
         mySR = GetComponent<SpriteRenderer>();
         InvokeRepeating("UpdateTraget", 0f, 0.02f);
     }

@@ -18,11 +18,12 @@ public class BulletPoolSpawn : MonoBehaviour
     void Update()
     {
         shoottimer -= Time.deltaTime;
-        canshoot -= Time.deltaTime;
+        shootdealy -= Time.deltaTime;
         if (shoottimer >= 0)
         {
-            if(canshoot<=0)
+            if(shootdealy<=0)
             {
+                shootdealy = canshoot;
                 Shoot();
             }
             

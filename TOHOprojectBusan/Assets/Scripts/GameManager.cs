@@ -20,6 +20,7 @@ public class GameManager : MonoBehaviour
     public Background[] backgrounds;
     public Backgroundaudio backgroundaudio;
     public int nextphase = 1;
+    private bool canchange = true;
     [Header("# Game Object")]
     public PoolManager BulletPool;
     public PoolManager BarragePool;
@@ -87,8 +88,9 @@ public class GameManager : MonoBehaviour
             SceneManager.LoadScene("Victory");
         }
 
-        if (gameTime >= phasetimes[nextphase])
+        if (gameTime >= phasetimes[nextphase] && canchange)
         {
+            canchange = false;
             if (backgrounds != null)
             {
                 // Backgrounds 배열의 각 요소에 대해 반복
@@ -103,8 +105,12 @@ public class GameManager : MonoBehaviour
             }
 
             backgroundaudio.Musicchange(nextphase);
-
-            nextphase++;
+            if(nextphase < phasetimes.Length-1)
+            {
+                canchange = true;
+                nextphase++;
+            }
+            
         }
         //키보드 입력을 받으면 메인 화면 씬으로 전환
     }

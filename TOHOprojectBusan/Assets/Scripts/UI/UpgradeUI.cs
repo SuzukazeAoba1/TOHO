@@ -78,13 +78,13 @@ public class UpgradeUI : MonoBehaviour
                 }
             }
 
-            Debug.Log(selectcount + "번 선택되었습니다");
+            //Debug.Log(selectcount + "번 선택되었습니다");
             selectcount++;
-            Debug.Log(selected[selectcount - 1]); // 수정된 부분
+            //Debug.Log(selected[selectcount - 1]); // 수정된 부분
         }
         else if (selectcount >= maxEquip)
         {
-            Debug.Log("무기 다 선택됨");
+            //Debug.Log("무기 다 선택됨");
         }
     }
 
