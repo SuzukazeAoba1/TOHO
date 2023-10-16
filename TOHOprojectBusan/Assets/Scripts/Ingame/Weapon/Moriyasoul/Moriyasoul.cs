@@ -3,8 +3,11 @@ using UnityEngine;
 
 public class Moriyasoul : MonoBehaviour
 {
+    public Sprite[] sprites;
     public float initialSpeed = 5f;
     public float randomMoveDuration = 2f;
+    public float rSpeed;
+    private Vector3 rForce = new Vector3(0, 0, -1);
     public Transform main_camera;
     private bool isMovingRandomly = false;
 
@@ -14,33 +17,34 @@ public class Moriyasoul : MonoBehaviour
         Vector2 initialDirection = Random.insideUnitCircle.normalized;
         GetComponent<Rigidbody2D>().velocity = initialDirection * initialSpeed;
 
-        // 3초 후에 랜덤 이동 시작
-        StartCoroutine(StartRandomMovementAfterDelay(3f));
     }
 
     void Update()
     {
+        
         if (!isMovingRandomly)
         {
-            // 일반적인 이동 로직
-            // 예를 들어, 오브젝트가 특정 방향으로 계속 이동한다고 가정
-            // 이동 로직을 필요에 따라 수정하세요
+            moverandom();
         }
     }
 
-    IEnumerator StartRandomMovementAfterDelay(float delay)
+    private void FixedUpdate()
     {
-        yield return new WaitForSeconds(delay);
-        StartCoroutine(MoveRandomly());
+        transform.Rotate(rForce * rSpeed);
     }
-
-    IEnumerator MoveRandomly()
+    void moverandom()
     {
+        StartCoroutine(NoRandom());
         isMovingRandomly = true;
 
         // 랜덤한 방향으로 선형 이동
         Vector2 randomDirection = Random.insideUnitCircle.normalized;
         GetComponent<Rigidbody2D>().velocity = randomDirection * initialSpeed;
+    }
+
+    IEnumerator NoRandom()
+    {
+        
 
         yield return new WaitForSeconds(randomMoveDuration);
 
@@ -50,4 +54,6 @@ public class Moriyasoul : MonoBehaviour
 
         isMovingRandomly = false;
     }
+
+    
 }
