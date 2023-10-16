@@ -1802,9 +1802,8 @@ MonoBehaviour:
   spawnTimer: 0
   spawnCounter: 0
   nextSpawnTime: 0
-  testbarrageseq: 0
   pause: 0
-  reset: 1
+  reset: 0
 --- !u!114 &266479210
 MonoBehaviour:
   m_ObjectHideFlags: 0

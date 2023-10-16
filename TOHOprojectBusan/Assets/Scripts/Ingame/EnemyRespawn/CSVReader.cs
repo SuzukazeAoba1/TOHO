@@ -16,10 +16,10 @@ public class CSVReader
         var list = new List<Dictionary<string, object>>();
         string[] lines;
 
-        if (File.Exists(SystemPath.GetPath() + file + ".csv"))
+        if (File.Exists(Application.streamingAssetsPath + "/" + file + ".csv"))
         {
             string source;
-            StreamReader sr = new StreamReader(SystemPath.GetPath() + file + ".csv");
+            StreamReader sr = new StreamReader(Application.streamingAssetsPath + "/" + file + ".csv");
             source = sr.ReadToEnd();
             sr.Close();
 
