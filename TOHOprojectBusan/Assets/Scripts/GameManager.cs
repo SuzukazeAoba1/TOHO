@@ -82,7 +82,7 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         gameTime += Time.deltaTime;
-        if(gameTime >= maxGameTime)
+        if (gameTime >= maxGameTime)
         {
             SceneManager.LoadScene("Victory");
         }
