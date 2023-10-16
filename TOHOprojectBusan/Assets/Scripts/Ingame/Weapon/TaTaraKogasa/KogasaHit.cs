@@ -72,4 +72,9 @@ public class KogasaHit : MonoBehaviour
 
         }
     }
+
+    private void OnDestroy()
+    {
+        hpBar.gameObject.SetActive(false);
+    }
 }

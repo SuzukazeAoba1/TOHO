@@ -9,10 +9,10 @@ public class CameraController : MonoBehaviour
     public Transform gManager;
     private Vector3 position = Vector3.zero;
     private Vector3 offset = new Vector3(0, 4f, -10);
-    private float xrange;
-    private float yrange;
-    float verticalSize;
-    float horizontalSize;
+    public float xrange;
+    public float yrange;
+    public float verticalSize;
+    public float horizontalSize;
     float offsetLast;
     // Start is called before the first frame update
     void Awake()
