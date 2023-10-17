@@ -70,11 +70,10 @@ public class Enemy : MonoBehaviour
     
     public void Kill()
     {
-        mySequence.Kill(true);
-
         GameObject exp = GameManager.instance.GitaPool.Get(2);
         exp.transform.position = transform.position;
 
+        mySequence.Kill(true);
         Destroy(gameObject);
     }
 

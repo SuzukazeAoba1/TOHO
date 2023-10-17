@@ -18,12 +18,16 @@ public class CameraController : MonoBehaviour
     void Awake()
     {
         mainCamera = Camera.main;
+
         verticalSize = mainCamera.orthographicSize;
         horizontalSize = verticalSize * mainCamera.aspect;
-        offsetLast = ((gManager.gameObject.GetComponent<GameManager>().movingzone.y) / 2) -offset.y + 0.5f; 
-        xrange = ((gManager.gameObject.GetComponent<GameManager>().movingzone.x)  / 2) - verticalSize + 2f;
-        yrange = ((gManager.gameObject.GetComponent<GameManager>().movingzone.y)  / 2) - horizontalSize - 0.5f;
 
+        offsetLast = ((gManager.gameObject.GetComponent<GameManager>().movingzone.y) / 2) -offset.y + 0.5f;
+        //xrange = ((gManager.gameObject.GetComponent<GameManager>().movingzone.x)  / 2) - verticalSize + 2f;
+        //yrange = ((gManager.gameObject.GetComponent<GameManager>().movingzone.y)  / 2) - horizontalSize - 0.5f;
+
+        xrange = ((gManager.gameObject.GetComponent<GameManager>().movingzone.x) / 2.0f);
+        yrange = ((gManager.gameObject.GetComponent<GameManager>().movingzone.y) / 2.0f);
     }
 
     private void Start()
@@ -35,12 +39,29 @@ public class CameraController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.position = camera_position();
+        transform.position = camera_position2();
     }
+
+    public Vector3 camera_position2()
+    {
+        position = Gplayer.transform.position;
+
+        float posx, posy, posz;
+
+        posx = position.x - (position.x / xrange) * (verticalSize - 2.5f);
+        posy = position.y - (position.y / yrange) * (horizontalSize - 1.0f);
+        posz = -10.0f;
+
+        Debug.Log(verticalSize + " " + horizontalSize);
+
+        return new Vector3(posx, posy, posz);
+    }
+
 
     public Vector3 camera_position()
     {
         position = Gplayer.transform.position;
+
         if (position.x < -xrange)
         {
             if (position.y < -offsetLast)
