@@ -125,11 +125,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 0}
   barrageController: {fileID: 0}
-  HP: 25
+  HP: 20
   speed: 0
   m_flip: 0
   test: 0
-  testcooltime: 3
+  firstcooltime: 1
   isdamaged: 0
 --- !u!95 &253931858561134715
 Animator:

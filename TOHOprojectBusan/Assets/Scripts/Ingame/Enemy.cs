@@ -19,17 +19,30 @@ public class Enemy : MonoBehaviour
     public bool isdamaged = false;
     private Color myColor;
 
+    public bool bosspatten1 = false;
+    public bool bosspatten2 = false;
+
     private void Start()
     {
         myColor = GetComponent<SpriteRenderer>().color;
+
         Invoke("Fire", firstcooltime);
+
+        if (bosspatten1)
+        {
+            StartCoroutine("BossPattenChange1");
+        }
+        else if (bosspatten2)
+        {
+            StartCoroutine("BossPattenChange2");
+        }
     }
 
     private void Update()
     {
-        if(isdamaged)
+        if (isdamaged)
         {
-            Invoke("RestoreColor", 0.2f);        
+            Invoke("RestoreColor", 0.2f);
         }
     }
     private void Fire()
@@ -37,6 +50,40 @@ public class Enemy : MonoBehaviour
         if (test) return;
         barrageController.Shoot(gameObject, player, m_flip);
     }
+
+
+    IEnumerator BossPattenChange1()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(5.0f);
+            SetBarrageChange(GameManager.instance.GetComponent<EnemySpawnController>().BarrageSequence.List[223],
+                             GameManager.instance.GetComponent<EnemySpawnController>().BarragePatten.List[82]);
+            yield return new WaitForSeconds(5.0f);
+            SetBarrageChange(GameManager.instance.GetComponent<EnemySpawnController>().BarrageSequence.List[224],
+                             GameManager.instance.GetComponent<EnemySpawnController>().BarragePatten.List[83]);
+        }
+    }
+
+    IEnumerator BossPattenChange2()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(5.0f);
+            SetBarrageChange(GameManager.instance.GetComponent<EnemySpawnController>().BarrageSequence.List[223],
+                             GameManager.instance.GetComponent<EnemySpawnController>().BarragePatten.List[82]);
+            yield return new WaitForSeconds(5.0f);
+            SetBarrageChange(GameManager.instance.GetComponent<EnemySpawnController>().BarrageSequence.List[224],
+                             GameManager.instance.GetComponent<EnemySpawnController>().BarragePatten.List[83]);
+        }
+    }
+
+
+        public void SetBarrageChange(BarrageSequence seq, BarragePatten pat)
+    {
+        barrageController.Change(seq, pat);
+    }
+
 
     public void SetBarrageSetting(BarrageContainer con, BarrageSequence seq, BarragePatten pat, bool flip, float cooltime)
     {
