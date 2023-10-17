@@ -65,8 +65,6 @@ public class CameraController : MonoBehaviour
         posy = position.y - (position.y / yrange) * (horizontalSize - 1.0f);
         posz = -10.0f;
 
-        Debug.Log(verticalSize + " " + horizontalSize);
-
         return new Vector3(posx, posy, posz);
     }
 
