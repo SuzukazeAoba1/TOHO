@@ -21,8 +21,8 @@ public class Player : MonoBehaviour
     private float yRange;
 
     private float damageTimer = 1f;
-    private bool isdead = false;
-    private bool isDamaged = false;
+    public bool isdead = false;
+    public bool isDamaged = false;
     private SpriteRenderer mySR;
 
     private GameObject damageText;
@@ -156,6 +156,7 @@ public class Player : MonoBehaviour
             other.gameObject.SetActive(false);
             GameManager.instance.GetExp(other.GetComponent<ExpObject>().EXP);
         }
+
     }
     public void Damage()
     {
@@ -179,6 +180,7 @@ public class Player : MonoBehaviour
     void Die()
     {
         isdead = true;
+        position = Vector3.zero;
         GameManager.instance.Die();
     }
 

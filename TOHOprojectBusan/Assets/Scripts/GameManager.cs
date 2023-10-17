@@ -29,6 +29,7 @@ public class GameManager : MonoBehaviour
     public PoolManager EffectPool;
     public WeaponSpawn weaponSpawn;
     public UpgradeUI upgradeUI;
+    public ContinueUI continueUI;
     public GameObject main_camera;
     [Header("# PlayerStats")]
     public GameObject player;
@@ -36,6 +37,7 @@ public class GameManager : MonoBehaviour
     public int exp;
     public int[] nextExp = { 1, 2, 2, 2, 2, 2, 2, 2, 3, 3, 3, 3, 4 ,4,4,4,4,4,4,4,4,4,4,4,4,4};
     public bool isDead = false;
+    public bool continued = false;
     void Start()
     {
 
@@ -85,7 +87,15 @@ public class GameManager : MonoBehaviour
         gameTime += Time.deltaTime;
         if (gameTime >= maxGameTime)
         {
-            SceneManager.LoadScene("Victory");
+            if(continued)
+            {
+                SceneManager.LoadScene("CVictory");
+            }
+            else
+            {
+                SceneManager.LoadScene("Victory");
+            }
+            
         }
 
         if (gameTime >= phasetimes[nextphase] && canchange)
@@ -118,7 +128,7 @@ public class GameManager : MonoBehaviour
     public void Die()
     {
         isDead = true;
-        SceneManager.LoadScene("Dead");
+        continueUI.Show();
     }
     public void GetExp(int nExp)
     {
@@ -132,5 +142,6 @@ public class GameManager : MonoBehaviour
             upgradeUI.Show();
         }
     }
+
 
 }

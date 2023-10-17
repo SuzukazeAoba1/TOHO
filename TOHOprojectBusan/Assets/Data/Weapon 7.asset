@@ -1,0 +1,41 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4bfe60395ce9e844a900ae1e1f7d01ec, type: 3}
+  m_Name: Weapon 7
+  m_EditorClassIdentifier: 
+  itemType: 0
+  weaponID: 7
+  itemName: "\uBAA8\uB9AC\uC57C\uC758 \uC601\uD63C"
+  itemDesc:
+  - "\uBB34\uC791\uC704\uB85C \uB3CC\uC544\uB2E4\uB2C8\uBA70 \uD0C4\uB9C9\uC744 \uB9C9\uC2B5\uB2C8\uB2E4.
+    \uB108\uBB34 \uB9DE\uC73C\uBA74 \uBE44\uD65C\uC131\uD654 \uB429\uB2C8\uB2E4.
+    \uBE44\uD65C\uC131\uD654 \uC2DC \uB2E4\uC2DC \uB2FF\uC73C\uBA74 \uD65C\uC131\uD654\uB429\uB2C8\uB2E4."
+  - "\uC601\uD63C\uC744 1\uAC1C \uB354 \uC18C\uD658\uD568 (2\uAC1C)"
+  - "\uC601\uD63C\uC744 2\uAC1C \uB354 \uC18C\uD658\uD568(\uCD1D 4\uAC1C), \uCCB4\uB825
+    250 \uC99D\uAC00(250 \u2192 500)"
+  - "\uC601\uD63C\uC744 3\uAC1C \uB354 \uC18C\uD658\uD568(\uCD1D 7\uAC1C) \uCCB4\uB825
+    250 \uC99D\uAC00, (500 \u2192 750)"
+  - "\uC601\uD63C\uC744 5\uAC1C \uB354 \uC18C\uD658\uD568(\uCD1D 12\uAC1C)"
+  - "\uCD5C\uC885 \uB2E8\uACC4"
+  itemEx:
+  - "\uC694\uAD34\uC758 \uC0B0\uC5D0\uB294 \uBAA8\uB9AC\uC57C \uC2E0\uC0AC\uAC00
+    \uC788\uC2B5\uB2C8\uB2E4."
+  - "\uC774 \uBB34\uAE30\uB294 \uC0AC\uB098\uC5D0\uC758 \uB9C8\uC74C\uC774\uB77C
+    \uD560 \uC218 \uC788\uC2B5\uB2C8\uB2E4."
+  - "\uBC40\uC774 \uC5C6\uB294 \uC774\uC720\uB294... \uC2A4\uC640\uCF54\uAC00 \uAC70\uC758
+    \uB2E4 \uB9CC\uB4E4\uC5B4\uC11C\uC694."
+  - "\uAC1C\uAD6C\uB9AC\uC758 \uB9C8\uC74C\uC774 \uC99D\uD3ED\uD569\uB2C8\uB2E4."
+  - "\uAC04\uC2DD\uC73C\uB85C \uBA39\uC744 \uBC95\uD55C \uBE44\uC8FC\uC5BC\uC785\uB2C8\uB2E4."
+  - "\uC601\uC6D0\uC815\uC740 \uB2F9\uC2E0\uC744 \uCC45\uC784\uC9C0\uC9C0 \uC54A\uC2B5\uB2C8\uB2E4."
+  itemIcon: {fileID: 21300000, guid: c0450968072535541bac6c385afaada9, type: 3}
+  levels: 000000000100000002000000030000000400000005000000
+  Weaponobject: {fileID: 7914245063514480171, guid: 3e86432cb9fec8648a413c863f8832f1, type: 3}
