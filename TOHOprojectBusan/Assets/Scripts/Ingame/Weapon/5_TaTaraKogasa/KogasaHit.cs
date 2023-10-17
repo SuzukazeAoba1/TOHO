@@ -29,7 +29,7 @@ public class KogasaHit : MonoBehaviour
 
     private void Awake()
     {
-        canvas = GameObject.Find("ObjectCanvus");
+        canvas = GameObject.Find("ObjectCanvas");
     }
     void Start()
     {
@@ -71,5 +71,9 @@ public class KogasaHit : MonoBehaviour
             
 
         }
+    }
+
+    private void OnDestroy()
+    {
     }
 }

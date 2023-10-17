@@ -14,15 +14,24 @@ public class WeaponUpgrade : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if(weaponId != 4)
+        switch(weaponId)
         {
-            levels = new GameObject[transform.childCount];
-            for (int i = 0; i < transform.childCount; i++)
-            {
-                levels[i] = transform.GetChild(i).gameObject;
+            case 4:
+                break;
+            case 5:
+                break;
+            case 7:
+                GetComponent<MoriyaManager>().Spawn(1);
+                break;
+            default:
+                levels = new GameObject[transform.childCount];
+                for (int i = 0; i < transform.childCount; i++)
+                {
+                    levels[i] = transform.GetChild(i).gameObject;
 
-            }
-            ActivateSelectedLevel(level);
+                }
+                ActivateSelectedLevel(level);
+                break;
         }
         
     }
@@ -43,9 +52,16 @@ public class WeaponUpgrade : MonoBehaviour
                     break;
                 case 5:
                     float[] cooltimes2 = { 30, 20, 12, 7 };
-                    float[] healthes = { 1000, 1500, 2000, 2500 };
+                    float[] khealthes = { 1000, 1500, 2000, 2500 };
                     GetComponent<KogasaManager>().time_to_spawn = cooltimes2[level];
-                    GetComponent<KogasaManager>().kogasahp = healthes[level];
+                    GetComponent<KogasaManager>().kogasahp = khealthes[level];
+                    break;
+
+                case 7:
+                    int[] spawns = { 0, 1, 2, 3, 4 };
+                    float[] mhealthes = { 250, 250, 500, 750, 1000 };
+                    GetComponent<MoriyaManager>().Spawn(spawns[level]);
+                    GetComponent<MoriyaManager>().UpgradeHP(mhealthes[level]);
                     break;
                 default:
                     ActivateSelectedLevel(level);
