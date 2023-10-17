@@ -5,20 +5,44 @@ using UnityEngine;
 public class SubwaySpawn : MonoBehaviour
 {
     public int leftright = 0;
-    public float leftmin = 30;
-    public float rightmin = 150;
-    private void OnEnable()
-    {
-    }
+    public float rightmax = 30;
+    public float leftmax = 210;
+    private SpriteRenderer[] spriteRenderers;
     // Start is called before the first frame update
+    private void Awake()
+    {
+        spriteRenderers = GetComponentsInChildren<SpriteRenderer>();
+    }
+
     void Start()
     {
         
     }
 
+    private void OnEnable()
+    {
+        switch (leftright)
+        {
+            case 0:
+                transform.rotation = Quaternion.Euler(0, 0, Random.Range(rightmax, rightmax - 60f));
+                for (int i = 0; i < spriteRenderers.Length; i++)
+                {
+                    spriteRenderers[i].flipY = false;
+                }
+                break;
+            case 1:
+                transform.rotation = Quaternion.Euler(0, 0, Random.Range(leftmax, leftmax - 60f));
+                for (int i = 0; i < spriteRenderers.Length; i++)
+                {
+                    spriteRenderers[i].flipY = true;
+                    spriteRenderers[i].flipX = true;
+                }
+                break;
+        }
+    }
     // Update is called once per frame
     void Update()
     {
-        //transform.rotation (new Vector3(0, 0, Random.Range(leftmin, leftmin + 60f)));
+        
     }
 }
