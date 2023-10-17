@@ -125,7 +125,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 0}
   barrageController: {fileID: 0}
-  HP: 2000
+  HP: 1750
   speed: 0
   m_flip: 0
   test: 0

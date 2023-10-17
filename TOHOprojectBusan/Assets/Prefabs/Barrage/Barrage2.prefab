@@ -115,7 +115,7 @@ MonoBehaviour:
   Target: {fileID: 0}
   myEnemy: {fileID: 0}
   myGroup: {fileID: 0}
-  HP: 150
+  HP: 50
   Speed_now: 0
   Speed_base: 0
   Speed_add: 0
