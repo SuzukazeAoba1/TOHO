@@ -95,4 +95,10 @@ public class EnemyBarrageController : MonoBehaviour
         barrageseq = seq;
         barragepat = pat;
     }
+
+    public void Change(BarrageSequence seq, BarragePatten pat)
+    {
+        barrageseq = seq;
+        barragepat = pat;
+    }
 }
