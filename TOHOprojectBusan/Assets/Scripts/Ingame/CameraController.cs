@@ -62,7 +62,7 @@ public class CameraController : MonoBehaviour
         }
 
         //posx = position.x - (position.x / xrange) * (verticalSize - 2.5f);
-        posy = position.y - (position.y / yrange) * (horizontalSize - 1.0f);
+        posy = position.y - (position.y / yrange) * (horizontalSize);
         posz = -10.0f;
 
         return new Vector3(posx, posy, posz);
