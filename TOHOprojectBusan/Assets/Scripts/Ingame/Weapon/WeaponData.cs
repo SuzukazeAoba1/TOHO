@@ -13,7 +13,9 @@ public class WeaponData : ScriptableObject
     public int weaponID;
     public string itemName;
 
+    [TextArea]
     public string[] itemDesc;
+    [TextArea]
     public string[] itemEx;
     public Sprite itemIcon;
 

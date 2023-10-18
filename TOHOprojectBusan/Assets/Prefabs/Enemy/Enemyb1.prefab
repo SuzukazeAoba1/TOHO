@@ -130,3 +130,5 @@ MonoBehaviour:
   test: 0
   firstcooltime: 1
   isdamaged: 0
+  bosspatten1: 1
+  bosspatten2: 0
