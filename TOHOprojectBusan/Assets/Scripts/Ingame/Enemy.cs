@@ -70,7 +70,7 @@ public class Enemy : MonoBehaviour
     {
         while (true)
         {
-            yield return new WaitForSeconds(8.0f);
+            yield return new WaitForSeconds(7.0f);
             SetBarrageChange(GameManager.instance.GetComponent<EnemySpawnController>().BarrageSequence.List[223],
                              GameManager.instance.GetComponent<EnemySpawnController>().BarragePatten.List[82]);
             yield return new WaitForSeconds(10.0f);
