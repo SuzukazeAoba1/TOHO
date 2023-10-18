@@ -144,6 +144,7 @@ public class Enemy : MonoBehaviour
                 {
                     GameObject exp = GameManager.instance.GitaPool.Get(1);
                     exp.transform.position = transform.position;
+                    exp.GetComponent<Rigidbody2D>().velocity = new Vector2(Random.Range(-1.0f, 1.0f), Random.Range(-4.0f, 4.0f));
                     expdropcheck -= 1;
                 }
             }
