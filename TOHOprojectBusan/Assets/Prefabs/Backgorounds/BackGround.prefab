@@ -72,7 +72,7 @@ SpriteRenderer:
   m_SortingLayerID: 822803477
   m_SortingLayer: -8
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 1bec07340a9455a4c8b4315dcff54a99, type: 3}
+  m_Sprite: {fileID: 21300000, guid: c07548831d3c9c946bfe36dac8dd69ab, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -98,7 +98,7 @@ MonoBehaviour:
   backgroundspeed: 10
   removePoint: {fileID: 0}
   bimages:
-  - {fileID: 21300000, guid: 1bec07340a9455a4c8b4315dcff54a99, type: 3}
-  - {fileID: 21300000, guid: c86763e8eb8a00b41855c80aa0b98814, type: 3}
-  - {fileID: 21300000, guid: d4ee006e7deeb3d48a743d214cca6baa, type: 3}
+  - {fileID: 21300000, guid: c07548831d3c9c946bfe36dac8dd69ab, type: 3}
+  - {fileID: 21300000, guid: fac5aad1cfcc14f4186c6186bd10113d, type: 3}
+  - {fileID: 21300000, guid: ae9b68012102e574da3f95ce899f463c, type: 3}
   spawnPoint: {fileID: 0}
