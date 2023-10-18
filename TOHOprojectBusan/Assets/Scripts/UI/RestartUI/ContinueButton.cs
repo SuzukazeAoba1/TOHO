@@ -29,11 +29,7 @@ public class ContinueButton : MonoBehaviour
                 gmanager.continued = true;
                 gmanager.isDead = false;
                 player.isdead = false;
-                player.isDamaged = true;
-                player.health = player.maxHealth;
-                healthgui.HealthSet(player.maxHealth);
-                StartCoroutine(Blink());
-                StartCoroutine(Resurectioned());
+                player.Invincibility(3f);
                 break;
             case 2:
                 SceneManager.LoadScene("Dead");
@@ -43,23 +39,5 @@ public class ContinueButton : MonoBehaviour
         }
 
 
-    }
-
-    IEnumerator Blink()
-    {
-        while (player.isDamaged)
-        {
-            Color myC = player.gameObject.GetComponent<SpriteRenderer>().color;
-            yield return new WaitForSeconds(0.1f);
-            player.gameObject.GetComponent<SpriteRenderer>().color = new Color(myC.r, myC.g, 0);
-            yield return new WaitForSeconds(0.1f);
-            player.gameObject.GetComponent<SpriteRenderer>().color = myC;
-        }
-    }
-
-    IEnumerator Resurectioned()
-    {
-        yield return new WaitForSeconds(2f);
-        player.isDamaged = false;
     }
 }

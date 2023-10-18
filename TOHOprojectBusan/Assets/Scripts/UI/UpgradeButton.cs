@@ -126,6 +126,10 @@ public class UpgradeButton : MonoBehaviour
                 {
                     player.GetComponent<Player>().Heal(data.levels[level]);
                 }
+                else if(player.GetComponent<Player>().health >= player.GetComponent<Player>().maxHealth)
+                {
+                    player.GetComponent<Player>().Invincibility(3f);
+                }
                 break;
         }
 

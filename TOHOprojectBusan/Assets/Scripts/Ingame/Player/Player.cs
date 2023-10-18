@@ -25,8 +25,9 @@ public class Player : MonoBehaviour
     public bool isDamaged = false;
     private SpriteRenderer mySR;
 
-    private GameObject damageText;
-    private Vector3 offset = new Vector3(0, 1f, 0);
+    [Header("# 치트 모드")]
+    public ContinueUI cheatUI;
+    private bool cheated = false;
     
 
     // Start is called before the first frame update
@@ -47,6 +48,11 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(Input.GetKey(KeyCode.P) && !cheated && !isDamaged)
+        {
+            cheated = true;
+            cheatUI.Show();
+        }
         
         if (!isdead)
         {
@@ -157,7 +163,22 @@ public class Player : MonoBehaviour
             GameManager.instance.GetExp(other.GetComponent<ExpObject>().EXP);
         }
 
+        if (other.gameObject.CompareTag("Item"))
+        {
+            if (health < maxHealth)
+            {
+                Heal(1);
+            }
+            else if (health >= maxHealth)
+            {
+                Invincibility(3f);
+            }
+            other.gameObject.SetActive(false);
+            GameManager.instance.GetExp(other.GetComponent<ExpObject>().EXP);
+        }
+
     }
+
     public void Damage()
     {
         if (!isDamaged)
@@ -191,6 +212,15 @@ public class Player : MonoBehaviour
 
     }
 
+    public void Invincibility(float time)
+    {
+        isDamaged = true;
+        StartCoroutine(YellowBlink());
+        StartCoroutine(Hitless(time));
+        
+
+    }
+
     IEnumerator Hurt()
     {
         while (isDamaged)
@@ -209,5 +239,23 @@ public class Player : MonoBehaviour
             yield return new WaitForSeconds(0.1f);
             mySR.color = myC;
         }
+    }
+
+    IEnumerator YellowBlink()
+    {
+        while (isDamaged)
+        {
+            Color myC = mySR.color;
+            yield return new WaitForSeconds(0.1f);
+            mySR.color = new Color(myC.r, myC.g, 0);
+            yield return new WaitForSeconds(0.1f);
+            mySR.color = myC;
+        }
+    }
+
+    IEnumerator Hitless(float time)
+    {
+        yield return new WaitForSeconds(time);
+       isDamaged = false;
     }
 }
