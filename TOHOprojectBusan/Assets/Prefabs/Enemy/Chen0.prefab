@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 3882188159281121841}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.6, y: 0.6, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -127,10 +127,13 @@ MonoBehaviour:
   barrageController: {fileID: 0}
   HP: 50000
   speed: 0
+  expdrop: 10
   m_flip: 0
   test: 0
-  testcooltime: 3
+  firstcooltime: 1
   isdamaged: 0
+  bosspatten1: 0
+  bosspatten2: 0
 --- !u!95 &253931858561134715
 Animator:
   serializedVersion: 3

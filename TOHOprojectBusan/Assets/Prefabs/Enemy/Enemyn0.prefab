@@ -127,10 +127,13 @@ MonoBehaviour:
   barrageController: {fileID: 0}
   HP: 750
   speed: 0
+  expdrop: 10
   m_flip: 0
   test: 0
   firstcooltime: 1
   isdamaged: 0
+  bosspatten1: 0
+  bosspatten2: 0
 --- !u!95 &253931858561134715
 Animator:
   serializedVersion: 3
@@ -141,7 +144,7 @@ Animator:
   m_GameObject: {fileID: 3882188159281121841}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 8fe9fa0647157e549b20c17874ca1be4, type: 2}
+  m_Controller: {fileID: 9100000, guid: 9421dfb84186d044b9b712ea67f22e35, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

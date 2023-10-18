@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 250999014135207002}
   - component: {fileID: 7128222440510858365}
   - component: {fileID: 331170006565634357}
-  - component: {fileID: 253931858561134715}
   m_Layer: 0
   m_Name: Enemyn2
   m_TagString: Enemy
@@ -127,26 +126,10 @@ MonoBehaviour:
   barrageController: {fileID: 0}
   HP: 1750
   speed: 0
+  expdrop: 10
   m_flip: 0
   test: 0
   firstcooltime: 1
   isdamaged: 0
---- !u!95 &253931858561134715
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3882188159281121841}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 8fe9fa0647157e549b20c17874ca1be4, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
+  bosspatten1: 0
+  bosspatten2: 0
