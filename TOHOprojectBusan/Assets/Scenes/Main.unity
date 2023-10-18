@@ -2021,11 +2021,11 @@ MonoBehaviour:
   movingzone: {x: 22, y: 30}
   deathzone: {x: 40, y: 54}
   gameTime: 0
-  maxGameTime: 360
+  maxGameTime: 600
   phasetimes:
   - 0
-  - 60
-  - 120
+  - 220
+  - 410
   backgrounds:
   - {fileID: 1136482377}
   - {fileID: 1653536393}

@@ -29,6 +29,8 @@ public class ContinueButton : MonoBehaviour
                 gmanager.continued = true;
                 gmanager.isDead = false;
                 player.isdead = false;
+                player.health = player.maxHealth;
+                healthgui.HealthSet(5);
                 player.Invincibility(3f);
                 break;
             case 2:
