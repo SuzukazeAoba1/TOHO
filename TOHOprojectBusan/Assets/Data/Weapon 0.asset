@@ -17,10 +17,10 @@ MonoBehaviour:
   itemName: "\uB808\uC774\uBB34\uC758 \uD0C4\uD658"
   itemDesc:
   - "\uAE30\uBCF8 \uBB34\uAE30."
-  - "\uD0C4\uD658\uC774 \uD558\uB098 \uB298\uC5B4\uB0A9\uB2C8\uB2E4."
-  - "\uD0C4\uD658\uC774 \uD558\uB098 \uB354 \uB298\uC5B4\uB0A9\uB2C8\uB2E4.(2\uBC1C)"
+  - "\uD0C4\uD658\uC774 \uD558\uB098 \uB298\uC5B4\uB0A9\uB2C8\uB2E4(2\uBC1C)"
   - "\uD0C4\uD658\uC774 \uD558\uB098 \uB354 \uB298\uC5B4\uB0A9\uB2C8\uB2E4.(3\uBC1C)"
   - "\uC720\uB3C4 \uD0C4\uD658\uC744 \uB450 \uAC1C \uBC1C\uC0AC\uD569\uB2C8\uB2E4."
+  - "\uD0C4\uD658\uC774 \uD558\uB098 \uB354 \uB298\uC5B4\uB0A9\uB2C8\uB2E4.(4\uBC1C)"
   - "\uCD5C\uC885 \uB2E8\uACC4."
   itemEx:
   - "\uB808\uC774\uBB34."
@@ -32,4 +32,18 @@ MonoBehaviour:
   - "\uCD5C\uC885 \uB2E8\uACC4."
   itemIcon: {fileID: 21300000, guid: c563f0d40132d0844a6e53aacdc53ff8, type: 3}
   levels: 000000000100000002000000030000000400000005000000
+  ATK:
+  - 8
+  - 10
+  - 12
+  - 14
+  - 16
+  cooltimes:
+  - 0.15
+  - 0.15
+  - 0.15
+  - 0.15
+  - 0.15
+  healthes: []
+  counts: 
   Weaponobject: {fileID: 4047625475408632868, guid: 5900a54a60830114291f9099bbb1c4b5, type: 3}

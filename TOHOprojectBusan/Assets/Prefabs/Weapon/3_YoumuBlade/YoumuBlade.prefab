@@ -50,6 +50,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponId: 3
   levels: []
+  weapon: {fileID: 11400000, guid: d3d84c44c2c6b3b44b62ff62107b3337, type: 2}
   currentlevel: 1
   Maxlevel: 5
   keyCode: 113

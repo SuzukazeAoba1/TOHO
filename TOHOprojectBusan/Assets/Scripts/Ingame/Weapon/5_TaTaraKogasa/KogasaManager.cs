@@ -9,7 +9,7 @@ public class KogasaManager : MonoBehaviour
     public TextMeshPro timeUI;
     public float time_to_spawn = 15.5f;
     public float kogasahp = 1000f;
-    private float cooltime = 15.5f;
+    private float cooltime = 0f;
     public Transform player;
     public GameObject spawnpoint;
     public KogasaHit current_kogasa;
@@ -30,7 +30,7 @@ public class KogasaManager : MonoBehaviour
 
     private void OnEnable()
     {
-        cooltime = time_to_spawn;
+        //cooltime = time_to_spawn;
         current_kogasa = spawnpoint.GetComponentInChildren<KogasaHit>();
 
         if(!current_kogasa)

@@ -6,7 +6,7 @@ using TMPro;
 
 public class HUD : MonoBehaviour
 {
-    public enum InfoType { Exp, Level, Kill, Text}
+    public enum InfoType { Exp, Level, Incredivilty, Text}
 
     public InfoType type;
 
@@ -32,7 +32,7 @@ public class HUD : MonoBehaviour
                 float level = GameManager.instance.level;
                 text.text = "LV." + level;
                 break;
-            case InfoType.Kill:
+            case InfoType.Incredivilty:
                 break;
             case InfoType.Text:
                 int minutes = Mathf.FloorToInt(GameManager.instance.gameTime / 60f);
@@ -49,7 +49,16 @@ public class HUD : MonoBehaviour
                 }
                 if (remainingSeconds < 10)
                 {
-                    second = "0" + remainingSeconds.ToString();
+                    
+
+                        second = "0" + remainingSeconds.ToString();
+
+                    
+                }
+                else if (remainingSeconds % 60 == 0)
+                {
+                    second = "00";
+                    minute = (minute + 1).ToString();
                 }
                 else
                 {

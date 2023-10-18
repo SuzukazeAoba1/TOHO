@@ -5,8 +5,10 @@ using TMPro;
 
 public class UMYANGOK : MonoBehaviour
 {
-    public int ATK;
-    private int attackpoint = 7;
+    public WeaponUpgrade grandparent;
+    public WeaponData parentWeaponData;
+    public float ATK;
+    private float attackpoint = 7;
     public int effectID = 4;
     private int eID = 3;
 
@@ -20,6 +22,13 @@ public class UMYANGOK : MonoBehaviour
     public float offset = 0.7f;
 
     // Start is called before the first frame update
+
+    private void Awake()
+    {
+        Transform parent = transform.parent;
+        grandparent = parent.GetComponentInParent<WeaponUpgrade>();
+        parentWeaponData = grandparent.weapon;
+    }
     void Start()
     {
         eID = effectID - 1;
@@ -34,6 +43,12 @@ public class UMYANGOK : MonoBehaviour
         {
             bulletspeed = 0f;
         }
+    }
+
+    private void OnEnable()
+    {
+        ATK = parentWeaponData.ATK[grandparent.currentlevel - 1] - 1f;
+        attackpoint = parentWeaponData.ATK[grandparent.currentlevel - 1] - 1f;
     }
 
     // Update is called once per frame

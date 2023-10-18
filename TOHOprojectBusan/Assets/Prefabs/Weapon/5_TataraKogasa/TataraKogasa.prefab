@@ -47,7 +47,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   kogasa: {fileID: 6769777384453724471, guid: 2ced3123efa971a4097d35e644377dfd, type: 3}
   timeUI: {fileID: 8194559909645193713}
-  time_to_spawn: 7
+  time_to_spawn: 15
+  kogasahp: 1000
   player: {fileID: 0}
   spawnpoint: {fileID: 0}
   current_kogasa: {fileID: 0}
@@ -65,6 +66,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponId: 5
   levels: []
+  weapon: {fileID: 11400000, guid: 904a32a6186cdee4794dc4d579a2ced5, type: 2}
   currentlevel: 1
   Maxlevel: 4
   keyCode: 113

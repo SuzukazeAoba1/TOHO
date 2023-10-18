@@ -7,12 +7,19 @@ public class CircleMove : MonoBehaviour
     public float speed = 20f;
     private Vector3 RotateV = new Vector3(0, 0, -1);
     // Start is called before the first frame update
+
+    private void Awake()
+    {
+
+    }
     void Start()
     {
         
     }
 
     // Update is called once per frame
+
+
     void Update()
     {
         

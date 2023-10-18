@@ -1,13 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class Doll : MonoBehaviour
 {
+    public WeaponUpgrade grandparent;
+    public WeaponData parentWeaponData;
     public Transform target;
     public float range = 17f;
     private SpriteRenderer mySR;
     public string enemyTag = "Enemy";
+    public string bossTag = "Boss";
     public float cooltime = 0.15f;
     private float shoottimer = 0f;
     private AudioSource myAS;
@@ -17,17 +21,31 @@ public class Doll : MonoBehaviour
     public Transform ShootPoint;
     private float angle;
     private Quaternion rotation;
+
+    private void Awake()
+    {
+        Transform parent = transform.parent;
+        grandparent = parent.GetComponentInParent<WeaponUpgrade>();
+        parentWeaponData = parent.GetComponentInParent<WeaponUpgrade>().weapon;
+        myAS = GetComponent<AudioSource>();
+        mySR = GetComponent<SpriteRenderer>();
+        myAS.volume = 0.5f / parent.childCount;
+    }
     private void Start()
     {
-        myAS = GetComponent<AudioSource>();
-        myAS.volume = 0.01f;
-        mySR = GetComponent<SpriteRenderer>();
+        
         InvokeRepeating("UpdateTraget", 0f, 0.02f);
     }
 
+    private void OnEnable()
+    {
+        cooltime = parentWeaponData.cooltimes[grandparent.currentlevel - 1];
+    }
     void UpdateTraget()
     {
-        GameObject[] enemies = GameObject.FindGameObjectsWithTag(enemyTag);
+        GameObject[] enemies = GameObject.FindGameObjectsWithTag(enemyTag)
+                                .Concat(GameObject.FindGameObjectsWithTag(bossTag))
+                                .ToArray();
         float shortesDistance = Mathf.Infinity;
         GameObject neareatEnemy = null;
 
@@ -41,7 +59,7 @@ public class Doll : MonoBehaviour
             }
         }
 
-        if(neareatEnemy != null && shortesDistance <= range)
+        if(neareatEnemy != null && shortesDistance <= range &&  transform.position.y <= neareatEnemy.transform.position.y)
         {
             target = neareatEnemy.transform;
         }
@@ -94,6 +112,8 @@ public class Doll : MonoBehaviour
         //GameObject newDollBullet = Instantiate(bullet, transform.position, Quaternion.AngleAxis(angle, Vector3.forward));
         newDollBullet.transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
         newDollBullet.transform.position = ShootPoint.transform.position;
+        newDollBullet.GetComponent<Bullet>().ATK = parentWeaponData.ATK[grandparent.currentlevel-1];
+        newDollBullet.GetComponent<Bullet>().attackpoint = parentWeaponData.ATK[grandparent.currentlevel-1];
         newDollBullet.transform.Rotate(0, 0, 90);
         GetComponent<AudioSource>().Play();
         newDollBullet.GetComponent<Rigidbody2D>().AddForce(direction * bulletspeed);
@@ -105,6 +125,8 @@ public class Doll : MonoBehaviour
         JnewDollBullet.transform.position = ShootPoint.transform.position;
         //GameObject JnewDollBullet = Instantiate(bullet, transform.position, Quaternion.Euler(0, 0, 90));
         JnewDollBullet.transform.rotation = Quaternion.Euler(0, 0, 180);
+        JnewDollBullet.GetComponent<Bullet>().ATK = parentWeaponData.ATK[grandparent.currentlevel-1];
+        JnewDollBullet.GetComponent<Bullet>().attackpoint = parentWeaponData.ATK[grandparent.currentlevel-1];
         GetComponent<AudioSource>().Play();
         JnewDollBullet.GetComponent<Rigidbody2D>().AddForce(new Vector2(0, bulletspeed));
     }

@@ -97,7 +97,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bcad37349d32ffe4b8e92941fa9bdf3b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ATK: 8
+  ATK: 12
   effectID: 1
   attackpoint: 5
   Speed: 0

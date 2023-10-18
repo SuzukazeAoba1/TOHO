@@ -5,6 +5,8 @@ using TMPro;
 
 public class GumgiEffect : MonoBehaviour
 {
+    public WeaponUpgrade grandparent;
+    public WeaponData parentWeaponData;
     public float atk = 15f;
     public int effectID = 5;
     private int eID = 4;
@@ -22,6 +24,10 @@ public class GumgiEffect : MonoBehaviour
 
     private void Awake()
     {
+        Transform parent = transform.parent;
+        Transform parent2 = parent.parent;
+        grandparent = parent2.GetComponentInParent<WeaponUpgrade>();
+        parentWeaponData = grandparent.weapon;
         myAS = GetComponent<AudioSource>();
         myAS.volume = 0.41f;
         myCL = GetComponent<PolygonCollider2D>();
@@ -33,6 +39,8 @@ public class GumgiEffect : MonoBehaviour
     
     private void OnEnable()
     {
+        atk = parentWeaponData.ATK[grandparent.currentlevel - 1];
+        attackpoint = parentWeaponData.ATK[grandparent.currentlevel - 1];
         int ran = Random.Range(0, sounds.Length - 1);
         myAS.clip = sounds[ran];
         Invoke("DeactivateSelf", effect_time);

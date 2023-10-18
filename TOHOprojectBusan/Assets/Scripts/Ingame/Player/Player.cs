@@ -7,6 +7,7 @@ public class Player : MonoBehaviour
     [Header("# 외부 게임오브젝트")]
     public HealthGUI healthGui;
     public GameManager gManager;
+    public InvincibilityUI invincibilityui;
     [Header ("# PlayerStatus")]
     public int maxHealth = 5;
     public int health = 5;
@@ -24,10 +25,11 @@ public class Player : MonoBehaviour
     public bool isdead = false;
     public bool isDamaged = false;
     private SpriteRenderer mySR;
+    private Color originalcolor;
 
     [Header("# 치트 모드")]
     public ContinueUI cheatUI;
-    private bool cheated = false;
+    public bool cheated = false;
     
 
     // Start is called before the first frame update
@@ -35,6 +37,7 @@ public class Player : MonoBehaviour
     void Awake()
     {
         mySR = GetComponent<SpriteRenderer>();
+        originalcolor = mySR.color;
         xRange = (gManager.gameObject.GetComponent<GameManager>().movingzone.x - 1) /2;
         yRange = (gManager.gameObject.GetComponent<GameManager>().movingzone.y - 1) / 2;
         health = maxHealth;
@@ -94,67 +97,9 @@ public class Player : MonoBehaviour
             }
         }
     }
-
-
-    /*private void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("Barrage"))
-        {
-            Destroy(other.gameObject);
-            if (damageTimer == 0)
-            {
-                Damage();
-                damageTimer = invincibility_time;
-                damageTimer -= Time.deltaTime;
-            }
-        }
-
-        if (other.CompareTag("Experiance"))
-        {
-            other.gameObject.SetActive(false);
-            GameManager.instance.GetExp(other.GetComponent<ExpObject>().EXP);
-        }
-    }
-
-    private void Dead()
-    {
-        isdead = true;
-        position = Vector3.zero;
-        Destroy(gameObject, 0);
-    }
-
-    void Damage()
-    {
-        
-        if(health > 1)
-        {
-            health--;
-        }
-        else if(health == 1)
-        {
-
-        }
-            
-    }*/
-
     private void OnTriggerEnter2D(Collider2D other)
     {
-        /*if (other.gameObject.CompareTag("Enemy"))
-        {
-
-            if (damageTimer == 0)
-            {
-                Damage();
-                healthGui.HealthPush(health);
-                damageTimer = invincibility_time;
-            }
-
-        }*/
-
-        /*if (other.gameObject.CompareTag("Barrage"))
-        {
-            Damage();
-        }*/
+       
 
 
         if (other.gameObject.CompareTag("Experiance"))
@@ -169,9 +114,13 @@ public class Player : MonoBehaviour
             {
                 Heal(1);
             }
-            else if (health >= maxHealth)
+            else if (health >= maxHealth && !cheated)
             {
                 Invincibility(3f);
+            }
+            else
+            {
+                return;
             }
             other.gameObject.SetActive(false);
             GameManager.instance.GetExp(other.GetComponent<ExpObject>().EXP);
@@ -185,6 +134,7 @@ public class Player : MonoBehaviour
         {
             if (health > 1)
             {
+                mySR.color = originalcolor;
                 isDamaged = true;
                 health--;
                 healthGui.HealhtPull();
@@ -217,7 +167,17 @@ public class Player : MonoBehaviour
         isDamaged = true;
         StartCoroutine(YellowBlink());
         StartCoroutine(Hitless(time));
+        invincibilityui.time = time;
         
+
+    }
+
+    public void Cheat()
+    {
+        isDamaged = true;
+        StartCoroutine(YellowBlink());
+        invincibilityui.time = 9999;
+
 
     }
 

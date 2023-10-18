@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class WeaponUpgrade : MonoBehaviour
 {
-    public int weaponId = 0;
+    public int weaponId;
     public GameObject[] levels;
+    public WeaponData weapon;
     public int currentlevel = 1;
     private int level = 0;
     public int Maxlevel = 4;
@@ -14,6 +15,7 @@ public class WeaponUpgrade : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        weaponId = weapon.weaponID;
         switch(weaponId)
         {
             case 4:
@@ -44,24 +46,28 @@ public class WeaponUpgrade : MonoBehaviour
             currentlevel++;
             switch (weaponId)
             {
+                case 1:
+                    GetComponent<CircleMove>().speed = weapon.cooltimes[level];
+                    ActivateSelectedLevel(level);
+                    break;
                 case 4:
                     
-                    float[] cooltimes = { 150, 90, 75, 50 };
-                    GetComponent<MastersparkManager>().set_cooltime = cooltimes[level];
+                    //float[] cooltimes = { 150, 90, 75, 50 };
+                    GetComponent<MastersparkManager>().set_cooltime = weapon.cooltimes[level];
                     GetComponent<MastersparkManager>().StartShoot();
                     break;
                 case 5:
-                    float[] cooltimes2 = { 30, 20, 12, 7 };
-                    float[] khealthes = { 1000, 1500, 2000, 2500 };
-                    GetComponent<KogasaManager>().time_to_spawn = cooltimes2[level];
-                    GetComponent<KogasaManager>().kogasahp = khealthes[level];
+                    //float[] cooltimes2 = { 30, 20, 12, 7 };
+                    //float[] khealthes = { 1000, 1500, 2000, 2500 };
+                    GetComponent<KogasaManager>().time_to_spawn = weapon.cooltimes[level];
+                    GetComponent<KogasaManager>().kogasahp = weapon.healthes[level];
                     break;
 
                 case 7:
-                    int[] spawns = { 0, 1, 2, 3, 4 };
-                    float[] mhealthes = { 250, 250, 500, 750, 1000 };
-                    GetComponent<MoriyaManager>().Spawn(spawns[level]);
-                    GetComponent<MoriyaManager>().UpgradeHP(mhealthes[level]);
+                    //int[] spawns = { 0, 1, 2, 3, 4 };
+                    //float[] mhealthes = { 250, 250, 500, 750, 1000 };
+                    GetComponent<MoriyaManager>().Spawn(weapon.counts[level]);
+                    GetComponent<MoriyaManager>().UpgradeHP(weapon.healthes[level]);
                     break;
                 default:
                     ActivateSelectedLevel(level);

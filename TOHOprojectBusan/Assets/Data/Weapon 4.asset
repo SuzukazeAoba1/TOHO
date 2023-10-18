@@ -36,4 +36,12 @@ MonoBehaviour:
   - "\uCD5C\uC885 \uB2E8\uACC4."
   itemIcon: {fileID: 21300000, guid: 642a83fd479da774db6704806f343754, type: 3}
   levels: 0000000001000000020000000300000004000000
+  ATK: []
+  cooltimes:
+  - 150
+  - 90
+  - 75
+  - 50
+  healthes: []
+  counts: 
   Weaponobject: {fileID: 4572182708623379595, guid: 1d3308d0092144e4c9cf5fe32bc4936a, type: 3}

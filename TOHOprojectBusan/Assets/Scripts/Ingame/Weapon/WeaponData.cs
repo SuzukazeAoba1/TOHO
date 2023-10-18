@@ -23,6 +23,13 @@ public class WeaponData : ScriptableObject
 
     public int[] levels;
 
+    [Header("# 무기에 따라 사용하는 구간")]
+
+    public float[] ATK;
+    public float[] cooltimes;
+    public float[] healthes;
+    public int[] counts;
+
     [Header("# Weapon")]
     public GameObject Weaponobject;
 }
