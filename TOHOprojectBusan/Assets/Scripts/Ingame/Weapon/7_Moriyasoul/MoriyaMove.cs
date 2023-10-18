@@ -40,12 +40,13 @@ public class MoriyaMove : MonoBehaviour
 
             // 현재 카메라의 위치 및 크기 정보 가져오기
             Vector3 cameraPosition = main_camera.camera_position();
-            float xRange = cameraPosition.x + main_camera.horizontalSize;
-            float yRange = cameraPosition.y + main_camera.verticalSize;
+            float xRange = main_camera.horizontalSize - 2.0f;
+            float yRange = main_camera.verticalSize - 2.0f;
 
             // 카메라 내부에서만 움직이도록 제한
             float clampedX = Mathf.Clamp(transform.position.x, cameraPosition.x - xRange, cameraPosition.x + xRange);
             float clampedY = Mathf.Clamp(transform.position.y, cameraPosition.y - yRange, cameraPosition.y + yRange);
+  
 
             transform.position = new Vector3(clampedX, clampedY, transform.position.z);
         }

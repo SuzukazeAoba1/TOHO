@@ -39,10 +39,10 @@ public class CameraController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.position = camera_position2();
+        transform.position = camera_position();
     }
 
-    public Vector3 camera_position2()
+    public Vector3 camera_position()
     {
         position = Gplayer.transform.position;
 
@@ -68,77 +68,4 @@ public class CameraController : MonoBehaviour
         return new Vector3(posx, posy, posz);
     }
 
-
-    public Vector3 camera_position()
-    {
-        position = Gplayer.transform.position;
-
-        if (position.x < -xrange)
-        {
-            if (position.y < -offsetLast)
-            {
-                return new Vector3(-xrange, -yrange, -10);
-            }
-            else if (position.y > yrange - offset.y)
-            {
-                return new Vector3(-xrange, yrange, -10);
-            }
-            else
-            {
-                return new Vector3(-xrange, position.y, 0) + offset;
-            }
-        }
-        else if (position.x > xrange)
-        {
-            if (position.y < -offsetLast)
-            {
-                return new Vector3(xrange, -yrange, -10);
-            }
-            else if (position.y > yrange - offset.y)
-            {
-                return new Vector3(xrange, yrange, -10);
-            }
-            else
-            {
-                return new Vector3(xrange, position.y, 0) + offset;
-            }
-        }
-        else if (position.y < -offsetLast)
-        {
-            if (position.x < -xrange)
-            {
-                return new Vector3(-xrange, -yrange, 0) + offset;
-            }
-            else if (position.x > xrange)
-            {
-                return new Vector3(xrange, -yrange, 0) + offset;
-            }
-            else
-            {
-                return new Vector3(position.x, -yrange, -10);
-            }
-
-        }
-        else if (position.y > yrange - offset.y)
-        {
-
-            if (position.x < -xrange)
-            {
-                return new Vector3(-xrange, yrange, 0) + offset;
-            }
-            else if (position.x > xrange)
-            {
-                return new Vector3(xrange, yrange, 0) + offset;
-            }
-            else
-            {
-                return new Vector3(position.x, yrange, -10);
-            }
-        }
-        else
-        {
-            return position + offset;
-        }
-
-    }
 }
