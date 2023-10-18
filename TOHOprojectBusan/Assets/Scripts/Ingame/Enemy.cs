@@ -56,12 +56,12 @@ public class Enemy : MonoBehaviour
     {
         while (true)
         {
-            yield return new WaitForSeconds(5.0f);
-            SetBarrageChange(GameManager.instance.GetComponent<EnemySpawnController>().BarrageSequence.List[223],
-                             GameManager.instance.GetComponent<EnemySpawnController>().BarragePatten.List[82]);
-            yield return new WaitForSeconds(5.0f);
-            SetBarrageChange(GameManager.instance.GetComponent<EnemySpawnController>().BarrageSequence.List[224],
-                             GameManager.instance.GetComponent<EnemySpawnController>().BarragePatten.List[83]);
+            yield return new WaitForSeconds(10.0f);
+            SetBarrageChange(GameManager.instance.GetComponent<EnemySpawnController>().BarrageSequence.List[228],
+                             GameManager.instance.GetComponent<EnemySpawnController>().BarragePatten.List[87]);
+            yield return new WaitForSeconds(11.0f);
+            SetBarrageChange(GameManager.instance.GetComponent<EnemySpawnController>().BarrageSequence.List[229],
+                             GameManager.instance.GetComponent<EnemySpawnController>().BarragePatten.List[88]);
         }
     }
 
@@ -69,12 +69,21 @@ public class Enemy : MonoBehaviour
     {
         while (true)
         {
-            yield return new WaitForSeconds(5.0f);
+            yield return new WaitForSeconds(8.0f);
             SetBarrageChange(GameManager.instance.GetComponent<EnemySpawnController>().BarrageSequence.List[223],
                              GameManager.instance.GetComponent<EnemySpawnController>().BarragePatten.List[82]);
-            yield return new WaitForSeconds(5.0f);
+            yield return new WaitForSeconds(10.0f);
             SetBarrageChange(GameManager.instance.GetComponent<EnemySpawnController>().BarrageSequence.List[224],
                              GameManager.instance.GetComponent<EnemySpawnController>().BarragePatten.List[83]);
+            yield return new WaitForSeconds(5.0f);
+            SetBarrageChange(GameManager.instance.GetComponent<EnemySpawnController>().BarrageSequence.List[225],
+                             GameManager.instance.GetComponent<EnemySpawnController>().BarragePatten.List[84]);
+            yield return new WaitForSeconds(4.0f);
+            SetBarrageChange(GameManager.instance.GetComponent<EnemySpawnController>().BarrageSequence.List[226],
+                             GameManager.instance.GetComponent<EnemySpawnController>().BarragePatten.List[85]);
+            yield return new WaitForSeconds(11.0f);
+            SetBarrageChange(GameManager.instance.GetComponent<EnemySpawnController>().BarrageSequence.List[227],
+                             GameManager.instance.GetComponent<EnemySpawnController>().BarragePatten.List[86]);
         }
     }
 
