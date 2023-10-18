@@ -165,4 +165,6 @@ public class Enemy : MonoBehaviour
         gameObject.GetComponent<SpriteRenderer>().color = myColor;
         isdamaged = false;
     }
+
+
 }

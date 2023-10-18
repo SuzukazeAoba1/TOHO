@@ -71,7 +71,6 @@ public class MasterSparkHit : MonoBehaviour
                 other.gameObject.GetComponent<Enemy>().Damage(attackpoint);
                 //damageText.transform.localScale = new Vector3(other.transform.localScale.x / 4f, other.transform.localScale.y / 4f, other.transform.localScale.z / 4f);
                 damageText.GetComponent<TextMeshPro>().text = attackpoint.ToString();
-                gameObject.SetActive(false);
             }
         }
     }

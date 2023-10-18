@@ -5,14 +5,10 @@ using UnityEngine.UI;
 
 public class ContinueUI : MonoBehaviour
 {
-    public int maxEquip = 3;
     RectTransform rect;
-    public ItemGUI itemgui;
     ContinueButton[] Buttons;
     AudioSource pausesound;
     public AudioSource background;
-
-    public Button Healitem;
     private bool isPaused;
     public int selectcount = 0;
 
@@ -102,81 +98,5 @@ public class ContinueUI : MonoBehaviour
             Time.timeScale = 1f;
         }
     }
-
-    /*void Next()
-    {
-        //모든 아이템을 비활성화하고,
-
-        foreach (UpgradeButton item in Buttons)
-        {
-            item.gameObject.SetActive(false);
-        }
-        //그 중에서 규칙에 맞는 랜덤 아이템 3개 활성화
-        int[] ran = new int[3];
-        if (selectcount < maxEquip)
-        {
-            while (true)
-            {
-                ran[0] = Random.Range(0, weapons.Length);
-                ran[1] = Random.Range(0, weapons.Length);
-                ran[2] = Random.Range(0, weapons.Length);
-                if (ran[0] != ran[1] && ran[1] != ran[2] && ran[2] != ran[0])
-                {
-                    break;
-                }
-
-            }
-
-            for (int index = 0; index < ran.Length; index++)
-            {
-                UpgradeButton ranItem = weapons[ran[index]];
-
-                if (ranItem.level == ranItem.data.levels.Length - 1)
-                {
-                    items[Random.Range(0, items.Length)].gameObject.SetActive(true);
-                }
-                else
-                {
-                    ranItem.gameObject.SetActive(true);
-                }
-
-            }
-        }
-        else if (selectcount >= maxEquip)
-        {
-
-            while (true)
-            {
-                ran[0] = Random.Range(0, selectcount);
-                ran[1] = Random.Range(0, selectcount);
-                ran[2] = Random.Range(0, selectcount);
-                if (ran[0] != ran[1] && ran[1] != ran[2] && ran[2] != ran[0])
-                {
-                    break;
-                }
-
-            }
-
-            for (int index = 0; index < ran.Length; index++)
-            {
-                UpgradeButton ranItem = selected[ran[index]];
-
-                //규칙 1. 만렙은 안됨. 만렙이면 소비아이템으로  대체
-                if (ranItem.level == ranItem.data.levels.Length - 1)
-                {
-                    items[Random.Range(0, items.Length)].gameObject.SetActive(true);
-                }
-                else
-                {
-                    ranItem.gameObject.SetActive(true);
-                }
-
-            }
-        }
-        //규칙 1. 만렙은 안됨
-    }*/
-
-
-
 
 }
