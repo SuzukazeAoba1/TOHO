@@ -78,7 +78,7 @@ public class Bullet : MonoBehaviour
     {
         Color eC = other.GetComponent<SpriteRenderer>().color;
         
-        if (other.gameObject.CompareTag("Enemy"))
+        if (other.gameObject.CompareTag("Enemy") || other.gameObject.CompareTag("Boss"))
         {
 
             Color othercolor = other.gameObject.GetComponent<SpriteRenderer>().color;

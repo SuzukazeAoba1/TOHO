@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8074009885763397314}
   - component: {fileID: 8074009885763397312}
   m_Layer: 8
-  m_Name: Subway_RandomL
+  m_Name: Subway_LinearR
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -97,7 +97,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45a4e2f644679484b846cf88c8656591, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  leftright: 0
+  leftright: 4
   rightmax: 30
   leftmax: 210
   destroy_time: 6.6

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class MasterSparkHit : MonoBehaviour
 {
@@ -55,6 +56,22 @@ public class MasterSparkHit : MonoBehaviour
             {
                 Destroy(other.gameObject);
 
+            }
+            else if(other.gameObject.CompareTag("Boss"))
+            {
+                Color othercolor = other.gameObject.GetComponent<SpriteRenderer>().color;
+                other.gameObject.GetComponent<SpriteRenderer>().color = new Color(othercolor.r / 3, othercolor.g / 3, othercolor.b / 3);
+                other.gameObject.GetComponent<Enemy>().isdamaged = true;
+                Vector3 ePosition = other.ClosestPoint(transform.position);
+                ePosition.y += offset;
+                effect = GameManager.instance.EffectPool.Get(eID);
+                effect.transform.position = other.ClosestPoint(transform.position);
+                damageText = GameManager.instance.GitaPool.Get(0);
+                damageText.transform.position = ePosition;
+                other.gameObject.GetComponent<Enemy>().Damage(attackpoint);
+                //damageText.transform.localScale = new Vector3(other.transform.localScale.x / 4f, other.transform.localScale.y / 4f, other.transform.localScale.z / 4f);
+                damageText.GetComponent<TextMeshPro>().text = attackpoint.ToString();
+                gameObject.SetActive(false);
             }
         }
     }

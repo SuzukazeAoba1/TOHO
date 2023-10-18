@@ -165,8 +165,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c91d62f1dffe3640a5cd149eb069d0e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ATK: 0
-  effectID: 4
+  ATK: 700
+  effectID: 5
   Cooltime: 0
   destroy_Time: 0
   offset: 0.7

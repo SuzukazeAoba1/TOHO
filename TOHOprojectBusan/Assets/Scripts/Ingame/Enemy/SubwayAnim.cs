@@ -11,10 +11,14 @@ public class SubwayAnim : MonoBehaviour
     public float warningtime = 3.6f;
     public float cometime = 0.3f;
     public float goingtime = 2.1f;
+    private AudioSource myAudio;
+    public AudioClip warning_sound;
+    public AudioClip running_sound;
     // Start is called before the first frame update
 
     private void Awake()
     {
+        myAudio = GetComponent<AudioSource>();
         myAnim = GetComponent<Animator>();
         mySR = GetComponent<SpriteRenderer>();
         isright = GetComponentInParent<SubwaySpawn>().leftright;
@@ -42,7 +46,9 @@ public class SubwayAnim : MonoBehaviour
 
     private void OnEnable()
     {
+        myAudio.clip = warning_sound;
         iswarning = true;
+        myAudio.Play();
         StartCoroutine(Blink());
         StartCoroutine(Seaqunce1());
         StartCoroutine(Seaqunce2());
@@ -79,6 +85,8 @@ public class SubwayAnim : MonoBehaviour
         yield return new WaitForSeconds(warningtime);
         iswarning = false;
         LeanTween.cancel(gameObject);
+        myAudio.clip = running_sound;
+        myAudio.Play();
         myAnim.SetInteger("Sequence", 1);
 
     }

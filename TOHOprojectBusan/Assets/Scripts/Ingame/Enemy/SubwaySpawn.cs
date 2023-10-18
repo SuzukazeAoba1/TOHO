@@ -7,6 +7,7 @@ public class SubwaySpawn : MonoBehaviour
     public int leftright = 0;
     public float rightmax = 30;
     public float leftmax = 210;
+    public float destroy_time = 6.6f;
     private SpriteRenderer[] spriteRenderers;
     // Start is called before the first frame update
     private void Awake()
@@ -54,6 +55,7 @@ public class SubwaySpawn : MonoBehaviour
                 }
                 break;
         }
+        Destroy(gameObject, destroy_time);
     }
     // Update is called once per frame
     void Update()
