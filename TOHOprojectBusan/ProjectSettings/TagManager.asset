@@ -10,6 +10,7 @@ TagManager:
   - Border
   - Experiance
   - Boss
+  - Item
   layers:
   - Default
   - TransparentFX
