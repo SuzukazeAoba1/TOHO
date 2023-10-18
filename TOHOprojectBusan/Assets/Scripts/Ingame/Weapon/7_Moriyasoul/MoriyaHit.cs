@@ -47,6 +47,10 @@ public class MoriyaHit : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Barrage"))
         {
+            if(other.gameObject.GetComponent<SubwayCollider>())
+            {
+                myMM.Die();
+            }
             if(myMM.isAlive)
             {
                 Vector3 ePosition = other.ClosestPoint(transform.position);

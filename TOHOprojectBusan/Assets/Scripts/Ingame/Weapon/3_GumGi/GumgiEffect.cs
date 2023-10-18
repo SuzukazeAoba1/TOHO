@@ -51,7 +51,7 @@ public class GumgiEffect : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other)
     {
         Color eC = other.GetComponent<SpriteRenderer>().color;
-        if (other.gameObject.CompareTag("Enemy"))
+        if (other.gameObject.CompareTag("Enemy") || other.gameObject.CompareTag("Boss"))
         {
             Color othercolor = other.gameObject.GetComponent<SpriteRenderer>().color;
             other.gameObject.GetComponent<SpriteRenderer>().color = new Color(othercolor.r / 3, othercolor.g / 3, othercolor.b / 3);

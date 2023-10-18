@@ -48,7 +48,7 @@ public class UMYANGOK : MonoBehaviour
         if (candamage <= 0f)
         {
             candamage = Cooltime;
-            if (other.gameObject.CompareTag("Enemy"))
+            if (other.gameObject.CompareTag("Enemy") || other.gameObject.CompareTag("Boss"))
             {
                 Color othercolor = other.gameObject.GetComponent<SpriteRenderer>().color;
                 other.gameObject.GetComponent<SpriteRenderer>().color = new Color(othercolor.r / 3, othercolor.g / 3, othercolor.b / 3);
@@ -56,6 +56,7 @@ public class UMYANGOK : MonoBehaviour
                 Vector3 ePosition = other.ClosestPoint(transform.position);
                 ePosition.y += 1f;
                 effect = GameManager.instance.EffectPool.Get(eID);
+                effect.transform.position = other.ClosestPoint(transform.position);
                 ePosition.y += offset;
                 other.gameObject.GetComponent<Enemy>().Damage(attackpoint);
                 damageText = GameManager.instance.GitaPool.Get(0);
@@ -69,6 +70,7 @@ public class UMYANGOK : MonoBehaviour
                 ePosition.y += offset;
                 effect = GameManager.instance.EffectPool.Get(eID);
                 other.gameObject.GetComponent<Barrage>().Damage(attackpoint);
+                effect.transform.position = other.ClosestPoint(transform.position);
                 damageText = GameManager.instance.GitaPool.Get(0);
                 damageText.transform.position = other.ClosestPoint(transform.position);
                 //damageText.transform.localScale = new Vector3(other.transform.localScale.x / 6f, other.transform.localScale.y / 6f, other.transform.localScale.z / 6f);

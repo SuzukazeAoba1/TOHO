@@ -12,6 +12,7 @@ public class UpgradeUI : MonoBehaviour
     UpgradeButton[] Buttons;
     UpgradeButton[] items;
     UpgradeButton[] weapons;
+    public List<UpgradeButton> notmaxweapon = new List<UpgradeButton>();
     AudioSource pausesound;
     public List<UpgradeButton> selected = new List<UpgradeButton>();
 
@@ -27,6 +28,11 @@ public class UpgradeUI : MonoBehaviour
         Buttons = GetComponentsInChildren<UpgradeButton>(true);
         weapons = Buttons.Where(item => item.gameObject.name.Contains("Weapon")).ToArray();
         items = Buttons.Where(item => item.gameObject.name.Contains("Item")).ToArray();
+
+        for (int i = 0; i < weapons.Length; i++)
+        {
+            notmaxweapon.Add(weapons[i]);
+        }
 
 
     }
@@ -121,9 +127,9 @@ public class UpgradeUI : MonoBehaviour
         {
             while (true)
             {
-                ran[0] = Random.Range(0, weapons.Length);
-                ran[1] = Random.Range(0, weapons.Length);
-                ran[2] = Random.Range(0, weapons.Length);
+                ran[0] = Random.Range(0, notmaxweapon.Count);
+                ran[1] = Random.Range(0, notmaxweapon.Count);
+                ran[2] = Random.Range(0, notmaxweapon.Count);
                 if (ran[0] != ran[1] && ran[1] != ran[2] && ran[2] != ran[0])
                 {
                     break;
@@ -133,11 +139,16 @@ public class UpgradeUI : MonoBehaviour
 
             for (int index = 0; index < ran.Length; index++)
             {
-                UpgradeButton ranItem = weapons[ran[index]];
+                UpgradeButton ranItem = notmaxweapon[ran[index]];
 
                 if (ranItem.level == ranItem.data.levels.Length - 1)
                 {
-                    items[Random.Range(0, items.Length)].gameObject.SetActive(true);
+                    UpgradeButton newButton = FindNewButton(notmaxweapon, ran);
+
+                    // ranItem 대체
+                    notmaxweapon[ran[index]] = newButton;
+
+                    newButton.gameObject.SetActive(true);
                 }
                 else
                 {
@@ -176,6 +187,25 @@ public class UpgradeUI : MonoBehaviour
                 }
 
             }
+        }
+
+        UpgradeButton FindNewButton(List<UpgradeButton> availableButtons, int[] excludeIndices)
+        {
+            UpgradeButton newButton = null;
+
+            while (true)
+            {
+                int newIndex = Random.Range(0, availableButtons.Count);
+
+                // 중복 검사
+                if (!excludeIndices.Contains(newIndex))
+                {
+                    newButton = availableButtons[newIndex];
+                    break;
+                }
+            }
+
+            return newButton;
         }
         //규칙 1. 만렙은 안됨
     }
