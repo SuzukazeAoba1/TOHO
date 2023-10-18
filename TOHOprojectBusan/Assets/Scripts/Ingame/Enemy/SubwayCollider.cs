@@ -10,6 +10,7 @@ public class SubwayCollider : MonoBehaviour
     public float outoffsetx = 99.183f;
     public float outsizex = 1f;
     public float duration = 0.6f;
+    public SubwayAnim mySBAN;
     // Start is called before the first frame update
     private void Awake()
     {
@@ -17,11 +18,15 @@ public class SubwayCollider : MonoBehaviour
     }
     void Start()
     {
-        StartCoroutine(Out());
-        Getsize(comeoffsetx, comesizex, duration);
+        
+        
     }
 
-
+    private void OnEnable()
+    {
+        StartCoroutine(In());
+        StartCoroutine(Out());
+    }
     // Update is called once per frame
     void Update()
     {
@@ -55,7 +60,13 @@ public class SubwayCollider : MonoBehaviour
 
     IEnumerator Out()
     {
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(mySBAN.warningtime + mySBAN.cometime + mySBAN.goingtime);
         Getsize(outoffsetx, outsizex, duration);
+    }
+
+    IEnumerator In()
+    {
+        yield return new WaitForSeconds(mySBAN.warningtime);
+        Getsize(comeoffsetx, comesizex, duration);
     }
 }

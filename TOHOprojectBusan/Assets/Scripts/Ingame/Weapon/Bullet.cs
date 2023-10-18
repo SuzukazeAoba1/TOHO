@@ -122,6 +122,7 @@ public class Bullet : MonoBehaviour
                 //damageText.transform.localScale = new Vector3(other.transform.localScale.x / 6f, other.transform.localScale.y / 6f, other.transform.localScale.z / 6f);
                 damageText.GetComponent<TextMeshPro>().text = attackpoint.ToString();
                 other.gameObject.GetComponent<Barrage>().Damage(attackpoint);
+                gameObject.SetActive(false);
             }
             
             

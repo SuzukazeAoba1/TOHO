@@ -47,6 +47,10 @@ public class MoriyaHit : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Barrage"))
         {
+            if(other.gameObject.GetComponent<SubwayCollider>())
+            {
+                myMM.Die();
+            }
             if(myMM.isAlive)
             {
                 effect = GameManager.instance.EffectPool.Get(eID);

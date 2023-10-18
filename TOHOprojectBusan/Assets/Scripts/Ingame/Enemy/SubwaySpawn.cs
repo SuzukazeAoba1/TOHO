@@ -38,6 +38,21 @@ public class SubwaySpawn : MonoBehaviour
                     spriteRenderers[i].flipX = true;
                 }
                 break;
+            case 2:
+                transform.rotation = Quaternion.Euler(0, 0, 0);
+                for (int i = 0; i < spriteRenderers.Length; i++)
+                {
+                    spriteRenderers[i].flipY = false;
+                }
+                break;
+            case 3:
+                transform.rotation = Quaternion.Euler(0, 0, 180);
+                for (int i = 0; i < spriteRenderers.Length; i++)
+                {
+                    spriteRenderers[i].flipY = true;
+                    spriteRenderers[i].flipX = true;
+                }
+                break;
         }
     }
     // Update is called once per frame

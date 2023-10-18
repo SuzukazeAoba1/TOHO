@@ -57,18 +57,26 @@ public class KogasaHit : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Barrage"))
         {
-            effect = GameManager.instance.EffectPool.Get(eID);
-            Vector3 ePosition = other.ClosestPoint(transform.position);
-            ePosition.y += offset;
-            damageText = GameManager.instance.GitaPool.Get(0);
-            damageText.transform.position = other.ClosestPoint(transform.position);
-            effect.transform.position = other.ClosestPoint(transform.position);
-            effect = GameManager.instance.EffectPool.Get(eID);
-            health -= other.gameObject.GetComponent<Barrage>().HP;
-            damageText.GetComponent<TextMeshPro>().text = other.gameObject.GetComponent<Barrage>().HP.ToString();
-            other.gameObject.GetComponent<Barrage>().Kill();
-            //damageText.transform.localScale = new Vector3(other.transform.localScale.x / 6f, other.transform.localScale.y / 6f, other.transform.localScale.z / 6f);
-            
+            if(other.gameObject.GetComponent<SubwayCollider>())
+            {
+                Destroy(gameObject);
+            }
+            else
+            {
+                effect = GameManager.instance.EffectPool.Get(eID);
+                Vector3 ePosition = other.ClosestPoint(transform.position);
+                ePosition.y += offset;
+                damageText = GameManager.instance.GitaPool.Get(0);
+                damageText.transform.position = other.ClosestPoint(transform.position);
+                effect.transform.position = other.ClosestPoint(transform.position);
+                effect = GameManager.instance.EffectPool.Get(eID);
+                health -= other.gameObject.GetComponent<Barrage>().HP;
+                damageText.GetComponent<TextMeshPro>().text = other.gameObject.GetComponent<Barrage>().HP.ToString();
+                other.gameObject.GetComponent<Barrage>().Kill();
+                //damageText.transform.localScale = new Vector3(other.transform.localScale.x / 6f, other.transform.localScale.y / 6f, other.transform.localScale.z / 6f);
+            }
+
+
 
         }
     }

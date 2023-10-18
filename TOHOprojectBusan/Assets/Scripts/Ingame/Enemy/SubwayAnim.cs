@@ -8,6 +8,9 @@ public class SubwayAnim : MonoBehaviour
     private SpriteRenderer mySR;
     public int isright;
     private bool iswarning;
+    public float warningtime = 3.6f;
+    public float cometime = 0.3f;
+    public float goingtime = 2.1f;
     // Start is called before the first frame update
 
     private void Awake()
@@ -40,7 +43,10 @@ public class SubwayAnim : MonoBehaviour
     private void OnEnable()
     {
         iswarning = true;
-        StartCoroutine(blink());
+        StartCoroutine(Blink());
+        StartCoroutine(Seaqunce1());
+        StartCoroutine(Seaqunce2());
+        StartCoroutine(Seaqunce3());
         myAnim.SetInteger("Sequence", 0);
     }
     // Update is called once per frame
@@ -49,7 +55,7 @@ public class SubwayAnim : MonoBehaviour
         
     }
 
-    IEnumerator blink()
+    IEnumerator Blink()
     {
         while (iswarning)
         {
@@ -67,6 +73,27 @@ public class SubwayAnim : MonoBehaviour
         }
     }
 
+    IEnumerator Seaqunce1()
+    {
+
+        yield return new WaitForSeconds(warningtime);
+        iswarning = false;
+        LeanTween.cancel(gameObject);
+        myAnim.SetInteger("Sequence", 1);
+
+    }
+
+    IEnumerator Seaqunce2()
+    {
+        yield return new WaitForSeconds(warningtime + cometime);
+        myAnim.SetInteger("Sequence", 2);
+    }
+
+    IEnumerator Seaqunce3()
+    {
+        yield return new WaitForSeconds(warningtime + cometime + goingtime);
+        myAnim.SetInteger("Sequence", 3);
+    }
     void UpdateColor(Color color)
     {
         mySR.color = color;
