@@ -146,6 +146,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 7
   range: 2.5
-  EXP: 40
+  EXP: 10
   destroy_Time: 60
   addforce: 50

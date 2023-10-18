@@ -11,6 +11,7 @@ public class Enemy : MonoBehaviour
 
     public float HP;
     public double speed;
+    public int expdrop = 10;
     public bool m_flip;
 
     public bool test = false;
@@ -126,8 +127,27 @@ public class Enemy : MonoBehaviour
     
     public void Kill()
     {
-        GameObject exp = GameManager.instance.GitaPool.Get(2);
-        exp.transform.position = transform.position;
+        int expdropcheck = expdrop;
+
+        while (expdropcheck > 0)
+        {
+            if (expdropcheck >= 10)
+            {
+                GameObject exp = GameManager.instance.GitaPool.Get(2);
+                exp.transform.position = transform.position;
+                exp.GetComponent<Rigidbody2D>().velocity = new Vector2(Random.Range(-1.0f, 1.0f), Random.Range(-4.0f, 4.0f));
+                expdropcheck -= 10;
+            }
+            else
+            {
+                if (expdropcheck >= 1)
+                {
+                    GameObject exp = GameManager.instance.GitaPool.Get(1);
+                    exp.transform.position = transform.position;
+                    expdropcheck -= 1;
+                }
+            }
+        }
 
         mySequence.Kill(true);
         Destroy(gameObject);
