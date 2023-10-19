@@ -7,6 +7,8 @@ public class PoolManager : MonoBehaviour
 
     //프리펩을 보관할 변수
     public GameObject[] prefabs;
+
+
     //풀 담당을 하는 리스트
     List<GameObject>[] pools;
 
@@ -18,7 +20,6 @@ public class PoolManager : MonoBehaviour
         {
             pools[index] = new List<GameObject>();
         }
-
     }
 
     public GameObject Get(int index)
@@ -70,6 +71,7 @@ public class PoolManager : MonoBehaviour
         {
             // 새롭게 생성 후 select에 할당
             select = Instantiate(prefabs[index], transform);
+            pools[index].Add(select);
         }
 
         return select;

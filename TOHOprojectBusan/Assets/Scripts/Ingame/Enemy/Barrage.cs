@@ -19,6 +19,11 @@ public class Barrage : MonoBehaviour
     public float m_delay;
     public float m_distance;
 
+    public void Start()
+    {
+        HP_now = HP;
+    }
+
     public void ActiveTimerOn()
     {
         HP_now = HP;
