@@ -33,14 +33,14 @@ public class EnemyBarrageController : MonoBehaviour
                 {
                     angle = barrageseq.m_firstangle + barrageseq.m_perangle * i;
                 }
-                ShotPatten(angle, enemy, player, flip);
+                ShotPatten(angle, enemy, player, flip, i);
                 yield return new WaitForSeconds(barrageseq.m_shotinterval);
             }
             yield return new WaitForSeconds(barrageseq.m_shotlooptime);
         }
     }
 
-    private void ShotPatten(float groupangle, GameObject enemy, GameObject player, bool flip)
+    private void ShotPatten(float groupangle, GameObject enemy, GameObject player, bool flip, int pattennum)
     {
         GameObject pattengroup = new GameObject();
         pattengroup.transform.position = enemy.transform.position;
@@ -54,14 +54,14 @@ public class EnemyBarrageController : MonoBehaviour
         foreach (var bullet in barragepat.patten) //패턴 그룹
         {
             bulletcount++;
-            ShotBullet(bullet, pattengroup, enemy, player, flip);
+            ShotBullet(bullet, pattengroup, enemy, player, flip, pattennum);
         }
 
         group.bulletcount = bulletcount;
 
     }
     
-    private void ShotBullet(BarrageData Barrage, GameObject pattengroup, GameObject enemy, GameObject player,bool flip)
+    private void ShotBullet(BarrageData Barrage, GameObject pattengroup, GameObject enemy, GameObject player,bool flip, int pattennum)
     {
         float barrageangle;
         Quaternion barragerotation;
@@ -77,15 +77,16 @@ public class EnemyBarrageController : MonoBehaviour
             barragerotation = Quaternion.Euler(0, 0, barrageangle);
         }
 
-        
+        //GameObject buf = Instantiate(barragecon.barrage[Barrage.m_barrageid], enemy.transform.position, barragerotation);
+        GameObject buf = GameManager.instance.BarragePool.Get(Barrage.m_barrageid);
+        buf.transform.position = enemy.transform.position;
+        buf.transform.rotation = barragerotation;
 
-        GameObject buf = Instantiate(barragecon.barrage[Barrage.m_barrageid], enemy.transform.position, barragerotation);
         buf.GetComponent<Barrage>().SetData(enemy, pattengroup, player, Barrage.m_basespeed, Barrage.m_addspeed, Barrage.m_distance, Barrage.m_delay / 60.0f);
-        buf.GetComponent<SpriteRenderer>().sortingOrder = 999 - bulletcount; 
+        buf.GetComponent<SpriteRenderer>().sortingOrder = 999 - (pattennum * 10) - bulletcount; 
 
         buf.SetActive(false);
         buf.GetComponent<Barrage>().ActiveTimerOn();
-
 
     }
 

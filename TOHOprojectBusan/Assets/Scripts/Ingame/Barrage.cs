@@ -10,15 +10,18 @@ public class Barrage : MonoBehaviour
     public GameObject myGroup;
 
     public float HP;
+    public float HP_now;
+
     public float Speed_now;
     public float Speed_base;
     public float Speed_add;
+
     public float m_delay;
     public float m_distance;
 
     public void ActiveTimerOn()
     {
-
+        HP_now = HP;
         transform.SetParent(myGroup.transform);
 
         if (m_delay > 0.0f)
@@ -53,13 +56,13 @@ public class Barrage : MonoBehaviour
 
     public float Pierce(float atk)
     {
-        if(HP <= atk)
+        if(HP_now <= atk)
         {
             return 0;
         }
-        else if(atk > HP)
+        else if(atk > HP_now)
         {
-            return HP - atk;
+            return HP_now - atk;
         }
         else
         {
@@ -69,9 +72,9 @@ public class Barrage : MonoBehaviour
     }
     public void Damage(float atk)
     {
-        HP -= atk;
+        HP_now -= atk;
 
-        if (HP <= 0)
+        if (HP_now <= 0)
         {
             Kill();
         }
@@ -80,7 +83,8 @@ public class Barrage : MonoBehaviour
     {
         transform.Translate(Speed_now * Vector2.up * Time.deltaTime);
 
-        if (HP <= 0)
+        if (HP_now <= 0)
+        if (HP_now <= 0)
         {
             Kill();
         }
@@ -114,18 +118,16 @@ public class Barrage : MonoBehaviour
 
     public void Kill()
     {
-        myGroup.GetComponent<EnemyBarrageGroup>().bulletcount--;
-
         GameObject exp = GameManager.instance.GitaPool.Get(1);
         exp.transform.position = transform.position;
 
-        Destroy(gameObject);
+        Death();
     }
 
     public void Death()
     {
+        transform.SetParent(GameManager.instance.BarragePool.transform);
+        gameObject.SetActive(false);
         myGroup.GetComponent<EnemyBarrageGroup>().bulletcount--;
-        Destroy(gameObject);
     }
-
 }
