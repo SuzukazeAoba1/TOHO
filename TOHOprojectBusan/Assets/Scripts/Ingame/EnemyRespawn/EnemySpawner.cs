@@ -21,7 +21,7 @@ public class EnemySpawner : MonoBehaviour
 
     public void TestSpawn(int spawnpointid, int enemyid, int movepattenid, bool flip)
     {
-        if (spawnpointid >= 0 && spawnpointid <= 100)
+        if (spawnpointid >= 0 && spawnpointid <= 120)
         {
             if (spawnpointid <= 50) //상단
             {
@@ -54,7 +54,7 @@ public class EnemySpawner : MonoBehaviour
     /// </summary>
     public GameObject Spawn(int spawnpointid, int enemyid, int movesequenceid, bool flip)
     {
-        if (spawnpointid >= 0 && spawnpointid <= 100)
+        if (spawnpointid >= 0 && spawnpointid <= 120)
         {
             if (spawnpointid <= 50) //상단
             {
