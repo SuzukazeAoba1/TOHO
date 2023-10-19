@@ -110,9 +110,11 @@ public class Player : MonoBehaviour
 
         if (other.gameObject.CompareTag("Item"))
         {
+            other.gameObject.SetActive(false);
             if (health < maxHealth)
             {
                 Heal(1);
+                
             }
             else if (health >= maxHealth && !cheated)
             {
@@ -122,8 +124,6 @@ public class Player : MonoBehaviour
             {
                 return;
             }
-            other.gameObject.SetActive(false);
-            GameManager.instance.GetExp(other.GetComponent<ExpObject>().EXP);
         }
 
     }

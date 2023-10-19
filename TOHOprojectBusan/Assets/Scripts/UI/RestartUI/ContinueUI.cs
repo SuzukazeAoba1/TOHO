@@ -51,39 +51,6 @@ public class ContinueUI : MonoBehaviour
         TogglePause();
     }
 
-    public void Select(int index)
-    {
-        Buttons[index].Onclick();
-
-    }
-
-    /*public void SetdataofButton(WeaponData recievedata)
-    {
-        if (selectcount < maxEquip)
-        {
-            for (int i = 0; i < Buttons.Length; i++)
-            {
-                if (Buttons[i].GetComponent<UpgradeButton>().data == recievedata)
-                {
-                    selected.Add(Buttons[i]);
-                    itemgui.GetitemSlot(selectcount, recievedata);
-                }
-            }
-
-            //Debug.Log(selectcount + "번 선택되었습니다");
-            selectcount++;
-            //Debug.Log(selected[selectcount - 1]); // 수정된 부분
-        }
-        else if (selectcount >= maxEquip)
-        {
-            //Debug.Log("무기 다 선택됨");
-        }
-    }*/
-
-    public void ADDweapon(UpgradeButton button)
-    {
-
-    }
 
     void TogglePause()
     {

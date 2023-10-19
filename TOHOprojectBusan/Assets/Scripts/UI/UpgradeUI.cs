@@ -13,8 +13,9 @@ public class UpgradeUI : MonoBehaviour
     UpgradeButton[] items;
     UpgradeButton[] weapons;
     public List<UpgradeButton> notmaxweapon = new List<UpgradeButton>();
-    AudioSource pausesound;
     public List<UpgradeButton> selected = new List<UpgradeButton>();
+    AudioSource pausesound;
+    
 
     public Button Healitem;
     private bool isPaused;
@@ -26,9 +27,12 @@ public class UpgradeUI : MonoBehaviour
         pausesound = GetComponent<AudioSource>();
         rect = GetComponent<RectTransform>();
         Buttons = GetComponentsInChildren<UpgradeButton>(true);
+        //버튼 중에서 이름에 Weapon이 있는 개체만 선별
         weapons = Buttons.Where(item => item.gameObject.name.Contains("Weapon")).ToArray();
+        //버튼 중에서 이름에 item이 있는 개체만 선별
         items = Buttons.Where(item => item.gameObject.name.Contains("Item")).ToArray();
 
+        //weapons의 개체를 notmaxweapon에 넣음(상관 없음)
         for (int i = 0; i < weapons.Length; i++)
         {
             notmaxweapon.Add(weapons[i]);
@@ -63,15 +67,16 @@ public class UpgradeUI : MonoBehaviour
         TogglePause();
     }
 
+    //게임이 시작될때 한번 작동하는 함수(게임 매니저에서 동작함)
     public void Select(int index)
     {
         Buttons[index].Onclik();
-        Debug.Log("기본 무기 지급됨");
+        //Debug.Log("기본 무기 지급됨");
 
 
     }
 
-    public void SetdataofButton(WeaponData recievedata)
+    public void SetdataofButton(WeaponData recievedata) //새 무기를 골랐을 때 이를 등록하는 함수
     {
         if (selectcount < maxEquip)
         {
@@ -84,22 +89,15 @@ public class UpgradeUI : MonoBehaviour
                 }
             }
 
-            //Debug.Log(selectcount + "번 선택되었습니다");
             selectcount++;
-            //Debug.Log(selected[selectcount - 1]); // 수정된 부분
         }
-        else if (selectcount >= maxEquip)
+        else if (selectcount >= maxEquip) //selectcount가 maxEquip 이상일 경우(스크립트가 정상작동 한다면 작동안함)
         {
-            //Debug.Log("무기 다 선택됨");
+            Debug.Log("무기 다 선택됨");
         }
     }
 
-    public void ADDweapon(UpgradeButton button)
-    {
-
-    }
-
-    void TogglePause()
+    void TogglePause() //일시정지(UI 작동 시 사용)
     {
         isPaused = !isPaused;
 
@@ -123,10 +121,14 @@ public class UpgradeUI : MonoBehaviour
         }
         //그 중에서 규칙에 맞는 랜덤 아이템 3개 활성화
         int[] ran = new int[3];
+        //아이템이 MaxEquip보다 낮을 경우(착용할 아이템이 남아있을 경우)
+        //특정 아이템의 레벨이 max일시 레벨이 max가 아닌 다른 아이템으로 대체
         if (selectcount < maxEquip)
         {
+            //
             while (true)
             {
+                //notmaxweapon에서 
                 ran[0] = Random.Range(0, notmaxweapon.Count);
                 ran[1] = Random.Range(0, notmaxweapon.Count);
                 ran[2] = Random.Range(0, notmaxweapon.Count);
