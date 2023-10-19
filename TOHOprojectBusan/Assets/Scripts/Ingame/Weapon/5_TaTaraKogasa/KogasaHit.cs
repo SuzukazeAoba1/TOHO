@@ -49,7 +49,7 @@ public class KogasaHit : MonoBehaviour
         hpBar.gameObject.GetComponent<Slider>().value = health / hp;
         if (health <= 0)
         {
-            Destroy(gameObject);
+            Death();
         }
     }
 
@@ -83,6 +83,12 @@ public class KogasaHit : MonoBehaviour
 
     private void OnDestroy()
     {
+        
+    }
+
+    private void Death()
+    {
         hpBar.GetComponent<RectTransform>().localScale = new Vector3(0, 0, 0);
+        Destroy(gameObject);
     }
 }
