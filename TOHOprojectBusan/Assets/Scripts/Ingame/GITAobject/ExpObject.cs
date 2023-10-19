@@ -7,7 +7,6 @@ public class ExpObject : MonoBehaviour
     public float speed = 7f;
     public float range = 1.5f;
     public int EXP = 1;
-    public float destroy_Time = 7f;
     public float addforce = 50f;
 
     private Transform target;
@@ -15,7 +14,6 @@ public class ExpObject : MonoBehaviour
 
     private void OnEnable()
     {
-        Invoke("DeactivateSelf", destroy_Time);
         InvokeRepeating("UpdateTarget", 0f, 0.2f);
         rb = GetComponent<Rigidbody2D>();
         rb.AddForce(new Vector2(0, addforce));
