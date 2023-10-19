@@ -50,7 +50,6 @@ public class Pause : MonoBehaviour
     {
         background.Pause();
         pausesound.Play();
-        pausesound.Play();
         rect.localScale = new Vector3(1, 1, 1);
         TogglePause();
     }
@@ -91,5 +90,4 @@ public class Pause : MonoBehaviour
 
         }
     }
-}
 }
