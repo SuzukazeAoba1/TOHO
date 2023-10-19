@@ -80,6 +80,7 @@ public class MastersparkManager : MonoBehaviour
 
     private void SparkShoot()
     {
+        player.GetComponent<Player>().Invincibility(duration);
         Invoke("StopSpark", duration);
         canshoot = false;
         moveMagicCircle();

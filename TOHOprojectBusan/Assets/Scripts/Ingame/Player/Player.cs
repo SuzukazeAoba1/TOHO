@@ -15,6 +15,9 @@ public class Player : MonoBehaviour
     public float bulletspeed = 200f;
     public float invincibility_time = 1.2f;
     [Header("# 사운드효과")]
+    private AudioSource myAS;
+    public AudioClip hit;
+    public AudioClip invin;
     private Vector3 position = Vector3.zero;
     private float H;
     private float V;
@@ -36,6 +39,7 @@ public class Player : MonoBehaviour
 
     void Awake()
     {
+        myAS = GetComponent<AudioSource>();
         mySR = GetComponent<SpriteRenderer>();
         originalcolor = mySR.color;
         xRange = (gManager.gameObject.GetComponent<GameManager>().movingzone.x - 1) /2;
@@ -134,6 +138,10 @@ public class Player : MonoBehaviour
         {
             if (health > 1)
             {
+                myAS.clip = hit;
+                myAS.Play();
+                GameObject hiteffect = GameManager.instance.EffectPool.Get(6);
+                hiteffect.transform.position = transform.position;
                 mySR.color = originalcolor;
                 isDamaged = true;
                 health--;
@@ -164,6 +172,10 @@ public class Player : MonoBehaviour
 
     public void Invincibility(float time)
     {
+        myAS.clip = invin;
+        GameObject invineffect = GameManager.instance.EffectPool.Get(7);
+        invineffect.transform.position = transform.position;
+        myAS.Play();
         isDamaged = true;
         StartCoroutine(YellowBlink());
         StartCoroutine(Hitless(time));
