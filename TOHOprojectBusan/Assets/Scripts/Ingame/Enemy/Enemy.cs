@@ -127,28 +127,37 @@ public class Enemy : MonoBehaviour
     
     public void Kill()
     {
-        int expdropcheck = expdrop;
-
-        while (expdropcheck > 0)
+        if(gameObject.CompareTag("Boss"))
         {
-            if (expdropcheck >= 10)
+            GameObject heal = GameManager.instance.GitaPool.Get(3);
+            heal.transform.position = transform.position;
+        }
+        else
+        {
+            int expdropcheck = expdrop;
+
+            while (expdropcheck > 0)
             {
-                GameObject exp = GameManager.instance.GitaPool.Get(2);
-                exp.transform.position = transform.position;
-                exp.GetComponent<Rigidbody2D>().velocity = new Vector2(Random.Range(-1.0f, 1.0f), Random.Range(-4.0f, 4.0f));
-                expdropcheck -= 10;
-            }
-            else
-            {
-                if (expdropcheck >= 1)
+                if (expdropcheck >= 10)
                 {
-                    GameObject exp = GameManager.instance.GitaPool.Get(1);
+                    GameObject exp = GameManager.instance.GitaPool.Get(2);
                     exp.transform.position = transform.position;
                     exp.GetComponent<Rigidbody2D>().velocity = new Vector2(Random.Range(-1.0f, 1.0f), Random.Range(-4.0f, 4.0f));
-                    expdropcheck -= 1;
+                    expdropcheck -= 10;
+                }
+                else
+                {
+                    if (expdropcheck >= 1)
+                    {
+                        GameObject exp = GameManager.instance.GitaPool.Get(1);
+                        exp.transform.position = transform.position;
+                        exp.GetComponent<Rigidbody2D>().velocity = new Vector2(Random.Range(-1.0f, 1.0f), Random.Range(-4.0f, 4.0f));
+                        expdropcheck -= 1;
+                    }
                 }
             }
         }
+        
 
         mySequence.Kill(true);
         Destroy(gameObject);
