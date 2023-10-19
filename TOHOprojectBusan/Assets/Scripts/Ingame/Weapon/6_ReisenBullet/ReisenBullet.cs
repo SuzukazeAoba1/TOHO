@@ -11,6 +11,7 @@ public class ReisenBullet : MonoBehaviour
     public float cooltime = 0.15f;
     private float shoottimer = 0f;
     private AudioSource myAS;
+    public AudioClip[] shootSEs;
     public float forceMagnitude = 1000.0f;
 
     private void Awake()
@@ -41,8 +42,18 @@ public class ReisenBullet : MonoBehaviour
     }
     void Shoot()
     {
+        int ran = Random.Range(0, shootSEs.Length - 1);
+        for (int a = 0; a < shootSEs.Length; a++)
+        {
+            if (a == ran)
+            {
+                myAS.clip = shootSEs[a];
+            }
+        }
+        StartCoroutine(SEon());
         for (int i = 0; i < Shotcount; i++)
         {
+            
             float angle = i * (100f / Shotcount);
             Vector3 position = Quaternion.Euler(0, 0, (-36f) + angle) * new Vector3(0, radius, 0);;
 
@@ -67,9 +78,16 @@ public class ReisenBullet : MonoBehaviour
         {
             yield return new WaitForSeconds(0.07f);
 
-
             Color c = obj.GetComponent<SpriteRenderer>().color;
             obj.GetComponent<SpriteRenderer>().color = new Color(c.r, c.g, c.b, 1f);
+        }
+        IEnumerator SEon()
+        {
+            yield return new WaitForSeconds(0.07f);
+
+            myAS.Play();
+            yield return new WaitForSeconds(0.45f);
+            myAS.Stop();
         }
     }
 }
