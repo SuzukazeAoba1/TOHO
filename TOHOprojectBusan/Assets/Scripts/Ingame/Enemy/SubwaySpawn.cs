@@ -7,6 +7,7 @@ public class SubwaySpawn : MonoBehaviour
     public int leftright = 0;
     public float rightmax = 30;
     public float leftmax = 210;
+    public float undermax = -60;
     public float destroy_time = 6.6f;
     private SpriteRenderer[] spriteRenderers;
     // Start is called before the first frame update
@@ -52,6 +53,13 @@ public class SubwaySpawn : MonoBehaviour
                 {
                     spriteRenderers[i].flipY = true;
                     spriteRenderers[i].flipX = true;
+                }
+                break;
+            case 4:
+                transform.rotation = Quaternion.Euler(0, 0, -90);
+                for (int i = 0; i < spriteRenderers.Length; i++)
+                {
+                    spriteRenderers[i].flipY = false;
                 }
                 break;
         }

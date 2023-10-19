@@ -47,9 +47,9 @@ MonoBehaviour:
   - 4
   - 4
   - 4
-  - 4
-  - 4
-  - 4
+  - 5.5
+  - 5.5
+  - 7
   healthes: []
   counts: 
   Weaponobject: {fileID: 7553245805521926715, guid: 741eb628e0c603d48b17629e229e27f5, type: 3}

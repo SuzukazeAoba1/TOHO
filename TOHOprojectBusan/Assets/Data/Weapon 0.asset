@@ -20,7 +20,8 @@ MonoBehaviour:
   - "\uD0C4\uD658\uC774 \uD558\uB098 \uB298\uC5B4\uB0A9\uB2C8\uB2E4(2\uBC1C)"
   - "\uD0C4\uD658\uC774 \uD558\uB098 \uB354 \uB298\uC5B4\uB0A9\uB2C8\uB2E4.(3\uBC1C)"
   - "\uC720\uB3C4 \uD0C4\uD658\uC744 \uB450 \uAC1C \uBC1C\uC0AC\uD569\uB2C8\uB2E4."
-  - "\uD0C4\uD658\uC774 \uD558\uB098 \uB354 \uB298\uC5B4\uB0A9\uB2C8\uB2E4.(4\uBC1C)"
+  - "\uD0C4\uD658\uC774 \uD558\uB098 \uB354 \uB298\uC5B4\uB0A9\uB2C8\uB2E4.(4\uBC1C)\n\uACF5\uACA9\uC18D\uB3C4
+    30%\uAC00 \uC99D\uAC00\uD569\uB2C8\uB2E4."
   - "\uCD5C\uC885 \uB2E8\uACC4."
   itemEx:
   - "\uB808\uC774\uBB34."
@@ -34,16 +35,16 @@ MonoBehaviour:
   levels: 000000000100000002000000030000000400000005000000
   ATK:
   - 5
-  - 6
   - 7
-  - 8
   - 10
+  - 12
+  - 15
   cooltimes:
   - 0.15
   - 0.15
   - 0.15
   - 0.15
-  - 0.15
+  - 0.1
   healthes: []
   counts: 
   Weaponobject: {fileID: 4047625475408632868, guid: 5900a54a60830114291f9099bbb1c4b5, type: 3}

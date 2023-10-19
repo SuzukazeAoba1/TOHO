@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 8074009885763397315}
   - component: {fileID: 8074009885763397314}
   - component: {fileID: 8074009885763397312}
-  - component: {fileID: -9152750941345645090}
+  - component: {fileID: 6335183914590271665}
   m_Layer: 8
-  m_Name: Subway_LinearL
+  m_Name: Subway_LinearD
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -98,11 +98,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45a4e2f644679484b846cf88c8656591, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  leftright: 3
+  leftright: 4
   rightmax: 30
   leftmax: 210
+  undermax: -60
   destroy_time: 6.6
---- !u!114 &-9152750941345645090
+--- !u!114 &6335183914590271665
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
