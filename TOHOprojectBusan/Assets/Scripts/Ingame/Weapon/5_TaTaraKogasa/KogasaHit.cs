@@ -83,6 +83,6 @@ public class KogasaHit : MonoBehaviour
 
     private void OnDestroy()
     {
-        //hpBar.gameObject.SetActive(false);
+        hpBar.GetComponent<RectTransform>().localScale = new Vector3(0, 0, 0);
     }
 }

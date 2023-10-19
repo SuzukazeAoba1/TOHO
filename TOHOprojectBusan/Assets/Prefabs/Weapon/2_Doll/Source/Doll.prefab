@@ -42,6 +42,7 @@ GameObject:
   - component: {fileID: 8155463835772086884}
   - component: {fileID: 8155463835772086891}
   - component: {fileID: -3777177130131489268}
+  - component: {fileID: 1671491106164740638}
   m_Layer: 6
   m_Name: Doll
   m_TagString: Untagged
@@ -127,9 +128,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7dd64f745ee234f4da3d348874557f78, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  grandparent: {fileID: 0}
+  parentWeaponData: {fileID: 0}
   target: {fileID: 0}
-  range: 14
+  range: 50
   enemyTag: Enemy
+  bossTag: Boss
   cooltime: 0.12
   bullet: {fileID: 7233594671075936834, guid: 80733dec8d1fa594abedd125afd5f411, type: 3}
   bulletspeed: 2000
@@ -230,3 +234,16 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1671491106164740638
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8155463835772086889}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a3d1c0c324482844b1663e62e625cce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  huu: {fileID: 0}

@@ -102,8 +102,8 @@ public class HommingShoot : MonoBehaviour
         //GameObject newDollBullet = Instantiate(bullet, transform.position, Quaternion.AngleAxis(angle, Vector3.forward));
         newDollBullet.transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
         newDollBullet.transform.position = transform.position;
-        newDollBullet.GetComponent<Bullet>().ATK = parentWeaponData.ATK[grandparent.currentlevel -1] - 1f;
-        newDollBullet.GetComponent<Bullet>().attackpoint = parentWeaponData.ATK[grandparent.currentlevel -1] - 1f;
+        newDollBullet.GetComponent<Bullet>().ATK = parentWeaponData.ATK[grandparent.currentlevel -1] - 2f;
+        newDollBullet.GetComponent<Bullet>().attackpoint = parentWeaponData.ATK[grandparent.currentlevel -1] - 2f;
         newDollBullet.transform.Rotate(0, 0, 90);
         myAS.Play();
         newDollBullet.GetComponent<Rigidbody2D>().AddForce(direction * bulletspeed);

@@ -36,14 +36,14 @@ MonoBehaviour:
   levels: 0000000001000000020000000300000004000000
   ATK: []
   cooltimes:
-  - 15
   - 10
-  - 7
-  - 4
+  - 8
+  - 6
+  - 3.5
   healthes:
   - 150
-  - 500
-  - 2000
-  - 4000
+  - 1000
+  - 3500
+  - 8000
   counts: 
   Weaponobject: {fileID: 8194559909054988112, guid: ac2745a21c19db54a99a0e40faaf36de, type: 3}

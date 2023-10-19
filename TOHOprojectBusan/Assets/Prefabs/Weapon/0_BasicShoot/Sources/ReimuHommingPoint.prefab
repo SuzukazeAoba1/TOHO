@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 88954312190658042}
   - component: {fileID: 2209180047225472155}
   - component: {fileID: 4095316360385105912}
+  - component: {fileID: -4465692005656731419}
   m_Layer: 0
   m_Name: ReimuHommingPoint
   m_TagString: Untagged
@@ -97,9 +98,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72abf838bcbcbb94d9be944131c54ef5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  grandparent: {fileID: 0}
+  parentWeaponData: {fileID: 0}
   target: {fileID: 0}
-  range: 17
+  range: 50
   enemyTag: Enemy
+  bossTag: Boss
   cooltime: 0.12
   bullet: {fileID: 6685786526645106776, guid: a64210f6d1f5beb4ea16ee634b4d7649, type: 3}
   bulletspeed: 200
@@ -212,3 +216,16 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &-4465692005656731419
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4523040593230430871}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a3d1c0c324482844b1663e62e625cce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  huu: {fileID: 0}
