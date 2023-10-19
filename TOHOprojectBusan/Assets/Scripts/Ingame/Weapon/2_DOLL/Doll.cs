@@ -29,7 +29,7 @@ public class Doll : MonoBehaviour
         parentWeaponData = parent.GetComponentInParent<WeaponUpgrade>().weapon;
         myAS = GetComponent<AudioSource>();
         mySR = GetComponent<SpriteRenderer>();
-        myAS.volume = 0.5f / parent.childCount;
+        myAS.volume = 0.08f / parent.childCount;
     }
     private void Start()
     {

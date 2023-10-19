@@ -37,7 +37,7 @@ public class GameManager : MonoBehaviour
     public int exp;
     public int[] nextExp = { 1, 2, 2, 2, 2, 2, 2, 2, 3, 3, 3, 3, 4 ,4,4,4,4,4,4,4,4,4,4,4,4,4};
     public bool isDead = false;
-    public bool continued = false;
+    public bool cflag = false;
     void Start()
     {
 
@@ -87,9 +87,9 @@ public class GameManager : MonoBehaviour
         gameTime += Time.deltaTime;
         if (gameTime >= maxGameTime)
         {
-            if(continued)
+            if(cflag)
             {
-                SceneManager.LoadScene("CVictory");
+                SceneManager.LoadScene("Victory(Cheat)");
             }
             else
             {

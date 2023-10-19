@@ -20,7 +20,7 @@ public class BaisicSHoot : MonoBehaviour
         grandparent = parent.GetComponentInParent<WeaponUpgrade>();
         parentWeaponData = grandparent.weapon;
         myAS = GetComponent<AudioSource>();
-        myAS.volume = 0.25f / parent.childCount;
+        myAS.volume = 0.15f / parent.childCount;
     }
     void Start()
     {

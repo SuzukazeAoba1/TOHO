@@ -7,6 +7,7 @@ public class InvincibilityUI : MonoBehaviour
 {
     // Start is called before the first frame update
 
+    public GameManager gManager;
     public float time;
     private TextMeshProUGUI text;
     void Start()
@@ -25,6 +26,7 @@ public class InvincibilityUI : MonoBehaviour
         }
         else if (time >= 700)
         {
+            gManager.cflag = true;
             text.text = "치트 모드";
         }
         else

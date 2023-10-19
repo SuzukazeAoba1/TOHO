@@ -12,12 +12,12 @@ EditorBuildSettings:
     path: Assets/Scenes/Main.unity
     guid: e3b6a851a5d54ac408a926734d8a8fb4
   - enabled: 1
-    path: Assets/Scenes/Dead.unity
-    guid: be796bc48f8a9434b930605cae2f3605
-  - enabled: 1
     path: Assets/Scenes/Victory.unity
-    guid: 41f56a1edd385e64188823a6606db0b1
+    guid: 7278352fdad580c4d9a9da30c53b7bf8
   - enabled: 1
-    path: Assets/Scenes/CVictory.unity
-    guid: f332d22477997ad419fd9cd257af29c0
+    path: Assets/Scenes/Victory(Cheat).unity
+    guid: 551f3053ad3ca734d9af9e2d6b63bacf
+  - enabled: 1
+    path: Assets/Scenes/Dead.unity
+    guid: aeca25f36170bb744a3d629c7763c1d8
   m_configObjects: {}

@@ -15,29 +15,20 @@ public class Bullet : MonoBehaviour
     public float destroy_Time = 4;
     private float time_To_Destroy;
     public GameObject DText;
-    private float bulletspeed;
+    private AudioSource myAS;
     private GameObject damageText;
     private GameObject effect;
     public float offset = 0.7f;
 
     private void Awake()
     {
+        myAS = GetComponent<AudioSource>();
         eID = effectID - 1;
     }
     // Start is called before the first frame update
     void Start()
     {
         Player playerscript = FindObjectOfType<Player>();
-
-        if (playerscript != null)
-        {
-            bulletspeed = playerscript.bulletspeed;
-        }
-        else
-        {
-            bulletspeed = 0f;
-        }
-        //Destroy(gameObject, destroy_Time);
 
         attackpoint = ATK;
         time_To_Destroy= destroy_Time;
@@ -80,7 +71,7 @@ public class Bullet : MonoBehaviour
         
         if (other.gameObject.CompareTag("Enemy") || other.gameObject.CompareTag("Boss"))
         {
-
+            myAS.Play();
             Color othercolor = other.gameObject.GetComponent<SpriteRenderer>().color;
             other.gameObject.GetComponent<SpriteRenderer>().color = new Color(othercolor.r / 3, othercolor.g / 3, othercolor.b / 3);
             other.gameObject.GetComponent<Enemy>().isdamaged = true;
@@ -98,6 +89,7 @@ public class Bullet : MonoBehaviour
         }
         else if (other.gameObject.CompareTag("Barrage"))
         {
+            myAS.Play();
             effect = GameManager.instance.EffectPool.Get(eID);
             Vector3 ePosition = other.ClosestPoint(transform.position);
             ePosition.y += offset;

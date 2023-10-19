@@ -26,7 +26,7 @@ public class ContinueButton : MonoBehaviour
         switch (select)
         {
             case 1:
-                gmanager.continued = true;
+                gmanager.cflag = true;
                 gmanager.isDead = false;
                 player.isdead = false;
                 player.health = player.maxHealth;
