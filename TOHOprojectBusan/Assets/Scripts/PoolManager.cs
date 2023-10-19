@@ -61,7 +61,7 @@ public class PoolManager : MonoBehaviour
             {
                 // 발견하면 select 변수에 할당
                 select = item;
-                select.SetActive(true);
+                pools[index].Remove(select);
                 break;
             }
         }
@@ -71,7 +71,7 @@ public class PoolManager : MonoBehaviour
         {
             // 새롭게 생성 후 select에 할당
             select = Instantiate(prefabs[index], transform);
-            pools[index].Add(select);
+            select.GetComponent<Barrage>().myPool = pools[index];
         }
 
         return select;
