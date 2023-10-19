@@ -573,6 +573,7 @@ GameObject:
   - component: {fileID: 49476829}
   - component: {fileID: 49476828}
   - component: {fileID: 49476827}
+  - component: {fileID: 49476831}
   m_Layer: 0
   m_Name: Deadzone (1)
   m_TagString: Untagged
@@ -588,8 +589,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 49476825}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 31.2, y: 56.6, z: 9.37792}
-  m_LocalScale: {x: 285.82913, y: 31.992413, z: 1}
+  m_LocalPosition: {x: 31.2, y: 55.5293, z: 9.37792}
+  m_LocalScale: {x: 285.82913, y: 34.132706, z: 1}
   m_Children: []
   m_Father: {fileID: 1639547520}
   m_RootOrder: 2
@@ -694,7 +695,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -704,6 +705,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &49476831
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 49476825}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a3d1c0c324482844b1663e62e625cce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  huu: {fileID: 0}
 --- !u!1 &104269831
 GameObject:
   m_ObjectHideFlags: 0
@@ -2471,6 +2485,7 @@ GameObject:
   - component: {fileID: 296950559}
   - component: {fileID: 296950558}
   - component: {fileID: 296950557}
+  - component: {fileID: 296950561}
   m_Layer: 0
   m_Name: Deadzone
   m_TagString: Untagged
@@ -2486,8 +2501,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 296950555}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -35.781, y: 12.663, z: 9.37792}
-  m_LocalScale: {x: 59.073948, y: 53.765163, z: 1}
+  m_LocalPosition: {x: -26.9477, y: 1.2868, z: 9.37792}
+  m_LocalScale: {x: 76.742966, y: 76.51858, z: 1}
   m_Children: []
   m_Father: {fileID: 1639547520}
   m_RootOrder: 1
@@ -2592,7 +2607,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -2602,6 +2617,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &296950561
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 296950555}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a3d1c0c324482844b1663e62e625cce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  huu: {fileID: 0}
 --- !u!1 &300934249
 GameObject:
   m_ObjectHideFlags: 0
@@ -16245,6 +16273,7 @@ GameObject:
   - component: {fileID: 1383813078}
   - component: {fileID: 1383813077}
   - component: {fileID: 1383813076}
+  - component: {fileID: 1383813080}
   m_Layer: 0
   m_Name: Deadzone (3)
   m_TagString: Untagged
@@ -16260,8 +16289,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1383813074}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 95.9192, y: 11.9585, z: 9.37792}
-  m_LocalScale: {x: 82.892876, y: 53.327103, z: 1}
+  m_LocalPosition: {x: 87.3536, y: 18.6504, z: 9.37792}
+  m_LocalScale: {x: 100.02683, y: 93.47716, z: 1}
   m_Children: []
   m_Father: {fileID: 1639547520}
   m_RootOrder: 3
@@ -16366,7 +16395,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -16376,6 +16405,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1383813080
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1383813074}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a3d1c0c324482844b1663e62e625cce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  huu: {fileID: 0}
 --- !u!1 &1390496626
 GameObject:
   m_ObjectHideFlags: 0
@@ -20347,7 +20389,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -22282,6 +22324,7 @@ GameObject:
   - component: {fileID: 2027560999}
   - component: {fileID: 2027560998}
   - component: {fileID: 2027560997}
+  - component: {fileID: 2027561001}
   m_Layer: 0
   m_Name: Deadzone (2)
   m_TagString: Untagged
@@ -22403,7 +22446,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -22413,6 +22456,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &2027561001
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2027560995}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a3d1c0c324482844b1663e62e625cce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  huu: {fileID: 0}
 --- !u!1 &2043908043
 GameObject:
   m_ObjectHideFlags: 0

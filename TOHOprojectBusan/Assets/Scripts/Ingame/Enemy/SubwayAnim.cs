@@ -37,6 +37,9 @@ public class SubwayAnim : MonoBehaviour
             case 3:
                 myAnim.SetBool("isRight", true);
                 break;
+            case 4:
+                myAnim.SetBool("isRight", false);
+                break;
         }
     }
     void Start()

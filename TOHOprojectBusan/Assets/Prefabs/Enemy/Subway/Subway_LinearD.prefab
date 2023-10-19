@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8074009885763397314}
   - component: {fileID: 8074009885763397312}
   m_Layer: 8
-  m_Name: Subway_RandomR
+  m_Name: Subway_LinearD
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -115,6 +115,7 @@ GameObject:
   - component: {fileID: 8074009885899009606}
   - component: {fileID: 8074009885899009607}
   - component: {fileID: 8074009885899009604}
+  - component: {fileID: 3127655284128650643}
   m_Layer: 8
   m_Name: Collider
   m_TagString: Barrage
@@ -267,12 +268,27 @@ MonoBehaviour:
   Target: {fileID: 0}
   myEnemy: {fileID: 0}
   myGroup: {fileID: 0}
+  myPool: []
   HP: 12000
+  HP_now: 0
   Speed_now: 0
   Speed_base: 0
   Speed_add: 0
   m_delay: 0
   m_distance: 0
+--- !u!114 &3127655284128650643
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8074009885899009602}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a3d1c0c324482844b1663e62e625cce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  huu: {fileID: 0}
 --- !u!1 &8074009887112342032
 GameObject:
   m_ObjectHideFlags: 0

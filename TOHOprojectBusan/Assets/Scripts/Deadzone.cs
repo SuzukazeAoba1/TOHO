@@ -5,34 +5,42 @@ using UnityEngine;
 public class Deadzone : MonoBehaviour
 {
     // Start is called before the first frame update
-
+    
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Bullet"))
+        if (collision.gameObject.GetComponent<NoDeadZone>() == null)
         {
-            collision.gameObject.SetActive(false);
+            if (collision.gameObject.CompareTag("Bullet"))
+            {
+                collision.gameObject.SetActive(false);
+            }
+            else
+            {
+                Destroy(collision.gameObject);
+            }
         }
-        else
-        {
-            Destroy(collision.gameObject);
-        }
+        
         
     }
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.CompareTag("Barrage"))
+        if(other.GetComponent<NoDeadZone>() == null)
         {
-            //other.gameObject.SetActive(false);
-            other.gameObject.GetComponent<Barrage>().Death();
+            if (other.gameObject.CompareTag("Barrage"))
+            {
+                //other.gameObject.SetActive(false);
+                other.gameObject.GetComponent<Barrage>().Death();
+            }
+            else if (other.gameObject.CompareTag("Enemy"))
+            {
+                other.gameObject.GetComponent<Enemy>().Death();
+            }
+            else
+            {
+                Destroy(other.gameObject);
+            }
         }
-        else if (other.gameObject.CompareTag("Enemy"))
-        {
-            other.gameObject.GetComponent<Enemy>().Death();
-        }
-        else
-        {
-            Destroy(other.gameObject);
-        }
+        
 
     }
 }

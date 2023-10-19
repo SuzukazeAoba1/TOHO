@@ -54,6 +54,14 @@ public class SubwaySpawn : MonoBehaviour
                     spriteRenderers[i].flipX = true;
                 }
                 break;
+            case 4:
+                transform.rotation = Quaternion.Euler(0, 0, -90);
+                for (int i = 0; i < spriteRenderers.Length; i++)
+                {
+                    spriteRenderers[i].flipY = true;
+                    spriteRenderers[i].flipX = true;
+                }
+                break;
         }
         Destroy(gameObject, destroy_time);
     }
