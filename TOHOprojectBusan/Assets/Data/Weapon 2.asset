@@ -17,9 +17,10 @@ MonoBehaviour:
   itemName: "\uC568\uB9AC\uC2A4\uC758\uC778\uD615"
   itemDesc:
   - "\uC801\uC744 \uD5A5\uD574 \uD0C4\uD658\uC744 \uBC1C\uC0AC\uD558\uB294 \uC778\uD615
-    \uC0DD\uC131\uD55C\uB2E4."
+    \uC0DD\uC131\uD55C\uB2E4. (\uACF5\uACA9\uB825 4)"
   - "\uC778\uD615 1\uAC1C \uCD94\uAC00 (\uCD1D 1\u21922\uAC1C)"
-  - "\uC778\uD615 1\uAC1C \uCD94\uAC00 (\uCD1D 2\u21923\uAC1C)"
+  - "\uC778\uD615 1\uAC1C \uCD94\uAC00 (\uCD1D 2\u21923\uAC1C)\n\uACF5\uACA9\uB825
+    1 \uC99D\uAC00"
   - "\uC778\uD615 1\uAC1C \uCD94\uAC00 (\uCD1D 3\u21924\uAC1C)"
   - "\uCD5C\uC885 \uB2E8\uACC4."
   itemEx:
@@ -32,11 +33,11 @@ MonoBehaviour:
   itemIcon: {fileID: 2290910018584684990, guid: 1b77da116f678c147be186f0713c6c35, type: 3}
   levels: 0000000001000000020000000300000004000000
   ATK:
-  - 7
-  - 7
-  - 7
-  - 7
-  - 7
+  - 4
+  - 4
+  - 5
+  - 5
+  - 5
   cooltimes:
   - 0.1
   - 0.1
