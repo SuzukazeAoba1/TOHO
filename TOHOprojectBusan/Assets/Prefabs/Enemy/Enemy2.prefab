@@ -127,7 +127,7 @@ MonoBehaviour:
   barrageController: {fileID: 0}
   HP: 200
   speed: 0
-  expdrop: 25
+  expdrop: 15
   m_flip: 0
   test: 0
   firstcooltime: 1

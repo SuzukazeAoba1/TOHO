@@ -78,7 +78,7 @@ public class EnemyBarrageController : MonoBehaviour
         }
 
         //GameObject buf = Instantiate(barragecon.barrage[Barrage.m_barrageid], enemy.transform.position, barragerotation);
-        GameObject buf = GameManager.instance.BarragePool.Get(Barrage.m_barrageid);
+        GameObject buf = GameManager.instance.BarragePool.GetBarrage(Barrage.m_barrageid);
         buf.transform.position = enemy.transform.position;
         buf.transform.rotation = barragerotation;
 

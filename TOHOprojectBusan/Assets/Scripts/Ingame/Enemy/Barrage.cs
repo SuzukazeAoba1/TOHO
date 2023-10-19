@@ -8,6 +8,7 @@ public class Barrage : MonoBehaviour
     public GameObject Target;
     public GameObject myEnemy;
     public GameObject myGroup;
+    public List<GameObject> myPool;
 
     public float HP;
     public float HP_now;
@@ -18,6 +19,11 @@ public class Barrage : MonoBehaviour
 
     public float m_delay;
     public float m_distance;
+
+    public void Start()
+    {
+        HP_now = HP;
+    }
 
     public void ActiveTimerOn()
     {
@@ -126,6 +132,7 @@ public class Barrage : MonoBehaviour
 
     public void Death()
     {
+        myPool.Add(gameObject);
         transform.SetParent(GameManager.instance.BarragePool.transform);
         gameObject.SetActive(false);
         myGroup.GetComponent<EnemyBarrageGroup>().bulletcount--;
