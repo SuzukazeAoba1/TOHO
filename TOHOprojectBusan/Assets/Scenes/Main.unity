@@ -6503,7 +6503,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &604922035
 GameObject:
@@ -7418,6 +7418,8 @@ MonoBehaviour:
   - {fileID: 2536275233929206946, guid: 9bd0b62b9d336d44aa4e3c6734579c3e, type: 3}
   - {fileID: 114606148038146646, guid: a25ace431a66bdc4bba76bfa2190f117, type: 3}
   - {fileID: 6337503209263848465, guid: f5944e69b77b92d499ef2e76022a4e28, type: 3}
+  - {fileID: 179257950141620536, guid: 2712260d3d5e67c4faeca8e4126e21fe, type: 3}
+  - {fileID: 6906998826247045468, guid: 7224f7b735812064e848fa616ff04f14, type: 3}
 --- !u!114 &641156777
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7579,7 +7581,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1725910690073753148, guid: 5f3f59102253afd488df0d914a4dc7a4, type: 3}
       propertyPath: m_RootOrder
-      value: 13
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 1725910690073753148, guid: 5f3f59102253afd488df0d914a4dc7a4, type: 3}
       propertyPath: m_LocalScale.x
@@ -11391,7 +11393,7 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -16794,6 +16796,8 @@ MonoBehaviour:
   speed: 4.5
   bulletspeed: 200
   invincibility_time: 1.3
+  hit: {fileID: 8300000, guid: 26d453f52b41c6648afb5667336d17d3, type: 3}
+  invin: {fileID: 8300000, guid: a5cb9c9114e5947438a3f9a803a6a82e, type: 3}
   isdead: 0
   isDamaged: 0
   cheatUI: {fileID: 1108268905}
@@ -16846,8 +16850,8 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
-  m_Volume: 1
+  m_PlayOnAwake: 0
+  m_Volume: 0.357
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -20760,7 +20764,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1725910690073753148, guid: 5f3f59102253afd488df0d914a4dc7a4, type: 3}
       propertyPath: m_RootOrder
-      value: 14
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 1725910690073753148, guid: 5f3f59102253afd488df0d914a4dc7a4, type: 3}
       propertyPath: m_LocalScale.x
