@@ -97,9 +97,9 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.0094841, y: 0}
+  m_Offset: {x: 0.0005086899, y: 0}
   serializedVersion: 2
-  m_Radius: 0.6816269
+  m_Radius: 0.6716341
 --- !u!114 &1541010630998968547
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -115,7 +115,8 @@ MonoBehaviour:
   Target: {fileID: 0}
   myEnemy: {fileID: 0}
   myGroup: {fileID: 0}
-  HP: 100
+  HP: 500
+  HP_now: 0
   Speed_now: 0
   Speed_base: 0
   Speed_add: 0
