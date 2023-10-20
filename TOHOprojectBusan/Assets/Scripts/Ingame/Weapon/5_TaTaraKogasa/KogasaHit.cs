@@ -78,7 +78,7 @@ public class KogasaHit : MonoBehaviour
                 
                 effect = GameManager.instance.EffectPool.Get(eID);
                 health -= other.gameObject.GetComponent<Barrage>().HP;
-                mySR.color = new Color(health / maxhealth, health / maxhealth, health / maxhealth);
+                mySR.color = new Color(originalColor.r * (health / maxhealth), originalColor.b * (health / maxhealth), originalColor.g * (health / maxhealth));
                 damageText.GetComponent<TextMeshPro>().text = other.gameObject.GetComponent<Barrage>().HP.ToString();
                 other.gameObject.GetComponent<Barrage>().Kill();
                 //damageText.transform.localScale = new Vector3(other.transform.localScale.x / 6f, other.transform.localScale.y / 6f, other.transform.localScale.z / 6f);
