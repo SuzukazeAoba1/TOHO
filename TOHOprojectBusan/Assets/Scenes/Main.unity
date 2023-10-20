@@ -1617,7 +1617,7 @@ MonoBehaviour:
   gmanager: {fileID: 266479210}
   player: {fileID: 1404641481}
   healthgui: {fileID: 505800793}
-  select: 1
+  select: 3
 --- !u!114 &144250885
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1662,9 +1662,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1404641481}
-        m_TargetAssemblyTypeName: Player, Assembly-CSharp
-        m_MethodName: Cheat
+      - m_Target: {fileID: 144250884}
+        m_TargetAssemblyTypeName: ContinueButton, Assembly-CSharp
+        m_MethodName: Onclick
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

@@ -8,6 +8,7 @@ public class KogasaHit : MonoBehaviour
 {
     [Header("# 스테이터스")]
     public float hp;
+    private float maxhealth = 7;
     private float health = 7;
     public int effectID = 4;
     private int eID = 5;
@@ -16,12 +17,14 @@ public class KogasaHit : MonoBehaviour
 
     public float destroy_Time;
     private GameObject damageText;
+    private SpriteRenderer mySR;
     private GameObject effect;
+    private Color originalColor;
     public float offset = 0.7f;
     [Header("#이건 체력바")]
-    public Slider hpslider;
-    public GameObject canvas;
-    private float hpposition = -1.28f;
+    //public Slider hpslider;
+    //public GameObject canvas;
+    //private float hpposition = -1.28f;
 
     RectTransform hpBar;
 
@@ -29,12 +32,15 @@ public class KogasaHit : MonoBehaviour
 
     private void Awake()
     {
-        canvas = GameObject.Find("ObjectCanvas");
+        mySR = GetComponent<SpriteRenderer>();
+        originalColor = mySR.color;
+        //canvas = GameObject.Find("ObjectCanvas");
     }
     void Start()
     {
-        hpBar = Instantiate(hpslider, canvas.transform).GetComponent<RectTransform>();
+        //hpBar = Instantiate(hpslider, canvas.transform).GetComponent<RectTransform>();
         eID = effectID - 1;
+        maxhealth = hp;
         health = hp;
         Player playerscript = FindObjectOfType<Player>();
 
@@ -43,10 +49,10 @@ public class KogasaHit : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Vector3 _hpsliderPos =
-            Camera.main.WorldToScreenPoint(new Vector3(transform.position.x, transform.position.y + hpposition, 0));
-        hpBar.position = _hpsliderPos;
-        hpBar.gameObject.GetComponent<Slider>().value = health / hp;
+        //Vector3 _hpsliderPos =
+            //Camera.main.WorldToScreenPoint(new Vector3(transform.position.x, transform.position.y + hpposition, 0));
+        //hpBar.position = _hpsliderPos;
+        //hpBar.gameObject.GetComponent<Slider>().value = health / hp;
         if (health <= 0)
         {
             Death();
@@ -69,8 +75,10 @@ public class KogasaHit : MonoBehaviour
                 damageText = GameManager.instance.GitaPool.Get(0);
                 damageText.transform.position = other.ClosestPoint(transform.position);
                 effect.transform.position = other.ClosestPoint(transform.position);
+                
                 effect = GameManager.instance.EffectPool.Get(eID);
                 health -= other.gameObject.GetComponent<Barrage>().HP;
+                mySR.color = new Color(health / maxhealth, health / maxhealth, health / maxhealth);
                 damageText.GetComponent<TextMeshPro>().text = other.gameObject.GetComponent<Barrage>().HP.ToString();
                 other.gameObject.GetComponent<Barrage>().Kill();
                 //damageText.transform.localScale = new Vector3(other.transform.localScale.x / 6f, other.transform.localScale.y / 6f, other.transform.localScale.z / 6f);
@@ -88,7 +96,7 @@ public class KogasaHit : MonoBehaviour
 
     private void Death()
     {
-        hpBar.GetComponent<RectTransform>().localScale = new Vector3(0, 0, 0);
+        //hpBar.GetComponent<RectTransform>().localScale = new Vector3(0, 0, 0);
         Destroy(gameObject);
     }
 }
