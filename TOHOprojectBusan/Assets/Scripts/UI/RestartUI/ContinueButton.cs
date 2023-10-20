@@ -36,6 +36,15 @@ public class ContinueButton : MonoBehaviour
             case 2:
                 SceneManager.LoadScene("Dead");
                 break;
+            case 3:
+                gmanager.cflag = true;
+                gmanager.isDead = false;
+                player.isdead = false;
+                player.cheated = true;
+                player.health = player.maxHealth;
+                healthgui.HealthSet(5);
+                player.Invincibility(9999f);
+                break;
             default:
                 break;
         }
