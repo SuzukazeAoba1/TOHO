@@ -15,7 +15,7 @@ public class EnemyBarrageGroup : MonoBehaviour
 
     private void Update()
     {
-        if(bulletcount == 0) Destroy(gameObject);
+        if(bulletcount <= 0) Destroy(gameObject);
     }
 
     IEnumerator DestroyAfterDelay()
