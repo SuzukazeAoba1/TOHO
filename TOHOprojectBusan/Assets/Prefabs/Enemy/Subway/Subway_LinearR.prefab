@@ -11,9 +11,10 @@ GameObject:
   - component: {fileID: 8074009885763397315}
   - component: {fileID: 8074009885763397314}
   - component: {fileID: 8074009885763397312}
+  - component: {fileID: 7739989463616705346}
   m_Layer: 8
   m_Name: Subway_LinearR
-  m_TagString: Untagged
+  m_TagString: Boss
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -101,6 +102,29 @@ MonoBehaviour:
   rightmax: 30
   leftmax: 210
   destroy_time: 6.6
+--- !u!114 &7739989463616705346
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8074009885763397341}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1fc39e1d1eb056c40a44f574cb77441c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 0}
+  barrageController: {fileID: 0}
+  HP: 0
+  speed: 0
+  expdrop: 10
+  m_flip: 0
+  test: 0
+  firstcooltime: 1
+  isdamaged: 0
+  bosspatten1: 0
+  bosspatten2: 0
 --- !u!1 &8074009885899009602
 GameObject:
   m_ObjectHideFlags: 0
