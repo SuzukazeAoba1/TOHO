@@ -60,22 +60,6 @@ public class Barrage : MonoBehaviour
         Speed_add = addspeed;
      }
 
-    public float Pierce(float atk)
-    {
-        if(HP_now <= atk)
-        {
-            return 0;
-        }
-        else if(atk > HP_now)
-        {
-            return HP_now - atk;
-        }
-        else
-        {
-            return 0;
-        }
-            
-    }
     public void Damage(float atk)
     {
         HP_now -= atk;
@@ -89,7 +73,6 @@ public class Barrage : MonoBehaviour
     {
         transform.Translate(Speed_now * Vector2.up * Time.deltaTime);
 
-        if (HP_now <= 0)
         if (HP_now <= 0)
         {
             Kill();
@@ -132,9 +115,9 @@ public class Barrage : MonoBehaviour
 
     public void Death()
     {
-        myPool.Add(gameObject);
-        transform.SetParent(GameManager.instance.BarragePool.transform);
         gameObject.SetActive(false);
+        transform.SetParent(GameManager.instance.BarragePool.transform);
+        myPool.Add(gameObject);
         myGroup.GetComponent<EnemyBarrageGroup>().bulletcount--;
     }
 }
