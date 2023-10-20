@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8074009885763397314}
   - component: {fileID: 8074009885763397312}
   - component: {fileID: -879260589604981937}
+  - component: {fileID: -5186127471403325629}
   m_Layer: 8
   m_Name: Subway_RandomR
   m_TagString: Boss
@@ -125,6 +126,19 @@ MonoBehaviour:
   isdamaged: 0
   bosspatten1: 0
   bosspatten2: 0
+--- !u!114 &-5186127471403325629
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8074009885763397341}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a3d1c0c324482844b1663e62e625cce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  huu: {fileID: 0}
 --- !u!1 &8074009885899009602
 GameObject:
   m_ObjectHideFlags: 0
