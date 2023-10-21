@@ -36,19 +36,23 @@ public class ContinueUI : MonoBehaviour
 
     public void Show()
     {
-        background.Pause();
-        pausesound.Play();
-        pausesound.Play();
+        //background.Pause();
+        //pausesound.Play();
+        //pausesound.Play();
+        GameManager.instance.PuaseManger.InPause(false);
         rect.localScale = new Vector3(1, 1, 1);
-        TogglePause();
+        
+        //TogglePause();
     }
 
     public void Hide()
     {
-        background.Play();
+        //background.Play();
         Debug.Log("¼û°ÜÁü");
+        GameManager.instance.PuaseManger.OutPause(false);
         rect.localScale = new Vector3(0, 0, 0);
-        TogglePause();
+        
+        //TogglePause();
     }
 
 

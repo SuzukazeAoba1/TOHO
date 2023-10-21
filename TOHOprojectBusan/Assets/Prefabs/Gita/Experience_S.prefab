@@ -121,7 +121,6 @@ MonoBehaviour:
   speed: 16
   range: 3
   EXP: 1
-  destroy_Time: 60
   addforce: 50
 --- !u!58 &1851982645351829829
 CircleCollider2D:
