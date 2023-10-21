@@ -120,7 +120,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 16
   range: 3
-  EXP: 1
+  EXP: 10
   addforce: 50
 --- !u!58 &1851982645351829829
 CircleCollider2D:

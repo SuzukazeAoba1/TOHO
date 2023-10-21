@@ -166,9 +166,9 @@ public class UpgradeUI : MonoBehaviour
         {
             while (true)
             {
-                ran[0] = Random.Range(0, selected.Count);
-                ran[1] = Random.Range(0, selected.Count);
-                ran[2] = Random.Range(0, selected.Count);
+                ran[0] = Random.Range(0, selected.Count-1);
+                ran[1] = Random.Range(0, selected.Count-1);
+                ran[2] = Random.Range(0, selected.Count-1);
                 if (ran[0] != ran[1] && ran[1] != ran[2] && ran[2] != ran[0])
                 {
                     break;
@@ -205,6 +205,23 @@ public class UpgradeUI : MonoBehaviour
                 else
                 {
                     ranItem.gameObject.SetActive(true);
+                    /*if (ranItem.data.itemType == WeaponData.ItemType.Heal)
+                    {
+                        UpgradeButton newButton = FindNewButton(selected, ran);
+                        if (newButton != null)
+                        {
+                            newButton.gameObject.SetActive(true);
+                        }
+                        else
+                        {
+                            Debug.LogError("No eligible button found.");
+                        }
+                    }
+                    else if(ranItem.data.itemType == WeaponData.ItemType.Weapon)
+                    {
+                        ranItem.gameObject.SetActive(true);
+                    }*/
+
                 }
             }
         }
