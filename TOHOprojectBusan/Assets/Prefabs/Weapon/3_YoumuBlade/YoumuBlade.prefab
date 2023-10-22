@@ -1837,6 +1837,10 @@ PrefabInstance:
       propertyPath: sounds.Array.data[2]
       value: 
       objectReference: {fileID: 8300000, guid: faa07205b360145469b8ec1e52ec35e3, type: 3}
+    - target: {fileID: 1344928637052351222, guid: 8340fe71370a07843a2ddbfded11f9a8, type: 3}
+      propertyPath: m_FlipY
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1388595087386443183, guid: 8340fe71370a07843a2ddbfded11f9a8, type: 3}
       propertyPath: sounds.Array.size
       value: 3
