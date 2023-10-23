@@ -31,6 +31,7 @@ public class GameManager : MonoBehaviour
     public UpgradeUI upgradeUI;
     public ContinueUI continueUI;
     public GameObject main_camera;
+    public PauseManager PuaseManger;
     [Header("# PlayerStats")]
     public GameObject player;
     public int level;
@@ -38,6 +39,7 @@ public class GameManager : MonoBehaviour
     public int[] nextExp = { 1, 2, 2, 2, 2, 2, 2, 2, 3, 3, 3, 3, 4 ,4,4,4,4,4,4,4,4,4,4,4,4,4};
     public bool isDead = false;
     public bool cflag = false;
+    public bool paused = false;
     void Start()
     {
 
@@ -74,6 +76,11 @@ public class GameManager : MonoBehaviour
     private void Init()
     {
         // 게임 리소스 로딩에 관한 스크립트
+    }
+
+    private void OnEnable()
+    {
+        paused = false;
     }
 
     private void Title()
@@ -121,6 +128,15 @@ public class GameManager : MonoBehaviour
                 nextphase++;
             }
             
+        }
+
+        if(!paused)
+        {
+            Time.timeScale = 1f;
+        }
+        else if(paused)
+        {
+            Time.timeScale = 0f;
         }
         //키보드 입력을 받으면 메인 화면 씬으로 전환
     }

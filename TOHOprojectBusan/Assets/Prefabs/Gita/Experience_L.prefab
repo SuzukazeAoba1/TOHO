@@ -147,5 +147,4 @@ MonoBehaviour:
   speed: 7
   range: 2.5
   EXP: 5
-  destroy_Time: 60
   addforce: 50

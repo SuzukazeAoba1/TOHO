@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class Pause : MonoBehaviour
+public class PauseUI : MonoBehaviour
 {
-
+    public GameManager gmanager;
     RectTransform rect;
     ContinueButton[] Buttons;
     AudioSource pausesound;
@@ -23,17 +23,22 @@ public class Pause : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            if(!opened)
+            if (!opened && GameManager.instance.paused == false)
             {
                 Show();
                 opened = true;
+
+
             }
-            else if(opened)
+            else if(opened && GameManager.instance.paused == true)
             {
                 Hide();
                 opened = false;
+
+
             }
             
         }
@@ -48,22 +53,28 @@ public class Pause : MonoBehaviour
     }
     public void Show()
     {
-        background.Pause();
-        pausesound.Play();
-        rect.localScale = new Vector3(1, 1, 1);
-        TogglePause();
+        if (GameManager.instance.paused == false)
+        {
+            GameManager.instance.PuaseManger.InPause(false);
+            rect.localScale = new Vector3(1, 1, 1);
+        }
+        //background.Pause();
+        //pausesound.Play();
+        
+        //TogglePause();
     }
 
     public void Hide()
     {
-        background.Play();
-        Debug.Log("¼û°ÜÁü");
+        //background.Play();
+        //Debug.Log("¼û°ÜÁü");
+        GameManager.instance.PuaseManger.OutPause(false);
         rect.localScale = new Vector3(0, 0, 0);
-        TogglePause();
+        //TogglePause();
     }
 
 
-    void TogglePause()
+    /*void TogglePause()
     {
         isPaused = !isPaused;
 
@@ -75,7 +86,7 @@ public class Pause : MonoBehaviour
         {
             Time.timeScale = 1f;
         }
-    }
+    }*/
 
     public void Onclick(int id)
     {
@@ -83,6 +94,7 @@ public class Pause : MonoBehaviour
         {
             case 0:
                 Hide();
+                opened = false;
                 break;
             case 1:
                 SceneManager.LoadScene("Start");
