@@ -13,6 +13,7 @@ public class Enemy : MonoBehaviour
     public double speed;
     public int expdrop = 10;
     public bool m_flip;
+    public bool deathcheck = false;
 
     public bool test = false;
     public float firstcooltime = 1f;
@@ -25,6 +26,7 @@ public class Enemy : MonoBehaviour
 
     private void Start()
     {
+        deathcheck = false;
         myColor = GetComponent<SpriteRenderer>().color;
 
         Invoke("Fire", firstcooltime);
@@ -115,8 +117,9 @@ public class Enemy : MonoBehaviour
     {
         HP -= atk;
 
-        if (HP <= 0)
+        if (HP <= 0 && !deathcheck)
         {
+            deathcheck = true;
             Kill();
         }
 
