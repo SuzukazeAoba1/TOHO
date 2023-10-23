@@ -94,6 +94,7 @@ public class PauseUI : MonoBehaviour
         {
             case 0:
                 Hide();
+                opened = false;
                 break;
             case 1:
                 SceneManager.LoadScene("Start");
