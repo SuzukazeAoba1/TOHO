@@ -20598,7 +20598,7 @@ MonoBehaviour:
   invincibilityui: {fileID: 544474009}
   maxHealth: 5
   health: 5
-  speed: 4.5
+  speed: 6
   bulletspeed: 200
   invincibility_time: 2.5
   hit: {fileID: 8300000, guid: 26d453f52b41c6648afb5667336d17d3, type: 3}
